@@ -343,23 +343,35 @@
         }
 
         [data-reveal] {
-            opacity: 0;
-            transform: translateY(18px);
+            opacity: 1;
+            transform: translateY(0);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        [data-reveal].is-visible {
+        body.has-js [data-reveal] {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        [data-reveal].is-visible,
+        body.has-js [data-reveal].is-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
         [data-hero-visual] {
-            opacity: 0;
-            transform: translateY(24px) scale(0.98);
+            opacity: 1;
+            transform: translateY(0) scale(1);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        [data-hero-visual].is-visible {
+        body.has-js [data-hero-visual] {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+        }
+
+        [data-hero-visual].is-visible,
+        body.has-js [data-hero-visual].is-visible {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
@@ -1780,6 +1792,7 @@
             const localeMap = { ar: 'ar', en: 'en-US' };
             const counterAnimations = new Map();
             const langToggleButtons = Array.from(document.querySelectorAll('[data-lang-toggle]'));
+            document.body.classList.add('has-js');
             const emitAnalyticsEvent = (name, detail = {}) => {
                 if (!name) {
                     return;
@@ -2277,9 +2290,17 @@
 
             const initRevealObserver = () => {
                 const heroVisual = document.querySelector('[data-hero-visual]');
-                const revealTargets = document.querySelectorAll('[data-reveal]');
+                const revealTargets = Array.from(document.querySelectorAll('[data-reveal]'));
 
                 if (prefersReducedMotion.matches) {
+                    revealTargets.forEach((el) => el.classList.add('is-visible'));
+                    if (heroVisual) {
+                        heroVisual.classList.add('is-visible');
+                    }
+                    return;
+                }
+
+                if (!('IntersectionObserver' in window)) {
                     revealTargets.forEach((el) => el.classList.add('is-visible'));
                     if (heroVisual) {
                         heroVisual.classList.add('is-visible');
