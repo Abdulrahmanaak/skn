@@ -1,1012 +1,624 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>سكينة | Sakinah – منصة الزواج</title>
+    <title data-skey="meta.title">سكينة | منصة الزواج الموثوقة</title>
     <meta name="description"
-        content="منصة سكينة للتوفيق للزواج بإشراف بشري وخصوصية عالية، ومواءمة ذكية مدعومة بالذكاء الاصطناعي." />
+        content="منصة سكينة للتوفيق للزواج بإشراف بشري وخصوصية عالية ومواءمة ذكية." data-skey="meta.description" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
         :root {
-            --rubik: "Rubik", sans-serif
-        }
-
-        .rubik {
-            font-family: var(--rubik);
-            font-optical-sizing: auto
-        }
-    </style>
-    <style>
-        /* =================== Brand Palette (Sakinah) =================== */
-        :root {
-            --bg-rose: #FBF1EE;
-            /* خلفية وردية فاتحة */
-            --paper: #FFFFFF;
-            /* أبيض */
-            --ink: #12100F;
-            /* أسود الكتابة */
-            --ink-soft: #4B3F3C;
-            /* Terracotta scale */
-            --terra-100: #3B1D16;
-            --terra-80: #4B2017;
-            --terra-70: #6A2A1D;
-            --terra-60: #8A3A28;
-            --terra-50: #A64530;
-            --terra-40: #D86A4A;
-            /* primary */
-            --terra-30: #E37A5F;
-            --terra-20: #F2B19C;
-            --terra-10: #FBE0D6;
-            /* Grays */
-            --gray-90: #3E3C3B;
-            --gray-70: #6D6A69;
-            --gray-50: #B9B6B5;
-            --gray-30: #E6E3E2;
-            --gray-20: #EEECEC;
-            --gray-10: #F8F7F7;
-            /* Accents */
-            --green: #30A26B;
-            --gold: #E5B80B;
-            --cyan: #0E8CA1;
-            --error: #B01B2A;
-            /* UI */
+            --bg: #fbf1ee;
+            --surface: #ffffff;
+            --ink: #201a19;
+            --ink-soft: #5e4c45;
+            --accent: #d86a4a;
+            --accent-dark: #b3472b;
+            --accent-light: #f4b8a1;
+            --gray: #e6e2df;
             --radius-lg: 20px;
             --radius: 14px;
-            --shadow: 0 14px 35px rgba(0, 0, 0, .08);
-            --grad-primary: linear-gradient(90deg, var(--terra-40), var(--terra-20));
-            --footer-bg: #2C2A3E;
-            /* قريب من off purple الغامق */
+            --shadow: 0 18px 40px rgba(77, 46, 35, 0.18);
         }
 
-        /* =============== Reset & Base =============== */
         *,
         *::before,
         *::after {
-            box-sizing: border-box
+            box-sizing: border-box;
         }
 
-        html,
         body {
             margin: 0;
-            padding: 0
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: var(--rubik), system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            font-family: "Rubik", system-ui, sans-serif;
+            background: var(--bg);
             color: var(--ink);
-            background: var(--bg-rose)
+            line-height: 1.6;
         }
 
         img {
             max-width: 100%;
-            height: auto
+            display: block;
         }
 
         a {
-            color: var(--terra-40);
-            text-decoration: none
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .container {
             width: min(1140px, 92vw);
-            margin-inline: auto
+            margin-inline: auto;
         }
 
-        .pill {
-            display: inline-block;
-            padding: .5rem .9rem;
-            border-radius: 999px;
-            background: #fff;
-            border: 1px solid var(--gray-30);
-            font-weight: 700
-        }
-
-        .btn {
-            display: inline-block;
-            padding: .95rem 1.3rem;
-            border-radius: 999px;
-            font-weight: 800;
-            border: 2px solid transparent;
-            transition: .2s
-        }
-
-        .btn-primary {
-            background: var(--grad-primary);
-            color: #fff;
-            animation: glow 4s ease-in-out infinite
-        }
-
-        .btn-primary:hover {
-            filter: brightness(.95)
-        }
-
-        .btn-soft {
-            background: #fff;
-            border-color: var(--terra-30);
-            color: var(--terra-40)
-        }
-
-        .btn-soft:hover {
-            background: var(--terra-10)
-        }
-
-        /* =============== Header =============== */
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 40;
-            background: rgba(255, 255, 255, .7);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--gray-20)
-        }
-
-        .nav .row {
+        .header-bar {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: .9rem 0
+            gap: 1.5rem;
+            padding: 1rem 0;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: .6rem;
-            font-weight: 900
+            gap: 0.6rem;
+            font-weight: 700;
+            color: var(--accent);
         }
 
-        .brand-dot {
-            width: 12px;
-            height: 12px;
+        .brand-mark {
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
-            background: var(--terra-40)
-        }
-
-        .nav-links a {
-            margin-inline: .7rem;
-            font-weight: 700
-        }
-
-        /* =============== Hero =============== */
-        .hero {
-            padding: clamp(2rem, 6vw, 4rem) 0
-        }
-
-        .hero-wrap {
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 28px;
-            align-items: center
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 1.2rem + 2vw, 3rem);
-            margin: 0 0 .6rem
-        }
-
-        .lead {
-            color: var(--ink-soft)
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: .8rem;
-            flex-wrap: wrap;
-            margin-top: 1rem
-        }
-
-        .stats-mini {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            color: #6a6060
-        }
-
-        .stats-mini .pill {
-            border-color: transparent;
-            background: #fff
-        }
-
-        .illus {
-            aspect-ratio: 4/3;
-            border-radius: var(--radius-lg);
-            background: linear-gradient(145deg, #fff, var(--terra-10));
-            border: 1px solid var(--gray-20);
-            box-shadow: var(--shadow);
+            background: radial-gradient(circle at 30% 30%, var(--accent-light), var(--accent));
             display: grid;
             place-items: center;
-            position: relative;
-            overflow: hidden
+            font-size: 1.3rem;
+            color: #fff;
         }
 
-        /* =============== Features grid =============== */
-        section.block {
-            padding: clamp(1.6rem, 3vw, 2.2rem) 0
+        nav {
+            flex: 1;
         }
 
-        .title {
-            font-size: 1.6rem;
-            text-align: center;
-            margin: 0 0 1rem
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.95rem;
         }
 
-        .features {
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.85rem 1.4rem;
+            border-radius: 999px;
+            border: 2px solid transparent;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+        }
+
+        .btn-soft {
+            background: var(--surface);
+            border-color: rgba(216, 106, 74, 0.35);
+        }
+
+        .btn-soft:hover {
+            border-color: var(--accent);
+        }
+
+        .lang-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.55rem 0.9rem;
+            border-radius: 999px;
+            background: var(--surface);
+            border: 1px solid var(--gray);
+            font-size: 0.85rem;
+        }
+
+        main {
+            display: block;
+        }
+
+        section {
+            padding-block: clamp(60px, 10vw, 110px);
+        }
+
+        .hero {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 0 0 1rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.45rem 1.1rem;
+            background: rgba(216, 106, 74, 0.12);
+            color: var(--accent);
+            border-radius: 999px;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .hero-text p {
+            margin: 0 0 1.5rem;
+            color: var(--ink-soft);
+            font-size: 1.05rem;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-counters {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2.25rem;
+        }
+
+        .counter-card {
+            min-width: 160px;
+            padding: 1.25rem 1.4rem;
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .counter-card .count {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .rings-illustration {
+            position: relative;
+            width: min(360px, 80vw);
+            aspect-ratio: 1;
+            margin-inline: auto;
+        }
+
+        .rings-illustration::before,
+        .rings-illustration::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .rings-illustration::before {
+            inset: 14% 18%;
+            border: 12px solid var(--accent);
+            opacity: 0.6;
+        }
+
+        .rings-illustration::after {
+            inset: 28% 26%;
+            border: 12px solid var(--accent-light);
+            transform: rotate(-12deg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
-            background: var(--paper);
-            border: 1px solid var(--gray-20);
-            border-radius: 16px;
+            background: var(--surface);
+            padding: 1.75rem;
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
-            padding: 1rem;
-            transition: transform .25s ease, box-shadow .25s ease
+            height: 100%;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 44px rgba(0, 0, 0, .10)
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
         }
 
-        .icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: inline-grid;
-            place-items: center;
-            background: var(--terra-10)
-        }
-
-        /* =============== Quick Register =============== */
-        .calc-wrap {
+        .split {
             display: grid;
-            grid-template-columns: 1fr .95fr;
-            gap: 22px;
-            align-items: center
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            align-items: center;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, .92);
-            border: 1px solid var(--gray-20);
+        .timeline {
+            position: relative;
+            padding-right: 1.5rem;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 11px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        .timeline-step {
+            position: relative;
+            padding: 1.2rem 1.5rem 1.2rem 0;
+            margin-bottom: 1rem;
+            background: var(--surface);
+            border-radius: var(--radius);
             box-shadow: var(--shadow);
+        }
+
+        .timeline-step::before {
+            content: "";
+            position: absolute;
+            top: 1.6rem;
+            right: -0.75rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .marquee {
+            overflow: hidden;
+            background: var(--surface);
             border-radius: var(--radius-lg);
-            padding: 1.2rem
-        }
-
-        .inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px
-        }
-
-        .input {
-            display: flex;
-            flex-direction: column;
-            gap: .35rem
-        }
-
-        label {
-            font-weight: 700;
-            font-size: .95rem
-        }
-
-        input,
-        textarea {
-            padding: .95rem;
-            border: 1px solid var(--gray-30);
-            border-radius: 12px;
-            font-family: inherit
-        }
-
-        /* =============== CTA band =============== */
-        .cta-band {
-            background: var(--grad-primary);
-            border-radius: 22px;
-            color: #fff;
-            padding: 1.6rem;
-            text-align: center
-        }
-
-        /* =============== FAQ accordion =============== */
-        details {
-            background: #fff;
-            border: 1px solid var(--gray-20);
-            border-radius: 14px;
             box-shadow: var(--shadow);
-            padding: 1rem
+            padding: 1.2rem 0;
         }
 
-        details+details {
-            margin-top: 10px
+        .marquee-track {
+            display: flex;
+            gap: 2.5rem;
+            animation: marquee 26s linear infinite;
+            will-change: transform;
+        }
+
+        .story-card {
+            min-width: 220px;
+            padding: 0.5rem 1.5rem;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(50%);
+            }
+
+        }
+
+        .cta-band {
+            background: linear-gradient(110deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: var(--radius-lg);
+            padding: clamp(40px, 8vw, 60px);
+            color: #fff;
+            display: grid;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        details {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 1.1rem 1.3rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 0.9rem;
         }
 
         summary {
             cursor: pointer;
-            font-weight: 800
+            font-weight: 600;
         }
 
-        /* =============== Footer =============== */
         footer {
-            margin-top: 2.4rem;
-            background: var(--footer-bg);
-            color: #EDECF6
+            background: #241e32;
+            color: #f7f3ff;
         }
 
-        .foot {
+        .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 18px;
-            padding: 2rem 0
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: clamp(50px, 10vw, 80px) 0;
         }
 
-        .foot a {
-            color: #EDECF6
+        .footer-grid h4 {
+            margin-top: 0;
+            font-size: 1.05rem;
         }
 
-        .foot small {
-            color: #CFCDE6
-        }
-
-        /* Responsive */
-        @media (max-width:980px) {
-            .hero-wrap {
-                grid-template-columns: 1fr
-            }
-
-            .features {
-                grid-template-columns: 1fr
-            }
-
-            .calc-wrap {
-                grid-template-columns: 1fr
-            }
-
-            .inputs {
-                grid-template-columns: 1fr
-            }
-
-            .foot {
-                grid-template-columns: 1fr 1fr
-            }
-        }
-
-        /* === Reveal-on-scroll & extras === */
-        .reveal {
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity .6s ease, transform .6s ease
-        }
-
-        .reveal.show {
-            opacity: 1;
-            transform: none
-        }
-
-        @keyframes glow {
-
-            0%,
-            100% {
-                box-shadow: 0 12px 30px rgba(216, 106, 74, .22)
-            }
-
-            50% {
-                box-shadow: 0 18px 40px rgba(216, 106, 74, .32)
-            }
-        }
-
-        /* timeline icons */
-        .ico {
-            display: inline-grid;
-            place-items: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background: var(--terra-10);
-            margin-inline-start: .4rem
-        }
-
-        /* ===== Timeline styles ===== */
-        .timeline-v2 {
-            position: relative;
-            margin: 2.2rem auto 0;
-            width: min(980px, 92vw)
-        }
-
-        .timeline-v2 .track {
-            position: absolute;
-            inset: 0;
-            pointer-events: none
-        }
-
-        .timeline-v2 .track::before {
-            content: '';
-            position: absolute;
-            top: 2%;
-            bottom: 2%;
-            right: 50%;
-            transform: translateX(50%);
-            width: 6px;
-            border-radius: 999px;
-            background: linear-gradient(180deg, #efe9e7, #e9e5e3)
-        }
-
-        .timeline-v2 .progress {
-            position: absolute;
-            right: 50%;
-            transform: translateX(50%);
-            top: 2%;
-            width: 6px;
-            border-radius: 999px;
-            background: linear-gradient(180deg, var(--terra-40), var(--terra-20));
-            height: 0;
-            box-shadow: 0 6px 20px rgba(216, 106, 74, .25)
-        }
-
-        .timeline-v2 .dot {
-            position: absolute;
-            right: 50%;
-            transform: translate(50%, -50%);
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #fff;
-            border: 3px solid var(--terra-30);
-            box-shadow: 0 0 0 8px rgba(216, 106, 74, .10)
-        }
-
-        .timeline-v2 .dot::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            border-radius: 50%;
-            background: var(--terra-40);
-            transform: scale(var(--fill, 0));
-            transition: transform .35s ease
-        }
-
-        .timeline-v2 .dot.on {
-            border-color: var(--terra-40);
-            box-shadow: 0 0 0 10px rgba(216, 106, 74, .16)
-        }
-
-        .tl-item {
-            position: relative;
+        .footer-grid ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 18px;
-            margin: 38px 0
+            gap: 0.55rem;
         }
 
-        .tl-card {
-            background: #fff;
-            border: 1px solid var(--gray-20);
-            border-radius: 18px;
-            box-shadow: var(--shadow);
-            padding: 18px
+        .footer-meta {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.85rem;
         }
 
-        .tl-card.soft {
-            background: rgba(255, 255, 255, .86)
-        }
-
-        .tl-card .tiny {
-            letter-spacing: .15em;
-            font-weight: 900;
-            color: var(--terra-60);
-            opacity: .8;
-            margin-bottom: 6px
-        }
-
-        .mock {
-            aspect-ratio: 4/3;
-            border-radius: 18px;
-            border: 1px solid var(--gray-20);
-            background: linear-gradient(145deg, #fff, var(--terra-10));
-            box-shadow: var(--shadow);
-            display: grid;
-            place-items: center;
-            color: #a09a98;
-            font-weight: 700
-        }
-
-        .mock-form {
-            --sz: 72px;
-            position: relative
-        }
-
-        .mock-form::before,
-        .mock-form::after {
-            content: '';
-            position: absolute;
-            border-radius: 12px;
-            background: #fff;
-            border: 1px solid #eee;
-            box-shadow: 0 8px 22px rgba(0, 0, 0, .05)
-        }
-
-        .mock-form::before {
-            inset: auto 14% 18% 14%;
-            height: var(--sz)
-        }
-
-        .mock-form::after {
-            inset: 14% 18% auto 18%;
-            height: var(--sz)
-        }
-
-        .mock-card {
-            position: relative
-        }
-
-        .mock-card::after {
-            content: '';
-            position: absolute;
-            inset: auto 12% 12% 12%;
-            border-radius: 12px;
-            background: #fff;
-            border: 1px solid #eee;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, .06)
-        }
-
-        .mock-chat::before {
-            content: '•••';
-            position: absolute;
-            inset: auto 20% 18% auto;
-            color: #bbb;
-            font-size: 22px
-        }
-
-        .badge-lite {
-            display: inline-block;
-            padding: .5rem .8rem;
-            border-radius: 999px;
-            background: var(--terra-10);
-            border: 1px solid var(--terra-20);
-            font-weight: 800;
-            color: var(--terra-60)
-        }
-
-        @media (max-width:900px) {
-            .tl-item {
-                grid-template-columns: 1fr;
-                gap: 12px;
-                margin: 26px 0
-            }
-
-            .timeline-v2 .track::before {
-                right: 24px;
-                transform: none
-            }
-
-            .timeline-v2 .progress {
-                right: 24px;
-                transform: none
-            }
-
-            .timeline-v2 .dot {
-                right: 24px;
-                transform: translate(0, -50%)
-            }
-        }
-
-        /* ===== Success Stories loop ===== */
-        .loop-slider {
-            position: relative;
-            overflow: hidden;
-            width: 100%
-        }
-
-        .loop-track {
-            display: flex;
-            gap: 16px;
-            width: max-content;
-            animation: loopMove 40s linear infinite
-        }
-
-        .story.card {
-            min-width: 320px;
-            max-width: 360px;
-            flex: 0 0 auto;
-            background: #fff;
-            border: 1px solid var(--gray-20);
-            border-radius: 18px;
-            box-shadow: var(--shadow);
-            padding: 1rem
-        }
-
-        .story.card h3 {
-            margin: .4rem 0
-        }
-
-        @keyframes loopMove {
-            0% {
-                transform: translateX(0)
-            }
-
-            100% {
-                transform: translateX(-50%)
-            }
-        }
-
-        .loop-slider:hover .loop-track {
-            animation-play-state: paused
-        }
-
-        @media(max-width:980px) {
-            .story.card {
-                min-width: 260px
+        @media (max-width: 880px) {
+            nav ul {
+                display: none;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <nav class="nav">
-        <div class="container row">
-            <div class="brand"><span class="brand-dot"></span><span>Sakinah • سكينة</span></div>
-            <div class="nav-links">
-                <a href="#features">المميزات</a>
-                <a href="#register">التسجيل</a>
-                <a href="journey.html">الرحلة</a>
-                <a href="#faq">الأسئلة الشائعة</a>
-                <a class="btn btn-soft" href="#contact">تواصل</a>
-                <a class="btn btn-primary" href="#register">قم بزيارة الموقع</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <header class="hero container">
-        <div class="hero-wrap">
-            <div>
-                <span class="pill">❤️ رفيق مطمئن لرحلة الزواج</span>
-                <h1>سكينة — التوفيق للزواج بمواءمة ذكية وإشراف بشري</h1>
-                <p class="lead">نمزج الذكاء الاصطناعي مع مراجعة مشرفين لاقتراحات دقيقة، وسياسات تحافظ الخصوصية
-                    والاحترام.</p>
-                <div class="hero-cta">
-                    <a class="btn btn-primary" href="#register">قم بزيارة الموقع</a>
-                    <a class="btn btn-soft" href="#features">تعرّف أكثر</a>
-                </div>
-                <div class="stats-mini">
-                    <span class="pill"><b class="count" data-to="50000">0</b>+ زائر</span>
-                    <span class="pill"><b class="count" data-to="49">0</b> مدينة</span>
-                    <span class="pill"><b class="count" data-to="10">0</b> مشرفين</span>
-                </div>
-            </div>
-            <div class="illus reveal">
-                <img src="a83205c5-14fa-4c40-bb8f-f589bc276e8d.png" alt="خاتمي الخطوبة"
-                    style="max-width:100%;height:auto;border-radius:20px;box-shadow:var(--shadow)">
+    <header>
+        <div class="container header-bar">
+            <a class="brand" href="#" aria-label="Sakinah">
+                <span class="brand-mark" data-skey="brand.initials">سك</span>
+                <span data-skey="brand.name">سكينة</span>
+            </a>
+            <nav aria-label="التنقل الرئيسي">
+                <ul>
+                    <li><a href="#features" data-skey="nav.features">المميزات</a></li>
+                    <li><a href="#register" data-skey="nav.register">التسجيل</a></li>
+                    <li><a href="#journey" data-skey="nav.journey">الرحلة</a></li>
+                    <li><a href="#faq" data-skey="nav.faq">الأسئلة الشائعة</a></li>
+                    <li><a href="#contact" data-skey="nav.contact">تواصل</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a class="btn btn-soft" href="#register" data-skey="nav.secondaryCta">تصفح المزايا</a>
+                <a class="btn btn-primary" href="#cta" data-skey="nav.primaryCta">ابدأ الآن</a>
+                <button class="lang-toggle" type="button" data-skey="nav.lang" data-lang-toggle>
+                    <span data-skey="nav.langLabel">العربية</span>
+                </button>
             </div>
         </div>
     </header>
-
-    <!-- Features -->
-    <section id="features" class="block container">
-        <h2 class="title">مميزات المنصة بالتفصيل</h2>
-        <div class="features reveal">
-            <div class="card">
-                <div class="icon">🤝</div>
-                <h3>مواءمة مدعومة بالذكاء الاصطناعي</h3>
-                <p>خوارزميات تقييم تُحلّل القيم والأولويات ونمط الحياة وتقاطعات الاهتمامات لإظهار ترشيحات ناضجة، مع
-                    إمكانية تحسين الدقة كلما اكتمل ملف المتقدم.</p>
-            </div>
-            <div class="card">
-                <div class="icon">👀</div>
-                <h3>إشراف بشري حقيقي</h3>
-                <p>مشرفون معتمدون يراجعون الملفات، ويتحققون من الجدية، ويقدّمون ملاحظات واضحة، ويقومون بإغلاق أي حالة
-                    غير مناسبة بسرعة.</p>
-            </div>
-            <div class="card">
-                <div class="icon">🛡️</div>
-                <h3>خصوصية وسياسات صارمة</h3>
-                <p>حماية للبيانات، وعدم مشاركة معلومات حساسة إلا بموافقة صريحة، وقواعد سلوك تمنع الإساءة والابتزاز، مع
-                    قنوات تصعيد واضحة.</p>
-            </div>
-            <div class="card">
-                <div class="icon">💬</div>
-                <h3>المحرّم الذكي</h3>
-                <p>محادثة داخلية مُراقَبة بخوارزميات ترصد المخالفات تلقائيًا، وتنبيهات للمشرف، ورسائل قوالب تسهّل الحوار
-                    البنّاء.</p>
-            </div>
-            <div class="card">
-                <div class="icon">📊</div>
-                <h3>شفافية وتتبع للحالة</h3>
-                <p>لوحة توضّح المرحلة الحالية، وسبب القبول/الرفض، والمهام المطلوبة لاستكمال الملف، مع إشعارات فورية
-                    بالتغييرات.</p>
-            </div>
-            <div class="card">
-                <div class="icon">⚖️</div>
-                <h3>تجربة عادلة ومحايدة</h3>
-                <p>معايير أهلية موحّدة، ونظام بلاغات، وتدقيق يدوي عند الاشتباه، وتجميد للحسابات المسيئة مع توثيق
-                    للقرارات.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Register -->
-    <section id="register" class="block container">
-        <h2 class="title">ابدأ رحلتك الآن</h2>
-        <div class="calc-wrap">
-            <div class="glass">
-                <div class="inputs">
-                    <div class="input"><label>الاسم الكامل</label><input placeholder="محمد أحمد" /></div>
-                    <div class="input"><label>رقم الجوال</label><input placeholder="05xxxxxxxx" /></div>
-                    <div class="input"><label>المدينة</label><input placeholder="الرياض" /></div>
-                    <div class="input"><label>معرّف تيليجرام</label><input placeholder="@username" /></div>
-                    <div class="input" style="grid-column:1/-1"><label>نبذة مختصرة</label><textarea rows="3"
-                            placeholder="عرّفنا بك باختصار..."></textarea></div>
+    <main>
+        <section class="container hero" id="hero">
+            <div class="hero-text">
+                <div class="pill" data-skey="hero.tagline">منصة التوفيق للزواج الموثوق</div>
+                <h1 data-skey="hero.heading">خصوصية حقيقية ومواءمة ذكية تصنع بداية مطمئنة</h1>
+                <p data-skey="hero.subheading">سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.</p>
+                <div class="hero-ctas">
+                    <a class="btn btn-primary" href="#register" data-skey="hero.primaryCta">سجل اهتمامك</a>
+                    <a class="btn btn-soft" href="#features" data-skey="hero.secondaryCta">تعرّف على المزايا</a>
                 </div>
-                <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.8rem">
-                    <a class="btn btn-primary" href="#">قم بزيارة الموقع</a>
-                    <a class="btn btn-soft" href="#contact">تواصل عبر تيليجرام</a>
+                <div class="hero-counters">
+                    <div class="counter-card">
+                        <div class="count" data-count data-to="1200" data-final-suffix="+" data-skey="hero.counterMatches">0</div>
+                        <p data-skey="hero.counterMatchesLabel">مواءمة تمت بإشراف</p>
+                    </div>
+                    <div class="counter-card">
+                        <div class="count" data-count data-to="87" data-suffix="%" data-final-suffix="%" data-skey="hero.counterSuccess">0</div>
+                        <p data-skey="hero.counterSuccessLabel">معدّل رضا الأزواج</p>
+                    </div>
+                    <div class="counter-card">
+                        <div class="count" data-count data-to="48" data-skey="hero.counterHours">0</div>
+                        <p data-skey="hero.counterHoursLabel">ساعة استجابة للمتابعة</p>
+                    </div>
                 </div>
             </div>
-            <div class="glass">
-                <h3 style="margin-top:0">عن سكينة</h3>
-                <ul style="line-height:1.9;margin:0;padding-inline-start:1.2rem;color:var(--ink-soft)">
-                    <li>رحلة واضحة: تسجيل → تحليل ذكي → مراجعة مشرف → موافقة مبدئية للطرفين → تعارف منضبط عبر المحرّم
-                        الذكي → توافق نهائي.</li>
-                    <li>أسباب الرفض والقبول تُعرض بصياغة بنّاءة، مع اقتراحات لتحسين الملف إن لزم.</li>
-                    <li>لا مشاركة لأي معلومة اتصال مباشرة إلا في المرحلة المصرّح بها وبعد موافقة الطرفين.</li>
-                    <li>التزام بمعايير الخصوصية، وإتاحة قناة رسمية لتقديم ملاحظات أو بلاغات.</li>
+            <div class="hero-visual">
+                <div class="rings-illustration" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <section class="container" id="features">
+            <header>
+                <h2 data-skey="features.heading">لماذا يثق بنا المقبلون على الزواج؟</h2>
+                <p data-skey="features.subheading">نمنحك رحلة زواج تنطلق من قيمك، وتبقى تحت رقابة فريق مختص يحفظ خصوصيتك.</p>
+            </header>
+            <div class="features-grid">
+                <article class="card">
+                    <h3 data-skey="features.curated.title">مواءمة بشرية مدعومة بالذكاء</h3>
+                    <p data-skey="features.curated.copy">يستعرض فريق مختص ملفات المتقدمين ويستخدم خوارزميات التعلم الآلي للتأكد من توافق الاهتمامات والقيم العائلية.</p>
+                </article>
+                <article class="card">
+                    <h3 data-skey="features.guardians.title">محرّم ذكي</h3>
+                    <p data-skey="features.guardians.copy">محادثاتك داخل المنصة تمر عبر إشراف حي يضمن التزام الحوار بالضوابط الشرعية ويمنع مشاركة معلومات حساسة قبل الوقت المناسب.</p>
+                </article>
+                <article class="card">
+                    <h3 data-skey="features.privacy.title">خصوصية مشددة</h3>
+                    <p data-skey="features.privacy.copy">نخزّن البيانات الحساسة بتشفير متكامل ونخضع للوائح حماية البيانات المحلية والدولية.</p>
+                </article>
+                <article class="card">
+                    <h3 data-skey="features.coaching.title">تدريب ومتابعة</h3>
+                    <p data-skey="features.coaching.copy">نوفّر جلسات استشارية قبل وبعد التوفيق لمساعدتك على تقييم الاختيار والتعامل مع الخطوات التالية بثقة.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="container split" id="register">
+            <div>
+                <h2 data-skey="register.heading">سجّل اهتمامك خلال دقيقة</h2>
+                <p data-skey="register.copy">أجب عن أسئلة مصممة بعناية حول القيم، نمط الحياة، التوقعات، وحدّد تفضيلات التواصل. بعدها يتواصل معك فريقنا لتفعيل الملف.</p>
+                <ul>
+                    <li data-skey="register.pointOne">نموذج شامل يغطي الجدية والالتزام</li>
+                    <li data-skey="register.pointTwo">توثيق الهوية والتحقق الأمني</li>
+                    <li data-skey="register.pointThree">تقييم شخصي من خبراء العلاقات الأسرية</li>
                 </ul>
+                <a class="btn btn-primary" href="#cta" data-skey="register.cta">ابدأ التسجيل</a>
             </div>
-        </div>
-    </section>
+            <aside>
+                <h3 data-skey="register.about.title">عن سكينة</h3>
+                <p data-skey="register.about.copy">مبادرة مجتمعية متخصصة في التوفيق للزواج للمحافظين في المنطقة العربية. نعمل مع مستشارين شرعيين وأسريين لضمان معايير عالية للجدية والاحترام.</p>
+                <p data-skey="register.about.mission">مهمتنا خلق بيئة آمنة وعادلة تُمكّن الجميع من بناء أسرة على أسس راسخة.</p>
+            </aside>
+        </section>
 
-    <!-- Timeline -->
-    <section class="block container" id="journey">
-        <h2 class="title">رحلة العميل بالتفصيل</h2>
-        <div class="timeline-v2">
-            <div class="track">
-                <span class="progress" aria-hidden="true"></span>
-                <span class="dot" style="top:2%"></span>
-                <span class="dot" style="top:18%"></span>
-                <span class="dot" style="top:36%"></span>
-                <span class="dot" style="top:54%"></span>
-                <span class="dot" style="top:72%"></span>
-                <span class="dot" style="top:86%"></span>
+        <section class="container" id="journey">
+            <header>
+                <h2 data-skey="journey.heading">رحلة العميل مع سكينة</h2>
+                <p data-skey="journey.subheading">خطوات واضحة تحترم وقتك وتضمن جودة المطابقة من البداية حتى القرار.</p>
+            </header>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <h3 data-skey="journey.step1.title">التسجيل والتحقق</h3>
+                    <p data-skey="journey.step1.copy">املأ نموذج الاهتمامات، ثم قم بتوثيق الهوية والمستندات المطلوبة ليبدأ الفريق بمراجعتها.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3 data-skey="journey.step2.title">جلسة المواءمة</h3>
+                    <p data-skey="journey.step2.copy">استشارة مرئية أو صوتية مع أخصائي لمراجعة تفضيلاتك، ووضع حدود واضحة للتواصل.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3 data-skey="journey.step3.title">التعارف المراقَب</h3>
+                    <p data-skey="journey.step3.copy">محادثات آمنة داخل المنصة تشمل ملخصات يومية للمشرفين لضمان التزام السلوك.</p>
+                </div>
+                <div class="timeline-step">
+                    <h3 data-skey="journey.step4.title">القرار والمتابعة</h3>
+                    <p data-skey="journey.step4.copy">عند التوافق، نساعدكما في تحديد الخطوات الشرعية والرسمية، ونقدّم متابعة بعدية عند الحاجة.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="tl-item right">
-                <div class="tl-card reveal">
-                    <div class="tiny">01</div>
-                    <h3><span class="ico">📝</span>التسجيل واستكمال الملف</h3>
-                    <p>إنشاء حساب، إضافة البيانات الأساسية والتفضيلات والقيم، ورفع المستندات عند الحاجة.</p>
-                </div>
-                <div class="mock mock-form">نموذج</div>
-            </div>
-            <div class="tl-item left">
-                <div class="tl-card soft reveal">
-                    <div class="tiny">02</div>
-                    <h3><span class="ico">🤖</span>التحليل الذكي</h3>
-                    <p>خوارزمية توافق تُقيّم الملاءمة الأولية وفق معايير موضوعية قابلة للتحسين.</p>
+        <section class="container" id="stories">
+            <header>
+                <h2 data-skey="stories.heading">قصص نجاح ملهمة</h2>
+                <p data-skey="stories.subheading">اكتشف كيف ساعدت سكينة شركاءها على بدء حياة زوجية بطمأنينة.</p>
+            </header>
+            <div class="marquee" aria-live="polite">
+                <div class="marquee-track">
+                    <article class="story-card" data-skey="stories.story1">"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم &amp; مازن</article>
+                    <article class="story-card" data-skey="stories.story2">"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة &amp; خالد</article>
+                    <article class="story-card" data-skey="stories.story3">"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى &amp; طارق</article>
+                    <article class="story-card" data-skey="stories.story4">"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة &amp; يوسف</article>
                 </div>
             </div>
-            <div class="tl-item right">
-                <div class="tl-card reveal">
-                    <div class="tiny">03</div>
-                    <h3><span class="ico">👤</span>مراجعة المشرف</h3>
-                    <p>تدقيق بشري للملف وطلب معلومات إضافية إن لزم قبل التفعيل في البحث.</p>
-                </div>
-                <div class="mock mock-card">بطاقة</div>
-            </div>
-            <div class="tl-item left">
-                <div class="tl-card soft reveal">
-                    <div class="tiny">04</div>
-                    <h3><span class="ico">🧩</span>اقتراح مطابقة للطرفين</h3>
-                    <p>إشعار لكل طرف مع نبذة محايدة، ويمكن القبول أو الرفض مع توضيح السبب.</p>
-                </div>
-                <div class="badge-lite">42٪ توافق مبدئي</div>
-            </div>
-            <div class="tl-item right">
-                <div class="tl-card reveal">
-                    <div class="tiny">05</div>
-                    <h3><span class="ico">💬</span>التعارف عبر المحرّم الذكي</h3>
-                    <p>محادثة داخلية بحدود واضحة، ورصد تلقائي للمخالفات مع تنبيه المشرف.</p>
-                </div>
-                <div class="mock mock-chat">محادثة</div>
-            </div>
-            <div class="tl-item left">
-                <div class="tl-card soft reveal">
-                    <div class="tiny">06</div>
-                    <h3><span class="ico">✅</span>التقييم والقرار</h3>
-                    <p>يقرّر كل طرف الاستمرار أو الإنهاء مع حفظ الملاحظات البنّاءة.</p>
-                </div>
-            </div>
-            <div class="tl-item right">
-                <div class="tl-card reveal">
-                    <div class="tiny">07</div>
-                    <h3><span class="ico">🎉</span>التوافق وإغلاق الحالة</h3>
-                    <p>تحديث الحالة وإغلاقها بنجاح، وإتاحة طلب تواصل وليّ الأمر حيث يُسمح.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Success Stories Continuous Loop -->
-    <section class="block container" id="stories">
-        <h2 class="title">قصص نجاح من سكينة</h2>
-        <div class="loop-slider" dir="rtl">
-            <div class="loop-track">
-                <div class="story card">
-                    <div class="icon">💍</div>
-                    <h3>ناصر & ريم</h3>
-                    <p>تعرفا عبر سكينة خلال 3 أسابيع. يقول ناصر: «الوضوح والإشراف فرّقا معنا كثيرًا.»</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">❤️</div>
-                    <h3>سارة & محمد</h3>
-                    <p>توافق 88٪ وفق التحليل الذكي، وتم الزواج بعد أربعة أشهر بتجربة آمنة ومحترمة.</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">👨‍👩‍👧</div>
-                    <h3>قصة عائلية</h3>
-                    <p>وليّ أمر رشّح ابنه، وتم التعارف المنضبط عبر المحرّم الذكي حتى تم التوافق.</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">🌙</div>
-                    <h3>ليلى & عبدالله</h3>
-                    <p>خطوات واضحة منذ التسجيل حتى التوافق النهائي، مع ملاحظات بنّاءة من المشرف.</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">🤝</div>
-                    <h3>أحمد & آمنة</h3>
-                    <p>احترام الخصوصية وعدم مشاركة وسائل الاتصال قبل الوقت المناسب منحهم طمأنينة.</p>
-                </div>
-                <!-- duplicate for seamless loop -->
-                <div class="story card">
-                    <div class="icon">💍</div>
-                    <h3>ناصر & ريم</h3>
-                    <p>تعرفا عبر سكينة خلال 3 أسابيع. يقول ناصر: «الوضوح والإشراف فرّقا معنا كثيرًا.»</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">❤️</div>
-                    <h3>سارة & محمد</h3>
-                    <p>توافق 88٪ وفق التحليل الذكي، وتم الزواج بعد أربعة أشهر بتجربة آمنة ومحترمة.</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">👨‍👩‍👧</div>
-                    <h3>قصة عائلية</h3>
-                    <p>وليّ أمر رشّح ابنه، وتم التعارف المنضبط عبر المحرّم الذكي حتى تم التوافق.</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">🌙</div>
-                    <h3>ليلى & عبدالله</h3>
-                    <p>خطوات واضحة منذ التسجيل حتى التوافق النهائي، مع ملاحظات بنّاءة من المشرف.</p>
-                </div>
-                <div class="story card">
-                    <div class="icon">🤝</div>
-                    <h3>أحمد & آمنة</h3>
-                    <p>احترام الخصوصية وعدم مشاركة وسائل الاتصال قبل الوقت المناسب منحهم طمأنينة.</p>
-                </div>
+        <section class="container" id="cta">
+            <div class="cta-band">
+                <h2 data-skey="cta.heading">ابدأ رحلتك نحو حياة زوجية مطمئنة</h2>
+                <p data-skey="cta.copy">انضم إلى مجتمع سكينة، وأنشئ ملفك خلال دقائق لتحصل على أول مواءمة خلال 48 ساعة.</p>
+                <a class="btn btn-soft" href="#register" data-skey="cta.ctaButton">سجّل اهتمامك</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA band -->
-    <section class="block container">
-        <div class="cta-band">
-            <h2 style="margin:.2rem 0 1rem">ابدأ التوفيق الآن</h2>
-            <p style="margin:0 0 1rem">انضم خلال دقيقة واحدة، وأكمل بياناتك لبدء اقتراحات المطابقة.</p>
-            <a class="btn btn-soft" href="#register">قم بزيارة الموقع</a>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="block container">
-        <h2 class="title">الأسئلة الشائعة</h2>
-        <details>
-            <summary>هل المنصة مخصصة للزواج الشرعي فقط؟</summary>
-            <p>نعم، سكينة موجّهة للتوفيق للزواج الشرعي حصراً مع التزام كامل بالضوابط والقيم.</p>
-        </details>
-        <details>
-            <summary>كيف تتم المواءمة؟</summary>
-            <p>بدمج تحليل ذكي لمدخلاتك (القيم، الأولويات، نمط الحياة) مع مراجعة مشرف بشري للتأكد من الجدية والملاءمة.
-            </p>
-        </details>
-        <details>
-            <summary>هل يطّلع الطرف الآخر على أرقام الاتصال؟</summary>
-            <p>لا، يتم التواصل داخل المنصة عبر "المحرّم الذكي"، ولا تُشارك أي معلومات تواصل مباشرة إلا في مرحلة مصرح بها
-                وبعد موافقة الطرفين.</p>
-        </details>
-        <details>
-            <summary>ماذا لو تعرّضتُ لسلوك غير لائق؟</summary>
-            <p>يمكنك الإبلاغ فوراً؛ تُوقف المحادثة تلقائياً عند رصد مخالفات واضحة ويُخطر المشرف لاتخاذ الإجراء المناسب.
-            </p>
-        </details>
-        <details>
-            <summary>هل يوجد دفع أو اشتراكات؟</summary>
-            <p>التسجيل الأساسي مجاني، وقد تُضاف خيارات مدفوعة لاحقاً للخدمات المتقدمة. سنعلن عن ذلك داخل المنصة.</p>
-        </details>
-        <details>
-            <summary>هل يمكنني معرفة سبب الرفض؟</summary>
-            <p>نعم، نعرض سبباً مختصراً بصياغة بنّاءة متى توفّر ذلك، مع نصائح لتحسين الملف.</p>
-        </details>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container foot">
+        <section class="container" id="faq">
+            <header>
+                <h2 data-skey="faq.heading">الأسئلة الشائعة</h2>
+            </header>
+            <details open>
+                <summary data-skey="faq.q1">هل المنصة مخصصة للزواج الشرعي فقط؟</summary>
+                <p data-skey="faq.a1">نعم، سكينة تعمل حصراً وفق الأطر الشرعية والقيم المحلية، مع إشراف دائم لضمان الالتزام.</p>
+            </details>
+            <details>
+                <summary data-skey="faq.q2">كيف تتم المواءمة بين الطرفين؟</summary>
+                <p data-skey="faq.a2">نستخدم استبياناً شاملاً وخوارزميات مواءمة مدعومة بتقييم بشري لتقديم اقتراحات دقيقة.</p>
+            </details>
+            <details>
+                <summary data-skey="faq.q3">هل بياناتي الشخصية في أمان؟</summary>
+                <p data-skey="faq.a3">جميع البيانات الحساسة تُخزن بتشفير متقدم ولا تُشارك مع الطرف الآخر إلا بموافقتك.</p>
+            </details>
+            <details>
+                <summary data-skey="faq.q4">ماذا عن الرسوم؟</summary>
+                <p data-skey="faq.a4">التسجيل الأولي مجاني، مع خطط اشتراك مرنة للخدمات الاستشارية الإضافية.</p>
+            </details>
+        </section>
+    </main>
+    <footer id="contact">
+        <div class="container footer-grid">
             <div>
-                <h4>سكينة</h4>
-                <p>منصة عربية للتوفيق إلى الزواج بمواءمة ذكية وإشراف بشري يحفظ الخصوصية.</p>
+                <h4 data-skey="footer.brandTitle">سكينة</h4>
+                <p data-skey="footer.brandCopy">منصة عربية للتوفيق للزواج تجمع بين التقنية والإشراف البشري، وتضمن رحلة تحترم قيم الأسرة.</p>
             </div>
             <div>
-                <h4>روابط</h4>
-                <ul style="list-style:none;padding:0;margin:0;line-height:2">
-                    <li><a href="#features">المميزات</a></li>
-                    <li><a href="#register">التسجيل</a></li>
-                    <li><a href="#faq">الأسئلة الشائعة</a></li>
+                <h4 data-skey="footer.linksTitle">روابط</h4>
+                <ul>
+                    <li><a href="#features" data-skey="footer.links.features">المميزات</a></li>
+                    <li><a href="#register" data-skey="footer.links.register">التسجيل</a></li>
+                    <li><a href="#journey" data-skey="footer.links.journey">الرحلة</a></li>
+                    <li><a href="#faq" data-skey="footer.links.faq">الأسئلة الشائعة</a></li>
                 </ul>
             </div>
             <div>
-                <h4>الدعم</h4>
-                <ul style="list-style:none;padding:0;margin:0;line-height:2">
-                    <li><a href="#">الخصوصية</a></li>
-                    <li><a href="#">الشروط</a></li>
+                <h4 data-skey="footer.supportTitle">الدعم</h4>
+                <ul>
+                    <li><a href="#" data-skey="footer.support.privacy">سياسة الخصوصية</a></li>
+                    <li><a href="#" data-skey="footer.support.terms">الشروط والأحكام</a></li>
+                    <li><a href="mailto:support@sakinah.sa" data-skey="footer.support.email">support@sakinah.sa</a></li>
                 </ul>
             </div>
             <div>
-                <h4>تواصل</h4>
-                <p><a href="#contact" class="pill">تيليجرام</a></p>
-                <small>© <span id="year"></span> Sakinah</small>
+                <h4 data-skey="footer.contactTitle">تواصل معنا</h4>
+                <p data-skey="footer.contactCopy">يسعدنا الاستماع إليك عبر البريد أو تيليجرام للتعاون والاستفسارات.</p>
+                <a class="btn btn-soft" href="https://t.me/sakinah" data-skey="footer.contactCta">تيليجرام</a>
             </div>
         </div>
+        <div class="footer-meta" data-skey="footer.meta">© <span data-year></span> سكينة. جميع الحقوق محفوظة.</div>
     </footer>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+        document.querySelectorAll('[data-year]').forEach((el) => {
+            el.textContent = new Date().getFullYear();
+        });
+        document.querySelectorAll('[data-count]').forEach((el) => {
+            const target = Number(el.dataset.to || el.textContent.replace(/\D/g, ''));
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const finalSuffix = el.dataset.finalSuffix || suffix;
+            const duration = 1600;
+            const start = performance.now();
 
-        // Reveal-on-scroll
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-        // Counters
-        function animateCount(el) {
-            const to = +el.dataset.to || 0; const dur = 1400; const start = performance.now();
-            function tick(t) {
-                const p = Math.min(1, (t - start) / dur); const val = Math.floor(to * p);
-                el.textContent = val.toLocaleString('ar-EG'); if (p < 1) requestAnimationFrame(tick);
+            function step(timestamp) {
+                const progress = Math.min(1, (timestamp - start) / duration);
+                const value = Math.floor(target * progress);
+                const formatted = value.toLocaleString('ar-EG');
+                el.textContent = `${prefix}${formatted}${progress < 1 ? suffix : finalSuffix}`;
+                if (progress < 1) requestAnimationFrame(step);
             }
-            requestAnimationFrame(tick);
-        }
-        document.querySelectorAll('.count').forEach(animateCount);
 
-        // Timeline progress on scroll
-        const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
-        function updateTimelineProgress() {
-            document.querySelectorAll('.timeline-v2').forEach(tl => {
-                const progressBar = tl.querySelector('.progress'); if (!progressBar) return;
-                const rect = tl.getBoundingClientRect(); const vh = window.innerHeight;
-                const start = rect.top + rect.height * 0.02; const end = rect.bottom - rect.height * 0.02;
-                const ref = vh * 0.5; let p = (ref - start) / (end - start); p = clamp(p, 0, 1);
-                const h = (rect.height * 0.96) * p; progressBar.style.height = `${h}px`;
-                const dots = tl.querySelectorAll('.dot');
-                dots.forEach(dot => {
-                    const dotRect = dot.getBoundingClientRect();
-                    const ratio = (dotRect.top - (rect.top + rect.height * 0.02)) / (rect.height * 0.96);
-                    const filled = p >= ratio ? 1 : 0; dot.style.setProperty('--fill', filled); dot.classList.toggle('on', filled === 1);
-                });
-            });
-        }
-        ['scroll', 'resize'].forEach(evt => window.addEventListener(evt, updateTimelineProgress, { passive: true }));
-        window.addEventListener('load', updateTimelineProgress);
-        setTimeout(updateTimelineProgress, 50);
+            requestAnimationFrame(step);
+        });
     </script>
 </body>
 
