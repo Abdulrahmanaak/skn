@@ -360,8 +360,6 @@
         .hero-text {
             display: grid;
             gap: 1.25rem;
-            position: relative;
-            z-index: 2;
         }
 
         .hero-text p {
@@ -388,6 +386,51 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.85rem;
+        }
+
+        .trust-pills {
+            display: grid;
+            gap: 0.65rem;
+            margin-block: 0.5rem clamp(1.5rem, 2.5vw, 2.2rem);
+        }
+
+        .trust-pills-title {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--color-muted);
+            margin: 0;
+        }
+
+        .trust-pills-list {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.55rem 0.9rem;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 12px 24px rgba(73, 44, 30, 0.08);
+            border: 1px solid rgba(216, 106, 74, 0.18);
+            font-size: var(--font-size-xs);
+            color: var(--color-ink);
+        }
+
+        .trust-pill img {
+            inline-size: 32px;
+            block-size: 32px;
+        }
+
+        .trust-pill span {
+            font-weight: 600;
         }
 
         .hero-counters {
@@ -428,105 +471,60 @@
             margin-block-start: 0.75rem;
         }
 
-        .hero-media {
+        .hero-visual {
             position: relative;
             display: grid;
             place-items: center;
-            min-height: clamp(280px, 40vw, 520px);
-            border-radius: clamp(28px, 4vw, 42px);
-            overflow: hidden;
-            background: radial-gradient(circle at 20% 20%, rgba(244, 184, 161, 0.45), rgba(216, 106, 74, 0.2));
-            box-shadow: var(--shadow-lg);
-            isolation: isolate;
         }
 
-        .hero-media::before {
+        .hero-visual::before {
             content: "";
             position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(216, 106, 74, 0.65), rgba(244, 184, 161, 0.25), rgba(255, 255, 255, 0.1));
-            background-size: 200% 200%;
-            animation: hero-gradient 14s ease-in-out infinite;
-            z-index: -2;
-        }
-
-        .hero-media::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
-            mix-blend-mode: screen;
-            opacity: 0.85;
+            inset: clamp(0.5rem, 2vw, 1.75rem);
+            border-radius: 36px;
+            background: linear-gradient(135deg, rgba(216, 106, 74, 0.45), rgba(244, 184, 161, 0.25));
+            filter: blur(0.4px);
             z-index: -1;
         }
 
-        .hero-media video {
+        .rings-illustration {
+            position: relative;
+            inline-size: min(360px, 82vw);
+            aspect-ratio: 1;
+            margin: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 25px 50px rgba(73, 44, 30, 0.16);
+            overflow: hidden;
+        }
+
+        .rings-illustration img {
+            display: block;
             inline-size: 100%;
             block-size: 100%;
-            object-fit: cover;
-            filter: saturate(105%) contrast(108%);
+            object-fit: contain;
         }
 
-        .trust-pills {
-            display: flex;
-            align-items: center;
-            gap: 1.1rem;
-            flex-wrap: wrap;
-            padding: 0.9rem 1.1rem;
-            border-radius: var(--radius-lg);
-            background: var(--color-surface-alt);
-            border: 1px solid rgba(216, 106, 74, 0.15);
-            box-shadow: var(--shadow-sm);
-            backdrop-filter: blur(18px);
-        }
-
-        .trust-label {
-            font-weight: 600;
-            color: var(--color-muted);
-        }
-
-        .trust-list {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            flex-wrap: wrap;
-        }
-
-        .trust-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-            padding: 0.65rem 0.85rem;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .trust-pill img {
-            inline-size: 42px;
-            block-size: 42px;
-        }
-
-        .hero-counters .metrics-status {
-            grid-column: 1 / -1;
-            margin: 0;
-            font-size: var(--font-size-sm);
-            color: var(--color-muted);
-        }
-
-        .sr-only {
+        .rings-illustration::before,
+        .rings-illustration::after {
+            content: "";
             position: absolute;
-            inline-size: 1px;
-            block-size: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
+            border-radius: 50%;
+            border: 10px solid transparent;
+        }
+
+        .rings-illustration::before {
+            inset: 16% 22%;
+            border-color: var(--color-accent);
+            opacity: 0.6;
+            animation: reveal-up 1.2s ease both;
+        }
+
+        .rings-illustration::after {
+            inset: 30% 30%;
+            border-color: var(--color-accent-soft);
+            transform: rotate(-12deg);
+            animation: reveal-up 1.4s ease both 0.2s;
         }
 
         .features-grid {
@@ -962,20 +960,6 @@
             color: rgba(247, 243, 255, 0.7);
         }
 
-        @keyframes hero-gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
         @keyframes reveal-up {
             from {
                 opacity: 0;
@@ -1015,6 +999,33 @@
             }
         }
 
+        @keyframes hero-gradient {
+            0% {
+                transform: scale(1.05) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.12) rotate(6deg);
+                filter: hue-rotate(25deg);
+            }
+
+            100% {
+                transform: scale(1.08) rotate(-6deg);
+                filter: hue-rotate(-25deg);
+            }
+        }
+
+        @keyframes hero-gradient-orbit {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         @media (max-width: 1024px) {
             nav ul {
                 gap: 0.9rem;
@@ -1032,12 +1043,8 @@
                 justify-items: center;
             }
 
-            .hero-media::before {
-                animation-duration: 18s;
-            }
-
-            .trust-pills {
-                justify-content: center;
+            .hero-visual::before {
+                inset: clamp(0.25rem, 4vw, 1.4rem);
             }
         }
 
@@ -1070,18 +1077,16 @@
                 justify-items: center;
             }
 
-            .hero-counters {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            }
-
-            .trust-pills {
-                flex-direction: column;
-                align-items: stretch;
+            .trust-pills-title {
                 text-align: center;
             }
 
-            .trust-list {
+            .trust-pills-list {
                 justify-content: center;
+            }
+
+            .hero-counters {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
 
             .split {
@@ -1152,6 +1157,11 @@
                 animation: none;
             }
 
+            .hero-visual::before,
+            .hero-visual-media::before {
+                animation: none !important;
+            }
+
             [data-reveal],
             [data-hero-visual] {
                 opacity: 1 !important;
@@ -1210,42 +1220,31 @@
                 <p data-reveal data-skey="hero.subheading">سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.</p>
                 <div class="hero-ctas" data-reveal>
                     <a class="btn btn-primary btn-glow" href="#register" data-skey="hero.primaryCta">سجل اهتمامك</a>
-                    <a class="btn btn-outline" href="#contact" data-skey="hero.consultCta">احجز استشارة</a>
-                </div>
-                <div class="trust-pills" data-reveal>
-                    <span class="trust-label" data-skey="hero.trustLabel">معتمد من جهات موثوقة</span>
-                    <ul class="trust-list">
-                        <li class="trust-pill">
-                            <img src="assets/trust-family-council.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" />
-                            <span class="sr-only" data-skey="hero.trustPillCouncil">شهادة هيئة تنمية الأسرة</span>
-                        </li>
-                        <li class="trust-pill">
-                            <img src="assets/trust-privacy-shield.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" />
-                            <span class="sr-only" data-skey="hero.trustPillPrivacy">اعتماد حماية البيانات</span>
-                        </li>
-                        <li class="trust-pill">
-                            <img src="assets/trust-counselors.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" />
-                            <span class="sr-only" data-skey="hero.trustPillCounselors">شراكة مع شبكة المستشارين الأسريين</span>
-                        </li>
-                    </ul>
+                    <a class="btn btn-soft" href="#features" data-skey="hero.secondaryCta">تعرّف على المزايا</a>
                 </div>
                 <div class="hero-counters" data-reveal>
                     <div class="counter-card" data-reveal>
-                        <div class="count" data-count data-metric="matches" data-to="1200" data-final-suffix="+" data-skey="hero.counterMatches">0</div>
+                        <div class="count" data-count data-to="1200" data-final-suffix="+" data-skey="hero.counterMatches">0</div>
                         <p data-skey="hero.counterMatchesLabel">مواءمة تمت بإشراف</p>
                     </div>
                     <div class="counter-card" data-reveal>
-                        <div class="count" data-count data-metric="successRate" data-to="87" data-suffix="%" data-final-suffix="%" data-skey="hero.counterSuccess">0</div>
+                        <div class="count" data-count data-to="87" data-suffix="%" data-final-suffix="%" data-skey="hero.counterSuccess">0</div>
                         <p data-skey="hero.counterSuccessLabel">معدّل رضا الأزواج</p>
                     </div>
                     <div class="counter-card" data-reveal>
-                        <div class="count" data-count data-metric="responseHours" data-to="48" data-skey="hero.counterHours">0</div>
+                        <div class="count" data-count data-to="48" data-skey="hero.counterHours">0</div>
                         <p data-skey="hero.counterHoursLabel">ساعة استجابة للمتابعة</p>
                     </div>
-                    <p class="metrics-status" data-metrics-status data-skey="hero.metricsFallback" hidden aria-live="polite" role="status">تعذّر تحميل أحدث الإحصائيات، نعرض قيماً تقديرية.</p>
                 </div>
+                <p class="hero-metrics-status" data-metrics-status data-skey="hero.metricsFallback" role="status" aria-live="polite" hidden>
+                    تعذر تحميل الإحصائيات الآن. نعرض قيماً تقريبية.
+                </p>
             </div>
-            <div class="hero-media" data-hero-visual aria-hidden="true"></div>
+            <div class="hero-visual" data-hero-visual>
+                <figure class="rings-illustration">
+                    <img src="assets/hero-rings.webp" alt="Engagement rings illustration" loading="lazy" width="640" height="640" />
+                </figure>
+            </div>
         </section>
 
         <section class="container" id="features">
@@ -1487,14 +1486,6 @@
             const localeMap = { ar: 'ar', en: 'en-US' };
             const counterAnimations = new Map();
             const langToggleButtons = Array.from(document.querySelectorAll('[data-lang-toggle]'));
-            const counterElements = Array.from(document.querySelectorAll('[data-count]'));
-            const metricsStatus = document.querySelector('[data-metrics-status]');
-            let metricsLoaded = false;
-            let metricsFetchFailed = false;
-            let metricsPromise = null;
-            if (metricsStatus) {
-                metricsStatus.setAttribute('aria-hidden', 'true');
-            }
             const I18N = {
                 ar: {
                     accessibility: {
@@ -1526,18 +1517,12 @@
                         subheading: 'سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.',
                         primaryCta: 'سجل اهتمامك',
                         secondaryCta: 'تعرّف على المزايا',
-                        consultCta: 'احجز استشارة',
                         counterMatches: '0',
                         counterMatchesLabel: 'مواءمة تمت بإشراف',
                         counterSuccess: '0',
                         counterSuccessLabel: 'معدّل رضا الأزواج',
                         counterHours: '0',
-                        counterHoursLabel: 'ساعة استجابة للمتابعة',
-                        trustLabel: 'معتمد من جهات موثوقة',
-                        trustPillCouncil: 'شهادة هيئة تنمية الأسرة',
-                        trustPillPrivacy: 'اعتماد حماية البيانات',
-                        trustPillCounselors: 'شراكة مع شبكة المستشارين الأسريين',
-                        metricsFallback: 'تعذّر تحميل أحدث الإحصائيات، نعرض قيماً تقديرية.'
+                        counterHoursLabel: 'ساعة استجابة للمتابعة'
                     },
                     features: {
                         heading: 'لماذا يثق بنا المقبلون على الزواج؟',
@@ -1677,18 +1662,12 @@
                         subheading: 'Sakinah blends intelligent analysis with human review to align shared values while protecting your privacy every step of the way.',
                         primaryCta: 'Register your interest',
                         secondaryCta: 'Discover the benefits',
-                        consultCta: 'Book a consultation',
                         counterMatches: '0',
                         counterMatchesLabel: 'Matches overseen by our team',
                         counterSuccess: '0',
                         counterSuccessLabel: 'Couple satisfaction rate',
                         counterHours: '0',
-                        counterHoursLabel: 'Hours to follow-up response',
-                        trustLabel: 'Trusted by certification partners',
-                        trustPillCouncil: 'Certified by the Family Development Council',
-                        trustPillPrivacy: 'Accredited data protection partner',
-                        trustPillCounselors: 'Allied licensed family counselors',
-                        metricsFallback: 'We couldn’t load the latest metrics. Showing estimated values.'
+                        counterHoursLabel: 'Hours to follow-up response'
                     },
                     features: {
                         heading: 'Why do couples trust us?',
@@ -1819,32 +1798,8 @@
                 });
             };
 
-            const updateCountersWithMetrics = (metrics) => {
-                if (!metrics || typeof metrics !== 'object') {
-                    return;
-                }
-
-                counterElements.forEach((el) => {
-                    const metricKey = el.dataset.metric;
-                    if (!metricKey || !(metricKey in metrics)) {
-                        return;
-                    }
-
-                    const value = Number(metrics[metricKey]);
-                    if (Number.isFinite(value)) {
-                        el.dataset.to = value;
-                    }
-                });
-            };
-
-            const showMetricsFallback = () => {
-                if (!metricsStatus) return;
-                metricsStatus.hidden = false;
-                metricsStatus.setAttribute('aria-hidden', 'false');
-            };
-
             const animateCounters = (lang) => {
-                const counters = counterElements;
+                const counters = document.querySelectorAll('[data-count]');
                 const locale = localeMap[lang] || 'en';
                 const formatter = new Intl.NumberFormat(locale);
 
@@ -1883,17 +1838,6 @@
                     el.textContent = `${prefix}${formatter.format(0)}${suffix}`;
                     const frameId = requestAnimationFrame(step);
                     counterAnimations.set(el, frameId);
-                });
-            };
-
-            const runCounterAnimation = (lang) => {
-                if (metricsLoaded || metricsFetchFailed || !metricsPromise) {
-                    animateCounters(lang);
-                    return;
-                }
-
-                metricsPromise.finally(() => {
-                    animateCounters(lang);
                 });
             };
 
@@ -1936,7 +1880,7 @@
                 });
 
                 updateYear();
-                runCounterAnimation(lang);
+                animateCounters(lang);
             };
 
             const initRevealObserver = () => {
@@ -2225,40 +2169,22 @@
                 });
             };
 
-            const fetchMetrics = () => {
-                metricsPromise = fetch('/api/metrics.json', { cache: 'no-cache' })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error('Metrics request failed');
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        updateCountersWithMetrics(data || {});
-                        metricsFetchFailed = false;
-                        metricsLoaded = true;
-                        if (metricsStatus) {
-                            metricsStatus.hidden = true;
-                            metricsStatus.setAttribute('aria-hidden', 'true');
-                        }
-                    })
-                    .catch(() => {
-                        metricsFetchFailed = true;
-                        showMetricsFallback();
-                    });
-
-                return metricsPromise;
-            };
-
             initPlaceholderLinks();
             initFeatureTabs();
             fetchMetrics();
             applyLang(currentLang);
 
+            hydrateMetrics()
+                .catch(() => {})
+                .finally(() => {
+                    animateCounters(currentLang);
+                });
+
             langToggleButtons.forEach((button) => {
                 button.addEventListener('click', () => {
                     const nextLang = currentLang === 'ar' ? 'en' : 'ar';
                     applyLang(nextLang);
+                    animateCounters(nextLang);
                 });
             });
 
