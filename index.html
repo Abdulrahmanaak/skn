@@ -529,29 +529,187 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: clamp(1.25rem, 2vw, 2rem);
+            gap: clamp(1.5rem, 2.2vw, 2.75rem);
+        }
+
+        .features-tablist {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(0.6rem, 1.2vw, 1rem);
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .feature-tab {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding-inline: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+            padding-block: 0.65rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(32, 26, 25, 0.12);
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--color-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform var(--transition), box-shadow var(--transition), color var(--transition), background var(--transition);
+        }
+
+        .feature-tab::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            border: 2px solid transparent;
+            transition: border-color var(--transition), opacity var(--transition);
+            opacity: 0;
+        }
+
+        .feature-tab:focus-visible::after,
+        .feature-tab:hover::after,
+        .feature-tab[aria-selected="true"]::after {
+            border-color: rgba(216, 106, 74, 0.45);
+            opacity: 1;
+        }
+
+        .feature-tab:hover,
+        .feature-tab:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-sm);
+            color: var(--color-ink);
+        }
+
+        .feature-tab[aria-selected="true"] {
+            background: linear-gradient(120deg, rgba(244, 184, 161, 0.35), rgba(216, 106, 74, 0.15));
+            color: var(--color-accent-strong);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-panels {
+            position: relative;
+        }
+
+        .feature-panel {
+            display: none;
+        }
+
+        .feature-panel.is-active {
+            display: block;
+            animation: feature-panel-in 360ms ease;
+        }
+
+        @keyframes feature-panel-in {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .card {
+            position: relative;
             background: var(--color-surface);
             padding: clamp(1.6rem, 1.3rem + 1vw, 2rem);
             border-radius: var(--radius);
             box-shadow: var(--shadow-sm);
             display: grid;
-            gap: 0.85rem;
+            gap: 1rem;
             transition: transform var(--transition), box-shadow var(--transition);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid rgba(32, 26, 25, 0.08);
+            opacity: 0;
+            transition: opacity var(--transition);
+            z-index: -1;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            background: radial-gradient(circle at center, rgba(216, 106, 74, 0.18), transparent 70%);
+            opacity: 0;
+            transition: opacity var(--transition), transform var(--transition);
+            z-index: -2;
         }
 
         .card:hover,
         .card:focus-within {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-md);
+        }
+
+        .card:hover::before,
+        .card:focus-within::before {
+            opacity: 1;
+        }
+
+        .card:hover::after,
+        .card:focus-within::after {
+            opacity: 1;
+            transform: scale(1.05);
         }
 
         .card h3 {
             font-size: clamp(1.2rem, 1.05rem + 0.4vw, 1.4rem);
             margin: 0;
+        }
+
+        .feature-card-header {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .feature-card-header .feature-icon {
+            inline-size: clamp(54px, 4vw, 64px);
+            block-size: clamp(54px, 4vw, 64px);
+            border-radius: 22px;
+            background: linear-gradient(130deg, rgba(216, 106, 74, 0.12), rgba(216, 106, 74, 0.28));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent-strong);
+        }
+
+        .feature-icon svg {
+            inline-size: clamp(28px, 2.4vw, 34px);
+            block-size: clamp(28px, 2.4vw, 34px);
+        }
+
+        .feature-details {
+            padding-inline-start: 0;
+        }
+
+        .feature-bullets {
+            margin: 0;
+            padding-inline-start: 1.2rem;
+            display: grid;
+            gap: 0.4rem;
+            color: var(--color-ink-soft);
+            font-size: var(--font-size-sm);
+        }
+
+        html[dir="rtl"] .feature-bullets {
+            padding-inline-start: 0;
+            padding-inline-end: 1.2rem;
+        }
+
+        .feature-bullets li::marker {
+            color: var(--color-accent);
         }
 
         .split {
@@ -1009,6 +1167,21 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
+
+            .hero-media::before {
+                animation: none !important;
+            }
+
+            .card:hover,
+            .card:focus-within,
+            .feature-tab:hover,
+            .feature-tab:focus-visible {
+                transform: none !important;
+            }
+
+            .feature-panel.is-active {
+                animation: none !important;
+            }
         }
     </style>
 </head>
@@ -1079,23 +1252,106 @@
                 <h2 data-skey="features.heading">لماذا يثق بنا المقبلون على الزواج؟</h2>
                 <p data-skey="features.subheading">نمنحك رحلة زواج تنطلق من قيمك، وتبقى تحت رقابة فريق مختص يحفظ خصوصيتك.</p>
             </header>
-            <div class="features-grid">
-                <article class="card" data-reveal>
-                    <h3 data-skey="features.curated.title">مواءمة بشرية مدعومة بالذكاء</h3>
-                    <p data-skey="features.curated.copy">يستعرض فريق مختص ملفات المتقدمين ويستخدم خوارزميات التعلم الآلي للتأكد من توافق الاهتمامات والقيم العائلية.</p>
-                </article>
-                <article class="card" data-reveal>
-                    <h3 data-skey="features.guardians.title">محرّم ذكي</h3>
-                    <p data-skey="features.guardians.copy">محادثاتك داخل المنصة تمر عبر إشراف حي يضمن التزام الحوار بالضوابط الشرعية ويمنع مشاركة معلومات حساسة قبل الوقت المناسب.</p>
-                </article>
-                <article class="card" data-reveal>
-                    <h3 data-skey="features.privacy.title">خصوصية مشددة</h3>
-                    <p data-skey="features.privacy.copy">نخزّن البيانات الحساسة بتشفير متكامل ونخضع للوائح حماية البيانات المحلية والدولية.</p>
-                </article>
-                <article class="card" data-reveal>
-                    <h3 data-skey="features.coaching.title">تدريب ومتابعة</h3>
-                    <p data-skey="features.coaching.copy">نوفّر جلسات استشارية قبل وبعد التوفيق لمساعدتك على تقييم الاختيار والتعامل مع الخطوات التالية بثقة.</p>
-                </article>
+            <div class="features-grid" data-features data-reveal>
+                <span class="sr-only" id="features-tablist-label" data-skey="features.tablistLabel">اختر ميزة لاستعراض التفاصيل</span>
+                <div class="features-tablist" role="tablist" aria-labelledby="features-tablist-label">
+                    <button class="feature-tab" type="button" role="tab" id="feature-tab-curated" aria-selected="true" aria-controls="feature-panel-curated" data-feature="curated" data-skey="features.curated.label">المواءمة الذكية</button>
+                    <button class="feature-tab" type="button" role="tab" id="feature-tab-guardians" aria-selected="false" aria-controls="feature-panel-guardians" tabindex="-1" data-feature="guardians" data-skey="features.guardians.label">الإشراف الحي</button>
+                    <button class="feature-tab" type="button" role="tab" id="feature-tab-privacy" aria-selected="false" aria-controls="feature-panel-privacy" tabindex="-1" data-feature="privacy" data-skey="features.privacy.label">الخصوصية</button>
+                    <button class="feature-tab" type="button" role="tab" id="feature-tab-coaching" aria-selected="false" aria-controls="feature-panel-coaching" tabindex="-1" data-feature="coaching" data-skey="features.coaching.label">الدعم المستمر</button>
+                </div>
+                <div class="feature-panels">
+                    <article class="card feature-panel is-active" role="tabpanel" id="feature-panel-curated" aria-labelledby="feature-tab-curated" data-feature-panel="curated" tabindex="0">
+                        <div class="feature-card-header">
+                            <span class="feature-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none" role="img" aria-hidden="true">
+                                    <path d="M14 32c2.5-3 6.5-4.5 10-4.5s7.5 1.5 10 4.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="17" cy="17" r="6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="31" cy="17" r="6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M18 26l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 data-skey="features.curated.title">مواءمة بشرية مدعومة بالذكاء</h3>
+                                <p data-skey="features.curated.copy">يستعرض فريق مختص ملفات المتقدمين ويستخدم خوارزميات التعلم الآلي للتأكد من توافق الاهتمامات والقيم العائلية.</p>
+                            </div>
+                        </div>
+                        <div class="feature-details" data-skey="features.curated.details" data-allow-html="true">
+                            <ul class="feature-bullets">
+                                <li>تحليل ثنائي يجمع بين الخبرة البشرية وخوارزميات المطابقة</li>
+                                <li>قياس متجدد لمدى التوافق القيمي والعائلي لكل مواءمة</li>
+                                <li>اقتراحات دقيقة تعكس أولوياتك الشخصية</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="card feature-panel" role="tabpanel" id="feature-panel-guardians" aria-labelledby="feature-tab-guardians" data-feature-panel="guardians" hidden tabindex="0">
+                        <div class="feature-card-header">
+                            <span class="feature-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none" role="img" aria-hidden="true">
+                                    <path d="M24 6l16 6v8c0 9.2-6.6 16.3-16 20-9.4-3.7-16-10.8-16-20v-8l16-6z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17 24c2 2.4 4.4 3.6 7 3.6s5-1.2 7-3.6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="24" cy="21" r="4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 data-skey="features.guardians.title">محرّم ذكي</h3>
+                                <p data-skey="features.guardians.copy">محادثاتك داخل المنصة تمر عبر إشراف حي يضمن التزام الحوار بالضوابط الشرعية ويمنع مشاركة معلومات حساسة قبل الوقت المناسب.</p>
+                            </div>
+                        </div>
+                        <div class="feature-details" data-skey="features.guardians.details" data-allow-html="true">
+                            <ul class="feature-bullets">
+                                <li>إشراف مباشر يرسل تنبيهات فورية عند تجاوز الحدود المتفق عليها</li>
+                                <li>قوالب رسائل رسمية تحفظ لغة الحوار واحترام الأطراف</li>
+                                <li>تقارير تلخيصية للعائلة أو الوليّ عند الحاجة</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="card feature-panel" role="tabpanel" id="feature-panel-privacy" aria-labelledby="feature-tab-privacy" data-feature-panel="privacy" hidden tabindex="0">
+                        <div class="feature-card-header">
+                            <span class="feature-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none" role="img" aria-hidden="true">
+                                    <rect x="12" y="20" width="24" height="18" rx="4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M18 20v-4a6 6 0 0 1 12 0v4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M24 28v4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="24" cy="34" r="1.6" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 data-skey="features.privacy.title">خصوصية مشددة</h3>
+                                <p data-skey="features.privacy.copy">نخزّن البيانات الحساسة بتشفير متكامل ونخضع للوائح حماية البيانات المحلية والدولية.</p>
+                            </div>
+                        </div>
+                        <div class="feature-details" data-skey="features.privacy.details" data-allow-html="true">
+                            <ul class="feature-bullets">
+                                <li>تشفير من طرف إلى طرف للمحادثات والوثائق الحساسة</li>
+                                <li>سياسات صلاحيات دقيقة تحدد من يرى بياناتك وفي أي مرحلة</li>
+                                <li>مراجعات التزام دورية مع شركاء حماية البيانات</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="card feature-panel" role="tabpanel" id="feature-panel-coaching" aria-labelledby="feature-tab-coaching" data-feature-panel="coaching" hidden tabindex="0">
+                        <div class="feature-card-header">
+                            <span class="feature-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none" role="img" aria-hidden="true">
+                                    <path d="M12 14c0-3.3 2.7-6 6-6h12c3.3 0 6 2.7 6 6v8c0 3.3-2.7 6-6 6H19l-7 6v-6h0c-3.3 0-6-2.7-6-6v-8z" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M18 20h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M18 14h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 data-skey="features.coaching.title">تدريب ومتابعة</h3>
+                                <p data-skey="features.coaching.copy">نوفّر جلسات استشارية قبل وبعد التوفيق لمساعدتك على تقييم الاختيار والتعامل مع الخطوات التالية بثقة.</p>
+                            </div>
+                        </div>
+                        <div class="feature-details" data-skey="features.coaching.details" data-allow-html="true">
+                            <ul class="feature-bullets">
+                                <li>جلسات إرشاد فردية قبل المواءمة لإدارة التوقعات</li>
+                                <li>متابعة بعد اللقاء الأول لضمان وضوح القرارات</li>
+                                <li>مكتبة أدوات وأسئلة تساعد على الحوار البنّاء</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -1271,21 +1527,30 @@
                     features: {
                         heading: 'لماذا يثق بنا المقبلون على الزواج؟',
                         subheading: 'نمنحك رحلة زواج تنطلق من قيمك، وتبقى تحت رقابة فريق مختص يحفظ خصوصيتك.',
+                        tablistLabel: 'اختر ميزة لاستعراض التفاصيل',
                         curated: {
+                            label: 'المواءمة الذكية',
                             title: 'مواءمة بشرية مدعومة بالذكاء',
-                            copy: 'يستعرض فريق مختص ملفات المتقدمين ويستخدم خوارزميات التعلم الآلي للتأكد من توافق الاهتمامات والقيم العائلية.'
+                            copy: 'يستعرض فريق مختص ملفات المتقدمين ويستخدم خوارزميات التعلم الآلي للتأكد من توافق الاهتمامات والقيم العائلية.',
+                            details: '<ul class="feature-bullets"><li>تحليل ثنائي يجمع بين الخبرة البشرية وخوارزميات المطابقة</li><li>قياس متجدد لمدى التوافق القيمي والعائلي لكل مواءمة</li><li>اقتراحات دقيقة تعكس أولوياتك الشخصية</li></ul>'
                         },
                         guardians: {
+                            label: 'الإشراف الحي',
                             title: 'محرّم ذكي',
-                            copy: 'محادثاتك داخل المنصة تمر عبر إشراف حي يضمن التزام الحوار بالضوابط الشرعية ويمنع مشاركة معلومات حساسة قبل الوقت المناسب.'
+                            copy: 'محادثاتك داخل المنصة تمر عبر إشراف حي يضمن التزام الحوار بالضوابط الشرعية ويمنع مشاركة معلومات حساسة قبل الوقت المناسب.',
+                            details: '<ul class="feature-bullets"><li>إشراف مباشر يرسل تنبيهات فورية عند تجاوز الحدود المتفق عليها</li><li>قوالب رسائل رسمية تحفظ لغة الحوار واحترام الأطراف</li><li>تقارير تلخيصية للعائلة أو الوليّ عند الحاجة</li></ul>'
                         },
                         privacy: {
+                            label: 'الخصوصية',
                             title: 'خصوصية مشددة',
-                            copy: 'نخزّن البيانات الحساسة بتشفير متكامل ونخضع للوائح حماية البيانات المحلية والدولية.'
+                            copy: 'نخزّن البيانات الحساسة بتشفير متكامل ونخضع للوائح حماية البيانات المحلية والدولية.',
+                            details: '<ul class="feature-bullets"><li>تشفير من طرف إلى طرف للمحادثات والوثائق الحساسة</li><li>سياسات صلاحيات دقيقة تحدد من يرى بياناتك وفي أي مرحلة</li><li>مراجعات التزام دورية مع شركاء حماية البيانات</li></ul>'
                         },
                         coaching: {
+                            label: 'الدعم المستمر',
                             title: 'تدريب ومتابعة',
-                            copy: 'نوفّر جلسات استشارية قبل وبعد التوفيق لمساعدتك على تقييم الاختيار والتعامل مع الخطوات التالية بثقة.'
+                            copy: 'نوفّر جلسات استشارية قبل وبعد التوفيق لمساعدتك على تقييم الاختيار والتعامل مع الخطوات التالية بثقة.',
+                            details: '<ul class="feature-bullets"><li>جلسات إرشاد فردية قبل المواءمة لإدارة التوقعات</li><li>متابعة بعد اللقاء الأول لضمان وضوح القرارات</li><li>مكتبة أدوات وأسئلة تساعد على الحوار البنّاء</li></ul>'
                         }
                     },
                     register: {
@@ -1407,21 +1672,30 @@
                     features: {
                         heading: 'Why do couples trust us?',
                         subheading: 'We deliver a marriage journey grounded in your values with constant oversight that protects your privacy.',
+                        tablistLabel: 'Select a benefit to view its details',
                         curated: {
+                            label: 'Smart matching',
                             title: 'Human-guided matching enhanced by intelligence',
-                            copy: 'Our specialists review every profile and use machine learning insights to confirm aligned interests and family values.'
+                            copy: 'Our specialists review every profile and use machine learning insights to confirm aligned interests and family values.',
+                            details: '<ul class="feature-bullets"><li>Dual review that blends human expertise with matching algorithms</li><li>Continuously refreshed alignment scores for shared values</li><li>Tailored introductions mapped to your personal priorities</li></ul>'
                         },
                         guardians: {
+                            label: 'Live guardianship',
                             title: 'Smart guardian',
-                            copy: 'In-platform conversations receive live moderation to keep dialogue within clear guidelines and prevent sharing sensitive details too early.'
+                            copy: 'In-platform conversations receive live moderation to keep dialogue within clear guidelines and prevent sharing sensitive details too early.',
+                            details: '<ul class="feature-bullets"><li>Real-time moderation with alerts the moment boundaries shift</li><li>Structured message templates that preserve respect between families</li><li>Optional summary briefs ready to share with parents or guardians</li></ul>'
                         },
                         privacy: {
+                            label: 'Privacy controls',
                             title: 'Heightened privacy',
-                            copy: 'We store sensitive data with end-to-end encryption and comply with local and international data protection regulations.'
+                            copy: 'We store sensitive data with end-to-end encryption and comply with local and international data protection regulations.',
+                            details: '<ul class="feature-bullets"><li>End-to-end encryption for conversations and sensitive records</li><li>Granular permissions that define who can view your profile data</li><li>Regular compliance reviews with trusted privacy partners</li></ul>'
                         },
                         coaching: {
+                            label: 'Ongoing support',
                             title: 'Coaching and follow-up',
-                            copy: 'We provide advisory sessions before and after introductions to help you evaluate the choice and navigate next steps with confidence.'
+                            copy: 'We provide advisory sessions before and after introductions to help you evaluate the choice and navigate next steps with confidence.',
+                            details: '<ul class="feature-bullets"><li>Pre-match coaching sessions to align expectations</li><li>Post-meeting follow-ups that clarify decisions and next steps</li><li>Conversation toolkits and questions that keep dialogue constructive</li></ul>'
                         }
                     },
                     register: {
@@ -1648,6 +1922,76 @@
                 revealTargets.forEach((el) => observer.observe(el));
             };
 
+            const initFeatureTabs = () => {
+                const featureRoot = document.querySelector('[data-features]');
+                if (!featureRoot) return;
+
+                const tablist = featureRoot.querySelector('[role="tablist"]');
+                const tabs = Array.from(featureRoot.querySelectorAll('[role="tab"]'));
+                const panels = Array.from(featureRoot.querySelectorAll('[data-feature-panel]'));
+                if (!tablist || !tabs.length || !panels.length) return;
+
+                tablist.setAttribute('aria-orientation', 'horizontal');
+
+                const isRtl = () => document.documentElement.dir === 'rtl';
+
+                const activate = (feature) => {
+                    featureRoot.dataset.activeFeature = feature;
+
+                    tabs.forEach((tab) => {
+                        const isActive = tab.dataset.feature === feature;
+                        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        tab.setAttribute('tabindex', isActive ? '0' : '-1');
+                        if (isActive) {
+                            tab.classList.add('is-active');
+                        } else {
+                            tab.classList.remove('is-active');
+                        }
+                    });
+
+                    panels.forEach((panel) => {
+                        const isActive = panel.dataset.featurePanel === feature;
+                        panel.classList.toggle('is-active', isActive);
+                        if (isActive) {
+                            panel.removeAttribute('hidden');
+                        } else {
+                            panel.setAttribute('hidden', '');
+                        }
+                    });
+                };
+
+                const focusTabByIndex = (index) => {
+                    const clamped = (index + tabs.length) % tabs.length;
+                    const tab = tabs[clamped];
+                    tab.focus();
+                    activate(tab.dataset.feature);
+                };
+
+                tabs.forEach((tab, index) => {
+                    tab.addEventListener('click', () => activate(tab.dataset.feature));
+                    tab.addEventListener('keydown', (event) => {
+                        if (event.key === 'ArrowLeft') {
+                            event.preventDefault();
+                            focusTabByIndex(index + (isRtl() ? 1 : -1));
+                        } else if (event.key === 'ArrowRight') {
+                            event.preventDefault();
+                            focusTabByIndex(index + (isRtl() ? -1 : 1));
+                        } else if (event.key === 'Home') {
+                            event.preventDefault();
+                            focusTabByIndex(0);
+                        } else if (event.key === 'End') {
+                            event.preventDefault();
+                            focusTabByIndex(tabs.length - 1);
+                        }
+                    });
+                });
+
+                const initialFeature = featureRoot.dataset.activeFeature || (tabs[0] && tabs[0].dataset.feature);
+                if (initialFeature) {
+                    activate(initialFeature);
+                }
+            };
+
             const initTimeline = () => {
                 const timeline = document.querySelector('[data-timeline]');
                 if (!timeline) return;
@@ -1826,6 +2170,8 @@
             };
 
             initPlaceholderLinks();
+            initFeatureTabs();
+            fetchMetrics();
             applyLang(currentLang);
 
             hydrateMetrics()
