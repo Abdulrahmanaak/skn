@@ -860,60 +860,313 @@
         }
 
         .timeline {
-            position: relative;
-            padding-inline-end: clamp(1.5rem, 3vw, 2.5rem);
+            display: grid;
+            gap: clamp(1rem, 3vw, 1.75rem);
         }
 
-        .timeline::before {
-            content: "";
-            position: absolute;
-            inset-block: 0;
-            inset-inline-end: 0.75rem;
-            inline-size: 2px;
+        .timeline-progress {
+            inline-size: 100%;
+            block-size: 4px;
             background: rgba(32, 26, 25, 0.12);
+            border-radius: var(--radius-pill);
+            overflow: hidden;
         }
 
-        .timeline .progress {
-            position: absolute;
-            inset-inline-end: 0.75rem;
-            inset-block-start: 0;
-            inline-size: 2px;
-            height: 0;
-            border-radius: 999px;
-            background: linear-gradient(180deg, var(--color-accent), transparent);
-            transition: height 0.4s ease;
+        .timeline-progress-bar {
+            inline-size: 0%;
+            block-size: 100%;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-soft));
+            transition: width 0.4s ease, inline-size 0.4s ease;
+            transform-origin: inline-start;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .timeline-progress-bar {
+                transition: none;
+            }
+        }
+
+        .timeline-nav {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .timeline-nav-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .timeline-nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            direction: ltr;
+        }
+
+        .timeline-nav-button {
+            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.85);
+            color: var(--color-ink);
+            border-radius: var(--radius-pill);
+            padding: 0.45rem 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-nav-button:is(:hover, :focus-visible) {
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+            box-shadow: var(--focus-ring);
+        }
+
+        .timeline-nav-button.is-active {
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .timeline-nav-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .timeline-control {
+            inline-size: 42px;
+            block-size: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(216, 106, 74, 0.35);
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--color-accent-strong);
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition), border-color var(--transition), box-shadow var(--transition);
+        }
+
+        .timeline-control:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .timeline-control:not(:disabled):is(:hover, :focus-visible) {
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+            box-shadow: var(--focus-ring);
+        }
+
+        .timeline-control svg {
+            inline-size: 18px;
+            block-size: 18px;
+        }
+
+        .timeline-helper {
+            margin: 0;
+            color: var(--color-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        .timeline-slider {
+            position: relative;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-block-end: 0.25rem;
+            direction: ltr;
+        }
+
+        .timeline-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .timeline-track {
+            display: flex;
+            gap: clamp(1rem, 3vw, 1.5rem);
+            min-inline-size: 100%;
+        }
+
+        .timeline-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .timeline-slide.is-active {
+            pointer-events: auto;
+        }
+
+        .timeline-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(216, 106, 74, 0.25);
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--color-ink);
+            font-weight: 600;
+            cursor: pointer;
+            transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+        }
+
+        .timeline-trigger:is(:hover, :focus-visible) {
+            border-color: var(--color-accent);
+            box-shadow: var(--focus-ring);
+        }
+
+        .timeline-trigger::after {
+            content: '\25BC';
+            font-size: 0.85rem;
+            transition: transform var(--transition);
+        }
+
+        .timeline-slide.is-active .timeline-trigger::after {
+            transform: rotate(180deg);
+        }
+
+        .timeline-trigger.is-active {
+            border-color: rgba(216, 106, 74, 0.45);
+            background: rgba(216, 106, 74, 0.12);
+        }
+
+        .timeline-trigger-label {
+            display: grid;
+            gap: 0.15rem;
+            text-align: start;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+
+        .timeline-trigger-index {
+            inline-size: 34px;
+            block-size: 34px;
+            border-radius: 50%;
+            background: rgba(216, 106, 74, 0.15);
+            color: var(--color-accent-strong);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
         }
 
         .timeline-step {
-            position: relative;
-            margin-block-end: 1.25rem;
-            padding: 1.2rem clamp(1.2rem, 1rem + 1vw, 1.6rem);
             background: var(--color-surface);
-            border-radius: var(--radius);
+            border-radius: var(--radius-lg);
+            padding: clamp(1.4rem, 1.2rem + 0.7vw, 1.9rem);
             box-shadow: var(--shadow-sm);
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .timeline-step.is-active .dot,
+        .timeline-nav-button.is-active .timeline-nav-index {
+            background: var(--color-accent);
+            color: #fff;
+            box-shadow: 0 0 0 6px rgba(216, 106, 74, 0.25);
+        }
+
+        .timeline-step-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .timeline-step-header h3 {
+            margin: 0;
         }
 
         .timeline-step .dot {
-            position: absolute;
-            inset-block-start: 1.6rem;
-            inset-inline-end: -0.85rem;
             inline-size: 14px;
             block-size: 14px;
             border-radius: 50%;
-            border: 3px solid var(--color-background);
+            border: 3px solid var(--color-surface);
             background: rgba(216, 106, 74, 0.18);
-            box-shadow: 0 0 0 4px rgba(216, 106, 74, 0.08);
-            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 0 6px rgba(216, 106, 74, 0.12);
+            transition: background var(--transition), box-shadow var(--transition);
         }
 
-        .timeline-step .dot.is-active {
-            background: var(--color-accent);
-            box-shadow: 0 0 0 4px rgba(216, 106, 74, 0.24);
-            transform: scale(1.1);
+        .timeline-nav-index {
+            inline-size: 28px;
+            block-size: 28px;
+            border-radius: 50%;
+            background: rgba(216, 106, 74, 0.12);
+            color: var(--color-accent-strong);
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            transition: background var(--transition), color var(--transition), box-shadow var(--transition);
         }
 
-        .timeline-step:last-child {
-            margin-block-end: 0;
+        .timeline-nav-label {
+            font-size: var(--font-size-sm);
+        }
+
+        html[dir="rtl"] .timeline-nav-label {
+            text-align: right;
+        }
+
+        .timeline-step p {
+            margin: 0;
+        }
+
+        .timeline-slide [data-step-panel][hidden] {
+            display: none;
+        }
+
+        @media (max-width: 959px) {
+            .timeline-nav {
+                display: none;
+            }
+
+            .timeline-slider {
+                overflow: visible;
+                scroll-snap-type: none;
+                padding-block-end: 0;
+            }
+
+            .timeline-track {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-slide {
+                flex: 1 1 auto;
+            }
+
+            .timeline-trigger {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 960px) {
+            .timeline {
+                gap: clamp(1.2rem, 2vw, 2rem);
+            }
+
+            .timeline-trigger {
+                display: none;
+            }
+
+            .timeline-track {
+                padding-block-end: 0;
+            }
+
+            .timeline-slide {
+                grid-template-rows: auto 1fr;
+            }
+
+            .timeline-step {
+                height: 100%;
+            }
         }
 
         [data-precheck-modal] {
@@ -1031,20 +1284,38 @@
             overflow: hidden;
         }
 
-        html[dir="ltr"] .timeline {
-            padding-inline-start: clamp(1.5rem, 3vw, 2.5rem);
-            padding-inline-end: 0;
+        html[dir="ltr"] .timeline-trigger-label {
+            text-align: left;
         }
 
-        html[dir="ltr"] .timeline::before,
-        html[dir="ltr"] .timeline .progress {
-            inset-inline-start: 0.75rem;
-            inset-inline-end: auto;
+        html[dir="rtl"] .timeline-trigger-label {
+            text-align: right;
         }
 
-        html[dir="ltr"] .timeline-step .dot {
-            inset-inline-start: -0.85rem;
-            inset-inline-end: auto;
+        html[dir="rtl"] .timeline-slide {
+            direction: rtl;
+        }
+
+        html[dir="ltr"] .timeline-slide {
+            direction: ltr;
+        }
+
+        .timeline-control[data-direction="prev"] svg {
+            transform: scaleX(-1);
+        }
+
+        html[dir="rtl"] .timeline-control[data-direction="prev"] svg {
+            transform: none;
+        }
+
+        html[dir="rtl"] .timeline-control[data-direction="next"] svg {
+            transform: scaleX(-1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .timeline-slider {
+                scroll-behavior: auto;
+            }
         }
 
         .marquee {
@@ -1643,30 +1914,105 @@
 
         <section class="container" id="journey">
             <header data-reveal>
-                <h2 data-skey="journey.heading">رحلة العميل مع سكينة</h2>
+                <h2 id="journey-heading" data-skey="journey.heading">رحلة العميل مع سكينة</h2>
                 <p data-skey="journey.subheading">خطوات واضحة تحترم وقتك وتضمن جودة المطابقة من البداية حتى القرار.</p>
             </header>
-            <div class="timeline" data-timeline role="list">
-                <div class="progress" aria-hidden="true"></div>
-                <div class="timeline-step" data-step data-reveal role="listitem">
-                    <div class="dot" aria-hidden="true"></div>
-                    <h3 data-skey="journey.step1.title">التسجيل والتحقق</h3>
-                    <p data-skey="journey.step1.copy">املأ نموذج الاهتمامات، ثم قم بتوثيق الهوية والمستندات المطلوبة ليبدأ الفريق بمراجعتها.</p>
+            <div class="timeline" data-timeline role="region" aria-labelledby="journey-heading">
+                <div class="timeline-progress" aria-hidden="true">
+                    <div class="timeline-progress-bar" data-progress></div>
                 </div>
-                <div class="timeline-step" data-step data-reveal role="listitem">
-                    <div class="dot" aria-hidden="true"></div>
-                    <h3 data-skey="journey.step2.title">جلسة المواءمة</h3>
-                    <p data-skey="journey.step2.copy">استشارة مرئية أو صوتية مع أخصائي لمراجعة تفضيلاتك، ووضع حدود واضحة للتواصل.</p>
+                <div class="timeline-nav" data-slider-nav>
+                    <div class="timeline-nav-row">
+                        <div class="timeline-nav-buttons" role="group" data-step-nav aria-label="" data-aria-label-skey="journey.slider.navLabel">
+                            <button class="timeline-nav-button is-active" type="button" data-step-button data-step-index="0" aria-controls="journey-step-1">
+                                <span class="timeline-nav-index">1</span>
+                                <span class="timeline-nav-label" data-skey="journey.slider.labels.step1"></span>
+                            </button>
+                            <button class="timeline-nav-button" type="button" data-step-button data-step-index="1" aria-controls="journey-step-2">
+                                <span class="timeline-nav-index">2</span>
+                                <span class="timeline-nav-label" data-skey="journey.slider.labels.step2"></span>
+                            </button>
+                            <button class="timeline-nav-button" type="button" data-step-button data-step-index="2" aria-controls="journey-step-3">
+                                <span class="timeline-nav-index">3</span>
+                                <span class="timeline-nav-label" data-skey="journey.slider.labels.step3"></span>
+                            </button>
+                            <button class="timeline-nav-button" type="button" data-step-button data-step-index="3" aria-controls="journey-step-4">
+                                <span class="timeline-nav-index">4</span>
+                                <span class="timeline-nav-label" data-skey="journey.slider.labels.step4"></span>
+                            </button>
+                        </div>
+                        <div class="timeline-nav-controls">
+                            <button class="timeline-control" type="button" data-timeline-prev data-direction="prev">
+                                <span class="sr-only" data-skey="journey.slider.prev"></span>
+                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path d="M9.5 5.5 15 12l-5.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                            <button class="timeline-control" type="button" data-timeline-next data-direction="next">
+                                <span class="sr-only" data-skey="journey.slider.next"></span>
+                                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                    <path d="M9.5 5.5 15 12l-5.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="timeline-helper" data-skey="journey.slider.helper"></p>
                 </div>
-                <div class="timeline-step" data-step data-reveal role="listitem">
-                    <div class="dot" aria-hidden="true"></div>
-                    <h3 data-skey="journey.step3.title">التعارف المراقَب</h3>
-                    <p data-skey="journey.step3.copy">محادثات آمنة داخل المنصة تشمل ملخصات يومية للمشرفين لضمان التزام السلوك.</p>
-                </div>
-                <div class="timeline-step" data-step data-reveal role="listitem">
-                    <div class="dot" aria-hidden="true"></div>
-                    <h3 data-skey="journey.step4.title">القرار والمتابعة</h3>
-                    <p data-skey="journey.step4.copy">عند التوافق، نساعدكما في تحديد الخطوات الشرعية والرسمية، ونقدّم متابعة بعدية عند الحاجة.</p>
+                <div class="timeline-slider" data-timeline-slider>
+                    <div class="timeline-track" data-timeline-track>
+                        <div class="timeline-slide is-active" data-step-wrapper>
+                            <button class="timeline-trigger" type="button" data-step-trigger data-step-index="0" aria-controls="journey-step-1" aria-expanded="true">
+                                <span class="timeline-trigger-index">1</span>
+                                <span class="timeline-trigger-label" data-skey="journey.slider.labels.step1"></span>
+                            </button>
+                            <article class="timeline-step is-active" id="journey-step-1" data-step-panel data-reveal role="group" aria-labelledby="journey-step-1-title">
+                                <div class="timeline-step-header">
+                                    <span class="dot" aria-hidden="true"></span>
+                                    <h3 id="journey-step-1-title" data-skey="journey.step1.title">التسجيل والتحقق</h3>
+                                </div>
+                                <p data-skey="journey.step1.copy">املأ نموذج الاهتمامات، ثم قم بتوثيق الهوية والمستندات المطلوبة ليبدأ الفريق بمراجعتها.</p>
+                            </article>
+                        </div>
+                        <div class="timeline-slide" data-step-wrapper>
+                            <button class="timeline-trigger" type="button" data-step-trigger data-step-index="1" aria-controls="journey-step-2" aria-expanded="false">
+                                <span class="timeline-trigger-index">2</span>
+                                <span class="timeline-trigger-label" data-skey="journey.slider.labels.step2"></span>
+                            </button>
+                            <article class="timeline-step" id="journey-step-2" data-step-panel data-reveal role="group" aria-labelledby="journey-step-2-title" hidden>
+                                <div class="timeline-step-header">
+                                    <span class="dot" aria-hidden="true"></span>
+                                    <h3 id="journey-step-2-title" data-skey="journey.step2.title">جلسة المواءمة</h3>
+                                </div>
+                                <p data-skey="journey.step2.copy">استشارة مرئية أو صوتية مع أخصائي لمراجعة تفضيلاتك، ووضع حدود واضحة للتواصل.</p>
+                            </article>
+                        </div>
+                        <div class="timeline-slide" data-step-wrapper>
+                            <button class="timeline-trigger" type="button" data-step-trigger data-step-index="2" aria-controls="journey-step-3" aria-expanded="false">
+                                <span class="timeline-trigger-index">3</span>
+                                <span class="timeline-trigger-label" data-skey="journey.slider.labels.step3"></span>
+                            </button>
+                            <article class="timeline-step" id="journey-step-3" data-step-panel data-reveal role="group" aria-labelledby="journey-step-3-title" hidden>
+                                <div class="timeline-step-header">
+                                    <span class="dot" aria-hidden="true"></span>
+                                    <h3 id="journey-step-3-title" data-skey="journey.step3.title">التعارف المراقَب</h3>
+                                </div>
+                                <p data-skey="journey.step3.copy">محادثات آمنة داخل المنصة تشمل ملخصات يومية للمشرفين لضمان التزام السلوك.</p>
+                            </article>
+                        </div>
+                        <div class="timeline-slide" data-step-wrapper>
+                            <button class="timeline-trigger" type="button" data-step-trigger data-step-index="3" aria-controls="journey-step-4" aria-expanded="false">
+                                <span class="timeline-trigger-index">4</span>
+                                <span class="timeline-trigger-label" data-skey="journey.slider.labels.step4"></span>
+                            </button>
+                            <article class="timeline-step" id="journey-step-4" data-step-panel data-reveal role="group" aria-labelledby="journey-step-4-title" hidden>
+                                <div class="timeline-step-header">
+                                    <span class="dot" aria-hidden="true"></span>
+                                    <h3 id="journey-step-4-title" data-skey="journey.step4.title">القرار والمتابعة</h3>
+                                </div>
+                                <p data-skey="journey.step4.copy">عند التوافق، نساعدكما في تحديد الخطوات الشرعية والرسمية، ونقدّم متابعة بعدية عند الحاجة.</p>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1931,6 +2277,18 @@
                     journey: {
                         heading: 'رحلة العميل مع سكينة',
                         subheading: 'خطوات واضحة تحترم وقتك وتضمن جودة المطابقة من البداية حتى القرار.',
+                        slider: {
+                            navLabel: 'التنقل بين خطوات الرحلة',
+                            helper: 'اختر خطوة للاطلاع على التفاصيل أو استخدم أزرار التنقل للتقدم أو الرجوع.',
+                            prev: 'الانتقال إلى الخطوة السابقة',
+                            next: 'الانتقال إلى الخطوة التالية',
+                            labels: {
+                                step1: 'التسجيل',
+                                step2: 'جلسة المواءمة',
+                                step3: 'التعارف المراقَب',
+                                step4: 'القرار والمتابعة'
+                            }
+                        },
                         step1: {
                             title: 'التسجيل والتحقق',
                             copy: 'املأ نموذج الاهتمامات، ثم قم بتوثيق الهوية والمستندات المطلوبة ليبدأ الفريق بمراجعتها.'
@@ -2119,6 +2477,18 @@
                     journey: {
                         heading: 'Your journey with Sakinah',
                         subheading: 'Clear stages that respect your time and ensure quality matches from the start through the decision.',
+                        slider: {
+                            navLabel: 'Navigate journey steps',
+                            helper: 'Select a step or use the controls to move through the journey.',
+                            prev: 'Go to previous step',
+                            next: 'Go to next step',
+                            labels: {
+                                step1: 'Registration',
+                                step2: 'Alignment session',
+                                step3: 'Introductions',
+                                step4: 'Decision'
+                            }
+                        },
                         step1: {
                             title: 'Registration and verification',
                             copy: 'Fill out the interests form, then submit identity and required documents so our team can review them.'
@@ -2274,6 +2644,13 @@
                     el.textContent = translation;
                 });
 
+                document.querySelectorAll('[data-aria-label-skey]').forEach((el) => {
+                    const translation = getTranslation(lang, el.dataset.ariaLabelSkey);
+                    if (translation !== undefined) {
+                        el.setAttribute('aria-label', translation);
+                    }
+                });
+
                 langToggleButtons.forEach((button) => {
                     button.setAttribute('data-current-lang', lang);
                     const ariaLabel = getTranslation(lang, 'nav.langToggleAria');
@@ -2409,59 +2786,238 @@
                 const timeline = document.querySelector('[data-timeline]');
                 if (!timeline) return;
 
-                const steps = Array.from(timeline.querySelectorAll('[data-step]'));
-                const progress = timeline.querySelector('.progress');
-                if (!steps.length || !progress) return;
+                const slider = timeline.querySelector('[data-timeline-slider]');
+                const slideWrappers = Array.from(timeline.querySelectorAll('[data-step-wrapper]'));
+                const panels = slideWrappers.map((wrapper) => wrapper.querySelector('[data-step-panel]'));
+                const triggers = Array.from(timeline.querySelectorAll('[data-step-trigger]'));
+                const navButtons = Array.from(timeline.querySelectorAll('[data-step-button]'));
+                const progressBar = timeline.querySelector('[data-progress]');
+                const prevButton = timeline.querySelector('[data-timeline-prev]');
+                const nextButton = timeline.querySelector('[data-timeline-next]');
+                if (!slider || !slideWrappers.length || !progressBar || panels.some((panel) => !panel)) return;
 
-                const update = () => {
-                    const timelineRect = timeline.getBoundingClientRect();
-                    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-                    const viewportCenter = viewportHeight / 2;
-                    let filled = 0;
+                const sliderMedia = window.matchMedia('(min-width: 960px)');
+                let activeIndex = 0;
+                let isProgrammaticScroll = false;
+                let scrollTimeoutId = null;
+                let scrollSyncFrame = null;
 
-                    if (viewportCenter <= timelineRect.top) {
-                        progress.style.height = '0px';
-                        steps.forEach((step) => {
-                            step.querySelector('.dot')?.classList.remove('is-active');
-                        });
+                const isSliderMode = () => sliderMedia.matches;
+                const clampIndex = (index) => Math.max(0, Math.min(slideWrappers.length - 1, index));
+                const getNavDirection = () => {
+                    const nav = timeline.querySelector('[data-step-nav]');
+                    if (!nav) return 1;
+                    const { direction } = window.getComputedStyle(nav);
+                    return direction === 'rtl' ? -1 : 1;
+                };
+
+                const updateControls = () => {
+                    if (prevButton) {
+                        prevButton.disabled = activeIndex === 0;
+                    }
+                    if (nextButton) {
+                        nextButton.disabled = activeIndex === slideWrappers.length - 1;
+                    }
+                };
+
+                const updateProgress = () => {
+                    let ratio = slideWrappers.length > 1 ? activeIndex / (slideWrappers.length - 1) : 1;
+
+                    if (isSliderMode()) {
+                        const maxScroll = slider.scrollWidth - slider.clientWidth;
+                        if (maxScroll > 0) {
+                            ratio = slider.scrollLeft / maxScroll;
+                        }
+                    }
+
+                    ratio = Math.max(0, Math.min(1, ratio));
+                    const sizeValue = `${ratio * 100}%`;
+                    progressBar.style.width = sizeValue;
+                    progressBar.style.inlineSize = sizeValue;
+                };
+
+                const setActive = (index, { scrollIntoView = true, force = false } = {}) => {
+                    const clamped = clampIndex(index);
+                    if (!force && clamped === activeIndex) {
+                        updateProgress();
                         return;
                     }
 
-                    steps.forEach((step) => {
-                        const rect = step.getBoundingClientRect();
-                        const stepCenter = rect.top + rect.height / 2;
-                        const dot = step.querySelector('.dot');
-                        if (viewportCenter >= stepCenter) {
-                            dot?.classList.add('is-active');
-                            filled = Math.max(filled, stepCenter - timelineRect.top);
-                        } else {
-                            dot?.classList.remove('is-active');
+                    activeIndex = clamped;
+
+                    slideWrappers.forEach((wrapper, idx) => {
+                        const isActive = idx === activeIndex;
+                        const panel = panels[idx];
+                        wrapper.classList.toggle('is-active', isActive);
+                        if (panel) {
+                            panel.classList.toggle('is-active', isActive);
+                            if (isSliderMode()) {
+                                panel.hidden = false;
+                            } else {
+                                panel.hidden = !isActive;
+                            }
                         }
                     });
 
-                    if (viewportCenter >= timelineRect.bottom) {
-                        filled = timelineRect.height;
-                        steps.forEach((step) => step.querySelector('.dot')?.classList.add('is-active'));
-                    }
+                    triggers.forEach((trigger, idx) => {
+                        const expanded = !isSliderMode() && idx === activeIndex;
+                        trigger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                        trigger.classList.toggle('is-active', idx === activeIndex);
+                    });
 
-                    const clamped = Math.max(0, Math.min(timelineRect.height, filled));
-                    progress.style.height = `${clamped}px`;
+                    navButtons.forEach((button, idx) => {
+                        const isActive = idx === activeIndex;
+                        button.classList.toggle('is-active', isActive);
+                        button.setAttribute('aria-current', isActive ? 'true' : 'false');
+                    });
+
+                    updateControls();
+                    updateProgress();
+
+                    if (isSliderMode() && scrollIntoView) {
+                        const target = slideWrappers[activeIndex];
+                        if (target) {
+                            const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
+                            isProgrammaticScroll = true;
+                            const maxScroll = slider.scrollWidth - slider.clientWidth;
+                            const targetCenter = target.offsetLeft + target.offsetWidth / 2;
+                            const desired = targetCenter - slider.clientWidth / 2;
+                            const nextScroll = Math.max(0, Math.min(maxScroll, desired));
+                            slider.scrollTo({ left: nextScroll, behavior });
+                            clearTimeout(scrollTimeoutId);
+                            if (behavior === 'smooth') {
+                                scrollTimeoutId = window.setTimeout(() => {
+                                    isProgrammaticScroll = false;
+                                    scrollTimeoutId = null;
+                                }, 420);
+                            } else {
+                                isProgrammaticScroll = false;
+                            }
+                        }
+                    } else if (!isSliderMode() && scrollIntoView) {
+                        const trigger = triggers[activeIndex];
+                        if (trigger) {
+                            trigger.scrollIntoView({ block: 'start', behavior: prefersReducedMotion.matches ? 'auto' : 'smooth' });
+                        }
+                    }
                 };
 
-                let ticking = false;
-                const requestUpdate = () => {
-                    if (!ticking) {
-                        ticking = true;
-                        requestAnimationFrame(() => {
-                            update();
-                            ticking = false;
-                        });
+                const syncActiveFromScroll = () => {
+                    if (!isSliderMode()) return;
+                    const sliderRect = slider.getBoundingClientRect();
+                    const center = sliderRect.left + sliderRect.width / 2;
+                    let closestIndex = activeIndex;
+                    let smallestDistance = Number.POSITIVE_INFINITY;
+
+                    slideWrappers.forEach((wrapper, idx) => {
+                        const rect = wrapper.getBoundingClientRect();
+                        const distance = Math.abs(rect.left + rect.width / 2 - center);
+                        if (distance < smallestDistance) {
+                            smallestDistance = distance;
+                            closestIndex = idx;
+                        }
+                    });
+
+                    if (closestIndex !== activeIndex) {
+                        setActive(closestIndex, { scrollIntoView: false });
                     }
                 };
 
-                window.addEventListener('scroll', requestUpdate, { passive: true });
-                window.addEventListener('resize', requestUpdate);
-                update();
+                const onSliderScroll = () => {
+                    updateProgress();
+                    if (isProgrammaticScroll || !isSliderMode()) {
+                        return;
+                    }
+                    if (scrollSyncFrame !== null) {
+                        cancelAnimationFrame(scrollSyncFrame);
+                    }
+                    scrollSyncFrame = requestAnimationFrame(() => {
+                        syncActiveFromScroll();
+                        scrollSyncFrame = null;
+                    });
+                };
+
+                const handleModeChange = () => {
+                    clearTimeout(scrollTimeoutId);
+                    scrollTimeoutId = null;
+                    isProgrammaticScroll = false;
+                    if (!isSliderMode()) {
+                        slider.scrollLeft = 0;
+                    }
+                    slideWrappers.forEach((wrapper, idx) => {
+                        const panel = panels[idx];
+                        if (!panel) return;
+                        if (isSliderMode()) {
+                            panel.hidden = false;
+                        } else {
+                            panel.hidden = idx !== activeIndex;
+                        }
+                    });
+                    setActive(activeIndex, { scrollIntoView: isSliderMode(), force: true });
+                };
+
+                triggers.forEach((trigger, idx) => {
+                    trigger.addEventListener('click', () => {
+                        if (!isSliderMode() && idx === activeIndex) {
+                            return;
+                        }
+                        setActive(idx, { scrollIntoView: !isSliderMode() });
+                    });
+                });
+
+                navButtons.forEach((button, idx) => {
+                    button.addEventListener('click', () => setActive(idx));
+                    button.addEventListener('keydown', (event) => {
+                        const factor = getNavDirection();
+                        if (event.key === 'ArrowRight') {
+                            event.preventDefault();
+                            const nextIndex = idx + factor;
+                            const targetIndex = factor === 1 ? nextIndex : idx - 1;
+                            const clamped = clampIndex(targetIndex);
+                            navButtons[clamped]?.focus();
+                            setActive(clamped);
+                        } else if (event.key === 'ArrowLeft') {
+                            event.preventDefault();
+                            const prevIndex = idx - factor;
+                            const targetIndex = factor === 1 ? prevIndex : idx + 1;
+                            const clamped = clampIndex(targetIndex);
+                            navButtons[clamped]?.focus();
+                            setActive(clamped);
+                        } else if (event.key === 'Home') {
+                            event.preventDefault();
+                            navButtons[0]?.focus();
+                            setActive(0);
+                        } else if (event.key === 'End') {
+                            event.preventDefault();
+                            const lastIndex = slideWrappers.length - 1;
+                            navButtons[lastIndex]?.focus();
+                            setActive(lastIndex);
+                        }
+                    });
+                });
+
+                if (prevButton) {
+                    prevButton.addEventListener('click', () => {
+                        setActive(activeIndex - 1);
+                    });
+                }
+
+                if (nextButton) {
+                    nextButton.addEventListener('click', () => {
+                        setActive(activeIndex + 1);
+                    });
+                }
+
+                slider.addEventListener('scroll', onSliderScroll, { passive: true });
+                if (typeof sliderMedia.addEventListener === 'function') {
+                    sliderMedia.addEventListener('change', handleModeChange);
+                } else if (typeof sliderMedia.addListener === 'function') {
+                    sliderMedia.addListener(handleModeChange);
+                }
+
+                handleModeChange();
+                updateControls();
+                updateProgress();
             };
 
             const initMarquee = () => {
