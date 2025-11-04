@@ -66,6 +66,25 @@
             flex-direction: column;
         }
 
+        .skip-link {
+            position: absolute;
+            inset-block-start: 1rem;
+            inset-inline-start: 50%;
+            transform: translate(-50%, -150%);
+            background: var(--color-ink);
+            color: #fff;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-pill);
+            z-index: 1100;
+            font-weight: 600;
+            transition: transform var(--transition);
+        }
+
+        .skip-link:focus-visible {
+            transform: translate(-50%, 0);
+            box-shadow: var(--focus-ring);
+        }
+
         body.rtl {
             direction: rtl;
         }
@@ -166,11 +185,11 @@
             box-shadow: 0 10px 24px rgba(216, 106, 74, 0.3);
         }
 
-        nav {
+        .primary-nav {
             flex: 1;
         }
 
-        nav ul {
+        .primary-nav ul {
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -181,7 +200,7 @@
             font-size: var(--font-size-sm);
         }
 
-        nav a {
+        .primary-nav a {
             display: inline-flex;
             align-items: center;
             padding-inline: 0.4rem;
@@ -190,8 +209,8 @@
             transition: color var(--transition), transform var(--transition);
         }
 
-        nav a:hover,
-        nav a:focus-visible {
+        .primary-nav a:hover,
+        .primary-nav a:focus-visible {
             color: var(--color-accent);
             transform: translateY(-1px);
         }
@@ -629,6 +648,12 @@
             font-weight: 500;
         }
 
+        .story-card:focus-visible {
+            outline: none;
+            box-shadow: var(--focus-ring);
+            border-radius: var(--radius);
+        }
+
         .cta-band {
             background: linear-gradient(110deg, var(--color-accent) 0%, var(--color-accent-strong) 100%);
             border-radius: var(--radius-lg);
@@ -701,8 +726,9 @@
             padding-block: clamp(50px, 8vw, 90px);
         }
 
-        .footer-grid h4 {
+        .footer-grid h2 {
             margin: 0;
+            font-size: clamp(1.05rem, 0.96rem + 0.2vw, 1.2rem);
         }
 
         .footer-grid p {
@@ -903,13 +929,14 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content" data-skey="accessibility.skipToContent">تخطي إلى المحتوى الرئيسي</a>
     <header>
         <div class="container header-bar">
-            <a class="brand" href="#" aria-label="Sakinah">
+            <a class="brand" href="#hero" aria-label="Sakinah">
                 <span class="brand-mark" data-skey="brand.initials">سك</span>
                 <span data-skey="brand.name">سكينة</span>
             </a>
-            <nav aria-label="التنقل الرئيسي">
+            <nav aria-label="التنقل الرئيسي" class="primary-nav">
                 <ul>
                     <li><a href="#features" data-skey="nav.features">المميزات</a></li>
                     <li><a href="#register" data-skey="nav.register">التسجيل</a></li>
@@ -921,13 +948,13 @@
             <div class="nav-actions">
                 <a class="btn btn-soft" href="#register" data-skey="nav.secondaryCta">تصفح المزايا</a>
                 <a class="btn btn-primary btn-glow" href="#cta" data-skey="nav.primaryCta">ابدأ الآن</a>
-                <button class="lang-toggle" type="button" data-skey="nav.lang" data-lang-toggle>
+                <button class="lang-toggle" type="button" data-lang-toggle>
                     <span data-skey="nav.langLabel">العربية</span>
                 </button>
             </div>
         </div>
     </header>
-    <main>
+    <main id="main-content">
         <section class="container hero" id="hero">
             <div class="hero-text">
                 <div class="pill" data-reveal data-skey="hero.tagline">منصة التوفيق للزواج الموثوق</div>
@@ -1007,24 +1034,24 @@
                 <h2 data-skey="journey.heading">رحلة العميل مع سكينة</h2>
                 <p data-skey="journey.subheading">خطوات واضحة تحترم وقتك وتضمن جودة المطابقة من البداية حتى القرار.</p>
             </header>
-            <div class="timeline" data-timeline>
+            <div class="timeline" data-timeline role="list">
                 <div class="progress" aria-hidden="true"></div>
-                <div class="timeline-step" data-step data-reveal>
+                <div class="timeline-step" data-step data-reveal role="listitem">
                     <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step1.title">التسجيل والتحقق</h3>
                     <p data-skey="journey.step1.copy">املأ نموذج الاهتمامات، ثم قم بتوثيق الهوية والمستندات المطلوبة ليبدأ الفريق بمراجعتها.</p>
                 </div>
-                <div class="timeline-step" data-step data-reveal>
+                <div class="timeline-step" data-step data-reveal role="listitem">
                     <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step2.title">جلسة المواءمة</h3>
                     <p data-skey="journey.step2.copy">استشارة مرئية أو صوتية مع أخصائي لمراجعة تفضيلاتك، ووضع حدود واضحة للتواصل.</p>
                 </div>
-                <div class="timeline-step" data-step data-reveal>
+                <div class="timeline-step" data-step data-reveal role="listitem">
                     <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step3.title">التعارف المراقَب</h3>
                     <p data-skey="journey.step3.copy">محادثات آمنة داخل المنصة تشمل ملخصات يومية للمشرفين لضمان التزام السلوك.</p>
                 </div>
-                <div class="timeline-step" data-step data-reveal>
+                <div class="timeline-step" data-step data-reveal role="listitem">
                     <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step4.title">القرار والمتابعة</h3>
                     <p data-skey="journey.step4.copy">عند التوافق، نساعدكما في تحديد الخطوات الشرعية والرسمية، ونقدّم متابعة بعدية عند الحاجة.</p>
@@ -1039,10 +1066,10 @@
             </header>
             <div class="marquee" aria-live="polite" data-reveal data-marquee>
                 <div class="marquee-track">
-                    <article class="story-card" data-reveal data-skey="stories.story1">"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم &amp; مازن</article>
-                    <article class="story-card" data-reveal data-skey="stories.story2">"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة &amp; خالد</article>
-                    <article class="story-card" data-reveal data-skey="stories.story3">"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى &amp; طارق</article>
-                    <article class="story-card" data-reveal data-skey="stories.story4">"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة &amp; يوسف</article>
+                    <article class="story-card" data-reveal data-skey="stories.story1" tabindex="0">"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم &amp; مازن</article>
+                    <article class="story-card" data-reveal data-skey="stories.story2" tabindex="0">"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة &amp; خالد</article>
+                    <article class="story-card" data-reveal data-skey="stories.story3" tabindex="0">"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى &amp; طارق</article>
+                    <article class="story-card" data-reveal data-skey="stories.story4" tabindex="0">"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة &amp; يوسف</article>
                 </div>
             </div>
         </section>
@@ -1079,32 +1106,32 @@
     </main>
     <footer id="contact">
         <div class="container footer-grid">
-            <div>
-                <h4 data-skey="footer.brandTitle">سكينة</h4>
+            <section aria-labelledby="footer-brand-heading">
+                <h2 id="footer-brand-heading" data-skey="footer.brandTitle">سكينة</h2>
                 <p data-skey="footer.brandCopy">منصة عربية للتوفيق للزواج تجمع بين التقنية والإشراف البشري، وتضمن رحلة تحترم قيم الأسرة.</p>
-            </div>
-            <div>
-                <h4 data-skey="footer.linksTitle">روابط</h4>
+            </section>
+            <nav aria-labelledby="footer-links-heading">
+                <h2 id="footer-links-heading" data-skey="footer.linksTitle">روابط</h2>
                 <ul>
                     <li><a href="#features" data-skey="footer.links.features">المميزات</a></li>
                     <li><a href="#register" data-skey="footer.links.register">التسجيل</a></li>
                     <li><a href="#journey" data-skey="footer.links.journey">الرحلة</a></li>
                     <li><a href="#faq" data-skey="footer.links.faq">الأسئلة الشائعة</a></li>
                 </ul>
-            </div>
-            <div>
-                <h4 data-skey="footer.supportTitle">الدعم</h4>
+            </nav>
+            <section aria-labelledby="footer-support-heading">
+                <h2 id="footer-support-heading" data-skey="footer.supportTitle">الدعم</h2>
                 <ul>
-                    <li><a href="#" data-skey="footer.support.privacy">سياسة الخصوصية</a></li>
-                    <li><a href="#" data-skey="footer.support.terms">الشروط والأحكام</a></li>
+                    <li><a href="#" data-skey="footer.support.privacy" aria-disabled="true" tabindex="-1">سياسة الخصوصية</a></li>
+                    <li><a href="#" data-skey="footer.support.terms" aria-disabled="true" tabindex="-1">الشروط والأحكام</a></li>
                     <li><a href="mailto:support@sakinah.sa" data-skey="footer.support.email">support@sakinah.sa</a></li>
                 </ul>
-            </div>
-            <div>
-                <h4 data-skey="footer.contactTitle">تواصل معنا</h4>
+            </section>
+            <section aria-labelledby="footer-contact-heading">
+                <h2 id="footer-contact-heading" data-skey="footer.contactTitle">تواصل معنا</h2>
                 <p data-skey="footer.contactCopy">يسعدنا الاستماع إليك عبر البريد أو تيليجرام للتعاون والاستفسارات.</p>
                 <a class="btn btn-soft" href="https://t.me/sakinah" data-skey="footer.contactCta">تيليجرام</a>
-            </div>
+            </section>
         </div>
         <div class="footer-meta" data-skey="footer.meta" data-allow-html="true">© <span data-year></span> سكينة. جميع الحقوق محفوظة.</div>
     </footer>
@@ -1117,6 +1144,9 @@
             const langToggleButtons = Array.from(document.querySelectorAll('[data-lang-toggle]'));
             const I18N = {
                 ar: {
+                    accessibility: {
+                        skipToContent: 'تخطي إلى المحتوى الرئيسي'
+                    },
                     meta: {
                         title: 'سكينة | منصة الزواج الموثوقة',
                         description: 'منصة سكينة للتوفيق للزواج بإشراف بشري وخصوصية عالية ومواءمة ذكية.'
@@ -1134,7 +1164,8 @@
                         secondaryCta: 'تصفح المزايا',
                         primaryCta: 'ابدأ الآن',
                         lang: 'تغيير اللغة',
-                        langLabel: 'العربية'
+                        langLabel: 'English',
+                        langToggleAria: 'التبديل إلى الإنجليزية'
                     },
                     hero: {
                         tagline: 'منصة التوفيق للزواج الموثوق',
@@ -1249,6 +1280,9 @@
                     }
                 },
                 en: {
+                    accessibility: {
+                        skipToContent: 'Skip to main content'
+                    },
                     meta: {
                         title: 'Sakinah | Trusted Marriage Platform',
                         description: 'Sakinah is a matchmaking platform with human oversight, strong privacy, and intelligent alignment.'
@@ -1266,7 +1300,8 @@
                         secondaryCta: 'Explore benefits',
                         primaryCta: 'Get started',
                         lang: 'Change language',
-                        langLabel: 'English'
+                        langLabel: 'العربية',
+                        langToggleAria: 'Switch to Arabic'
                     },
                     hero: {
                         tagline: 'Trusted marriage matchmaking platform',
@@ -1459,12 +1494,6 @@
                         return;
                     }
 
-                    if (el.matches('[data-lang-toggle]')) {
-                        el.setAttribute('aria-label', translation);
-                        el.setAttribute('title', translation);
-                        return;
-                    }
-
                     if (el.tagName === 'META') {
                         el.setAttribute('content', translation);
                         return;
@@ -1480,6 +1509,12 @@
 
                 langToggleButtons.forEach((button) => {
                     button.setAttribute('data-current-lang', lang);
+                    const ariaLabel = getTranslation(lang, 'nav.langToggleAria');
+                    if (ariaLabel) {
+                        button.setAttribute('aria-label', ariaLabel);
+                        button.setAttribute('title', ariaLabel);
+                    }
+                    button.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
                 });
 
                 updateYear();
@@ -1604,13 +1639,19 @@
                     clone.classList.add('is-visible');
                     clone.removeAttribute('data-reveal');
                     clone.setAttribute('aria-hidden', 'true');
+                    clone.tabIndex = -1;
                     return clone;
                 });
 
                 clones.forEach((clone) => track.appendChild(clone));
 
-                marquee.addEventListener('mouseenter', () => marquee.classList.add('is-paused'));
-                marquee.addEventListener('mouseleave', () => marquee.classList.remove('is-paused'));
+                const pause = () => marquee.classList.add('is-paused');
+                const resume = () => marquee.classList.remove('is-paused');
+
+                marquee.addEventListener('mouseenter', pause);
+                marquee.addEventListener('mouseleave', resume);
+                marquee.addEventListener('focusin', pause);
+                marquee.addEventListener('focusout', resume);
             };
 
             const initFaq = () => {
