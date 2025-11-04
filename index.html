@@ -388,6 +388,51 @@
             gap: 0.85rem;
         }
 
+        .trust-pills {
+            display: grid;
+            gap: 0.65rem;
+            margin-block: 0.5rem clamp(1.5rem, 2.5vw, 2.2rem);
+        }
+
+        .trust-pills-title {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--color-muted);
+            margin: 0;
+        }
+
+        .trust-pills-list {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.55rem 0.9rem;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 12px 24px rgba(73, 44, 30, 0.08);
+            border: 1px solid rgba(216, 106, 74, 0.18);
+            font-size: var(--font-size-xs);
+            color: var(--color-ink);
+        }
+
+        .trust-pill img {
+            inline-size: 32px;
+            block-size: 32px;
+        }
+
+        .trust-pill span {
+            font-weight: 600;
+        }
+
         .hero-counters {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -426,60 +471,97 @@
             margin-block-start: 0.75rem;
         }
 
+        .hero-metrics-status {
+            font-size: var(--font-size-xs);
+            color: var(--color-muted);
+            margin: 0;
+        }
+
         .hero-visual {
             position: relative;
             display: grid;
             place-items: center;
+            border-radius: clamp(28px, 4vw, 44px);
+            overflow: hidden;
+            min-block-size: clamp(320px, 40vw, 520px);
+            isolation: isolate;
+            box-shadow: var(--shadow-lg);
         }
 
         .hero-visual::before {
             content: "";
             position: absolute;
-            inset: clamp(0.5rem, 2vw, 1.75rem);
-            border-radius: 36px;
-            background: linear-gradient(135deg, rgba(216, 106, 74, 0.45), rgba(244, 184, 161, 0.25));
-            filter: blur(0.4px);
+            inset: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12), transparent 55%),
+                radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.18), transparent 50%),
+                linear-gradient(145deg, rgba(216, 106, 74, 0.85), rgba(244, 184, 161, 0.45), rgba(216, 106, 74, 0.95));
+            animation: hero-gradient 18s ease-in-out infinite alternate;
+            z-index: -2;
+        }
+
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(32, 26, 25, 0.05), rgba(32, 26, 25, 0.35));
             z-index: -1;
         }
 
-        .rings-illustration {
-            position: relative;
-            inline-size: min(360px, 82vw);
-            aspect-ratio: 1;
-            margin: 0;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), 0 25px 50px rgba(73, 44, 30, 0.16);
+        .hero-visual-media {
+            position: absolute;
+            inset: clamp(1rem, 3vw, 2rem);
+            border-radius: clamp(22px, 4vw, 36px);
             overflow: hidden;
+            inline-size: calc(100% - clamp(2rem, 6vw, 4rem));
+            block-size: calc(100% - clamp(2rem, 6vw, 4rem));
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.18), transparent 65%);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
         }
 
-        .rings-illustration img {
-            display: block;
-            inline-size: 100%;
-            block-size: 100%;
-            object-fit: contain;
-        }
-
-        .rings-illustration::before,
-        .rings-illustration::after {
+        .hero-visual-media::before {
             content: "";
             position: absolute;
-            border-radius: 50%;
-            border: 10px solid transparent;
+            inset: -40%;
+            background: conic-gradient(from 120deg, rgba(255, 255, 255, 0.25), rgba(216, 106, 74, 0.45), rgba(244, 184, 161, 0.15), rgba(255, 255, 255, 0.25));
+            animation: hero-gradient-orbit 22s linear infinite;
+            filter: blur(30px);
         }
 
-        .rings-illustration::before {
-            inset: 16% 22%;
-            border-color: var(--color-accent);
-            opacity: 0.6;
-            animation: reveal-up 1.2s ease both;
+        .hero-visual video {
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+            mix-blend-mode: screen;
         }
 
-        .rings-illustration::after {
-            inset: 30% 30%;
-            border-color: var(--color-accent-soft);
-            transform: rotate(-12deg);
-            animation: reveal-up 1.4s ease both 0.2s;
+        .hero-visual video[hidden] {
+            display: none;
+        }
+
+        .hero-visual-badge {
+            position: relative;
+            z-index: 1;
+            padding: clamp(1.1rem, 1rem + 0.6vw, 1.5rem);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.82);
+            box-shadow: var(--shadow-md);
+            display: grid;
+            gap: 0.45rem;
+            inline-size: min(320px, 88%);
+        }
+
+        .hero-visual-badge h3 {
+            margin: 0;
+            font-size: clamp(1.1rem, 1rem + 0.4vw, 1.4rem);
+        }
+
+        .hero-visual-badge p {
+            margin: 0;
+            color: var(--color-muted);
+            font-size: var(--font-size-sm);
         }
 
         .features-grid {
@@ -796,6 +878,33 @@
             }
         }
 
+        @keyframes hero-gradient {
+            0% {
+                transform: scale(1.05) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.12) rotate(6deg);
+                filter: hue-rotate(25deg);
+            }
+
+            100% {
+                transform: scale(1.08) rotate(-6deg);
+                filter: hue-rotate(-25deg);
+            }
+        }
+
+        @keyframes hero-gradient-orbit {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         @media (max-width: 1024px) {
             nav ul {
                 gap: 0.9rem;
@@ -813,8 +922,16 @@
                 justify-items: center;
             }
 
-            .hero-visual::before {
-                inset: clamp(0.25rem, 4vw, 1.4rem);
+            .hero-visual {
+                margin-inline: auto;
+            }
+
+            .trust-pills {
+                justify-items: center;
+            }
+
+            .trust-pills-list {
+                justify-content: center;
             }
         }
 
@@ -845,6 +962,14 @@
 
             .hero-text {
                 justify-items: center;
+            }
+
+            .trust-pills-title {
+                text-align: center;
+            }
+
+            .trust-pills-list {
+                justify-content: center;
             }
 
             .hero-counters {
@@ -919,6 +1044,11 @@
                 animation: none;
             }
 
+            .hero-visual::before,
+            .hero-visual-media::before {
+                animation: none !important;
+            }
+
             [data-reveal],
             [data-hero-visual] {
                 opacity: 1 !important;
@@ -962,27 +1092,49 @@
                 <p data-reveal data-skey="hero.subheading">سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.</p>
                 <div class="hero-ctas" data-reveal>
                     <a class="btn btn-primary btn-glow" href="#register" data-skey="hero.primaryCta">سجل اهتمامك</a>
-                    <a class="btn btn-soft" href="#features" data-skey="hero.secondaryCta">تعرّف على المزايا</a>
+                    <a class="btn btn-outline" href="#contact" data-skey="hero.secondaryCta">احجز استشارة</a>
+                </div>
+                <div class="trust-pills" data-reveal>
+                    <p class="trust-pills-title" data-skey="hero.trustHeading">معتمدون لدى جهات موثوقة</p>
+                    <ul class="trust-pills-list">
+                        <li class="trust-pill">
+                            <img src="assets/trust-license.svg" alt="" role="presentation" width="32" height="32" />
+                            <span data-skey="hero.trustPillOne">شهادة ترخيص الموارد البشرية</span>
+                        </li>
+                        <li class="trust-pill">
+                            <img src="assets/trust-privacy.svg" alt="" role="presentation" width="32" height="32" />
+                            <span data-skey="hero.trustPillTwo">متوافقون مع معايير حماية البيانات</span>
+                        </li>
+                        <li class="trust-pill">
+                            <img src="assets/trust-council.svg" alt="" role="presentation" width="32" height="32" />
+                            <span data-skey="hero.trustPillThree">شراكات مع مستشارين معتمدين</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="hero-counters" data-reveal>
                     <div class="counter-card" data-reveal>
-                        <div class="count" data-count data-to="1200" data-final-suffix="+" data-skey="hero.counterMatches">0</div>
+                        <div class="count" data-count data-metric="matches" data-to="1200" data-final-suffix="+" data-skey="hero.counterMatches">0</div>
                         <p data-skey="hero.counterMatchesLabel">مواءمة تمت بإشراف</p>
                     </div>
                     <div class="counter-card" data-reveal>
-                        <div class="count" data-count data-to="87" data-suffix="%" data-final-suffix="%" data-skey="hero.counterSuccess">0</div>
+                        <div class="count" data-count data-metric="successRate" data-to="87" data-suffix="%" data-final-suffix="%" data-skey="hero.counterSuccess">0</div>
                         <p data-skey="hero.counterSuccessLabel">معدّل رضا الأزواج</p>
                     </div>
                     <div class="counter-card" data-reveal>
-                        <div class="count" data-count data-to="48" data-skey="hero.counterHours">0</div>
+                        <div class="count" data-count data-metric="responseHours" data-to="48" data-skey="hero.counterHours">0</div>
                         <p data-skey="hero.counterHoursLabel">ساعة استجابة للمتابعة</p>
                     </div>
                 </div>
+                <p class="hero-metrics-status" data-metrics-status data-skey="hero.metricsFallback" role="status" aria-live="polite" hidden>
+                    تعذر تحميل الإحصائيات الآن. نعرض قيماً تقريبية.
+                </p>
             </div>
             <div class="hero-visual" data-hero-visual>
-                <figure class="rings-illustration">
-                    <img src="assets/hero-rings.webp" alt="Engagement rings illustration" loading="lazy" width="640" height="640" />
-                </figure>
+                <div class="hero-visual-media" aria-hidden="true"></div>
+                <div class="hero-visual-badge" data-reveal>
+                    <h3 data-skey="hero.visualBadgeTitle">رحلة آمنة وخاصة</h3>
+                    <p data-skey="hero.visualBadgeCopy">إشراف بشري مباشر، توثيق كامل، وخصوصية لا تتنازل عنها المنصة.</p>
+                </div>
             </div>
         </section>
 
@@ -1172,13 +1324,20 @@
                         heading: 'خصوصية حقيقية ومواءمة ذكية تصنع بداية مطمئنة',
                         subheading: 'سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.',
                         primaryCta: 'سجل اهتمامك',
-                        secondaryCta: 'تعرّف على المزايا',
+                        secondaryCta: 'احجز استشارة',
+                        trustHeading: 'معتمدون لدى جهات موثوقة',
+                        trustPillOne: 'شهادة ترخيص الموارد البشرية',
+                        trustPillTwo: 'متوافقون مع معايير حماية البيانات',
+                        trustPillThree: 'شراكات مع مستشارين معتمدين',
                         counterMatches: '0',
                         counterMatchesLabel: 'مواءمة تمت بإشراف',
                         counterSuccess: '0',
                         counterSuccessLabel: 'معدّل رضا الأزواج',
                         counterHours: '0',
-                        counterHoursLabel: 'ساعة استجابة للمتابعة'
+                        counterHoursLabel: 'ساعة استجابة للمتابعة',
+                        metricsFallback: 'تعذر تحميل الإحصائيات الآن. نعرض قيماً تقريبية.',
+                        visualBadgeTitle: 'رحلة آمنة وخاصة',
+                        visualBadgeCopy: 'إشراف بشري مباشر، توثيق كامل، وخصوصية لا تتنازل عنها المنصة.'
                     },
                     features: {
                         heading: 'لماذا يثق بنا المقبلون على الزواج؟',
@@ -1308,13 +1467,20 @@
                         heading: 'True privacy and smart matching for a confident beginning',
                         subheading: 'Sakinah blends intelligent analysis with human review to align shared values while protecting your privacy every step of the way.',
                         primaryCta: 'Register your interest',
-                        secondaryCta: 'Discover the benefits',
+                        secondaryCta: 'Book a consultation',
+                        trustHeading: 'Trusted by certified partners',
+                        trustPillOne: 'Licensed by the Ministry of Human Resources',
+                        trustPillTwo: 'Aligned with national data privacy standards',
+                        trustPillThree: 'Partnered with accredited family counselors',
                         counterMatches: '0',
                         counterMatchesLabel: 'Matches overseen by our team',
                         counterSuccess: '0',
                         counterSuccessLabel: 'Couple satisfaction rate',
                         counterHours: '0',
-                        counterHoursLabel: 'Hours to follow-up response'
+                        counterHoursLabel: 'Hours to follow-up response',
+                        metricsFallback: 'We could not load live metrics. Showing approximate values.',
+                        visualBadgeTitle: 'Secure, human-led journey',
+                        visualBadgeCopy: 'Direct expert oversight, verified profiles, and uncompromising privacy safeguards.'
                     },
                     features: {
                         heading: 'Why do couples trust us?',
@@ -1479,6 +1645,54 @@
                 });
             };
 
+            const heroMetricsStatus = document.querySelector('[data-metrics-status]');
+
+            const hydrateMetrics = async () => {
+                const counters = Array.from(document.querySelectorAll('[data-count][data-metric]'));
+                if (!counters.length) {
+                    return;
+                }
+
+                try {
+                    const response = await fetch('/api/metrics.json', {
+                        headers: { Accept: 'application/json' },
+                        cache: 'no-store'
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Request failed with status ${response.status}`);
+                    }
+
+                    const metrics = await response.json();
+
+                    counters.forEach((counter) => {
+                        const metricKey = counter.dataset.metric;
+                        const metric = metrics?.[metricKey];
+                        if (!metric || typeof metric.value === 'undefined') {
+                            return;
+                        }
+
+                        counter.dataset.to = metric.value;
+
+                        ['prefix', 'suffix', 'finalSuffix'].forEach((key) => {
+                            if (Object.prototype.hasOwnProperty.call(metric, key) && metric[key] !== undefined) {
+                                counter.dataset[key] = metric[key];
+                            }
+                        });
+                    });
+
+                    if (heroMetricsStatus) {
+                        heroMetricsStatus.hidden = true;
+                    }
+                } catch (error) {
+                    console.error('Failed to load live metrics', error);
+                    if (heroMetricsStatus) {
+                        heroMetricsStatus.hidden = false;
+                    }
+                    throw error;
+                }
+            };
+
             const applyLang = (lang) => {
                 if (!I18N[lang]) return;
 
@@ -1518,7 +1732,6 @@
                 });
 
                 updateYear();
-                animateCounters(lang);
             };
 
             const initRevealObserver = () => {
@@ -1740,10 +1953,17 @@
             initPlaceholderLinks();
             applyLang(currentLang);
 
+            hydrateMetrics()
+                .catch(() => {})
+                .finally(() => {
+                    animateCounters(currentLang);
+                });
+
             langToggleButtons.forEach((button) => {
                 button.addEventListener('click', () => {
                     const nextLang = currentLang === 'ar' ? 'en' : 'ar';
                     applyLang(nextLang);
+                    animateCounters(nextLang);
                 });
             });
 
