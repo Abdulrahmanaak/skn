@@ -1318,58 +1318,170 @@
             }
         }
 
-        .marquee {
-            overflow: hidden;
+        .testimonial-carousel {
             background: var(--color-surface);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            padding-block: 1.2rem;
+            padding: clamp(1.4rem, 1rem + 2vw, 2.6rem);
+            display: grid;
+            gap: clamp(1rem, 1vw + 1rem, 1.6rem);
+        }
+
+        .testimonial-viewport {
+            overflow: hidden;
+            border-radius: var(--radius);
             position: relative;
         }
 
-        .marquee::before,
-        .marquee::after {
-            content: "";
-            position: absolute;
-            inset-block: 0;
-            inline-size: clamp(30px, 8vw, 80px);
-            pointer-events: none;
-        }
-
-        .marquee::before {
-            inset-inline-end: 0;
-            background: linear-gradient(90deg, rgba(251, 241, 238, 0), var(--color-surface));
-        }
-
-        .marquee::after {
-            inset-inline-start: 0;
-            background: linear-gradient(270deg, rgba(251, 241, 238, 0), var(--color-surface));
-        }
-
-        .marquee-track {
+        .testimonial-track {
             display: flex;
-            align-items: center;
-            gap: clamp(1.5rem, 4vw, 3rem);
-            animation: marquee-scroll 28s linear infinite;
+            transition: transform var(--transition);
             will-change: transform;
         }
 
-        .marquee.is-paused .marquee-track {
-            animation-play-state: paused;
+        .testimonial-card {
+            flex: 0 0 100%;
+            padding: clamp(1.4rem, 1rem + 2vw, 2rem);
+            display: grid;
+            gap: 1rem;
+            background: var(--color-surface);
+            text-align: start;
+            justify-items: start;
         }
 
-        .story-card {
-            min-inline-size: clamp(220px, 40vw, 340px);
-            padding-inline: clamp(1.4rem, 2vw, 2.2rem);
-            padding-block: 0.65rem;
-            color: var(--color-ink);
-            font-weight: 500;
-        }
-
-        .story-card:focus-visible {
+        .testimonial-card:focus-visible {
             outline: none;
             box-shadow: var(--focus-ring);
             border-radius: var(--radius);
+        }
+
+        .testimonial-quote {
+            font-size: var(--font-size-md);
+            font-style: italic;
+            color: var(--color-ink);
+            margin: 0;
+        }
+
+        .testimonial-body {
+            display: grid;
+            gap: 0.4rem;
+            align-content: start;
+        }
+
+        .testimonial-names {
+            font-weight: 600;
+            color: var(--color-ink);
+        }
+
+        .testimonial-meta {
+            font-size: var(--font-size-sm);
+            color: var(--color-ink-soft);
+        }
+
+        .testimonial-portrait {
+            inline-size: clamp(72px, 12vw, 96px);
+            block-size: clamp(72px, 12vw, 96px);
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(32, 26, 25, 0.14);
+            margin: 0;
+        }
+
+        .testimonial-portrait img {
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .testimonial-buttons {
+            display: inline-flex;
+            gap: 0.5rem;
+        }
+
+        .testimonial-button,
+        .testimonial-toggle {
+            border: 1px solid var(--color-border);
+            background: var(--color-surface-alt);
+            color: var(--color-ink);
+            border-radius: var(--radius-pill);
+            padding: 0.4rem 1rem;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition), border-color var(--transition);
+        }
+
+        .testimonial-button:hover,
+        .testimonial-toggle:hover {
+            background: var(--color-accent-soft);
+            border-color: rgba(216, 106, 74, 0.45);
+        }
+
+        .testimonial-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .testimonial-toggle[aria-pressed="true"] {
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+        }
+
+        .testimonial-dots {
+            display: inline-flex;
+            gap: 0.4rem;
+        }
+
+        .testimonial-dot {
+            inline-size: 10px;
+            block-size: 10px;
+            border-radius: 50%;
+            background: var(--color-border);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .testimonial-dot::after {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+        }
+
+        .testimonial-dot:focus-visible::after {
+            box-shadow: var(--focus-ring);
+        }
+
+        .testimonial-dot[aria-current="true"] {
+            background: var(--color-accent);
+        }
+
+        @media (max-width: 640px) {
+            .testimonial-controls {
+                gap: 0.5rem;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .testimonial-buttons {
+                justify-content: center;
+            }
+
+            .testimonial-toggle {
+                inline-size: 100%;
+                text-align: center;
+            }
         }
 
         .cta-band {
@@ -1501,16 +1613,6 @@
             100% {
                 opacity: 0;
                 transform: rotate(25deg) translateY(-120%);
-            }
-        }
-
-        @keyframes marquee-scroll {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
             }
         }
 
@@ -1666,10 +1768,6 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 1ms !important;
                 scroll-behavior: auto !important;
-            }
-
-            .marquee-track {
-                animation: none;
             }
 
             .hero-visual::before,
@@ -2022,12 +2120,19 @@
                 <h2 data-skey="stories.heading">قصص نجاح ملهمة</h2>
                 <p data-skey="stories.subheading">اكتشف كيف ساعدت سكينة شركاءها على بدء حياة زوجية بطمأنينة.</p>
             </header>
-            <div class="marquee" aria-live="polite" data-reveal data-marquee>
-                <div class="marquee-track">
-                    <article class="story-card" data-reveal data-skey="stories.story1" tabindex="0">"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم &amp; مازن</article>
-                    <article class="story-card" data-reveal data-skey="stories.story2" tabindex="0">"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة &amp; خالد</article>
-                    <article class="story-card" data-reveal data-skey="stories.story3" tabindex="0">"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى &amp; طارق</article>
-                    <article class="story-card" data-reveal data-skey="stories.story4" tabindex="0">"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة &amp; يوسف</article>
+            <div class="testimonial-carousel" data-reveal data-testimonial-slider role="region" data-aria-label-skey="stories.slider.navLabel">
+                <p class="sr-only" data-testimonial-helper data-skey="stories.slider.helper"></p>
+                <p class="sr-only" data-testimonial-status aria-live="polite"></p>
+                <div class="testimonial-viewport">
+                    <div class="testimonial-track" data-testimonial-track></div>
+                </div>
+                <div class="testimonial-controls">
+                    <div class="testimonial-buttons" role="group">
+                        <button class="testimonial-button" type="button" data-testimonial-prev data-skey="stories.slider.prev"></button>
+                        <button class="testimonial-button" type="button" data-testimonial-next data-skey="stories.slider.next"></button>
+                    </div>
+                    <div class="testimonial-dots" data-testimonial-dots aria-hidden="false"></div>
+                    <button class="testimonial-toggle" type="button" data-testimonial-toggle data-skey="stories.slider.play"></button>
                 </div>
             </div>
         </section>
@@ -2309,10 +2414,56 @@
                     stories: {
                         heading: 'قصص نجاح ملهمة',
                         subheading: 'اكتشف كيف ساعدت سكينة شركاءها على بدء حياة زوجية بطمأنينة.',
-                        story1: '"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم & مازن',
-                        story2: '"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة & خالد',
-                        story3: '"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى & طارق',
-                        story4: '"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة & يوسف'
+                        slider: {
+                            navLabel: 'شهادات الأزواج الموثوقة',
+                            helper: 'استخدم أزرار السابق والتالي أو نقاط التنقل لاستعراض القصص بدون حركة مستمرة.',
+                            prev: 'القصة السابقة',
+                            next: 'القصة التالية',
+                            play: 'تشغيل العرض',
+                            pause: 'إيقاف العرض',
+                            pagination: 'انتقل إلى القصة {index}',
+                            paginationLabel: 'التنقل بين القصص',
+                            status: 'القصة {index} من {total}: {names} من {city}. تم الزواج عام {year} بإشراف {authority}.',
+                            metaTemplate: '{city} • تزوجا عام {year} • موثّق بواسطة {authority}'
+                        },
+                        entries: [
+                            {
+                                quote: '"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية."',
+                                names: 'ريم ومازن',
+                                city: 'الرياض',
+                                year: '2021',
+                                authority: 'مأذون معتمد من وزارة العدل',
+                                portrait: 'assets/story-reem-mazen.svg',
+                                portraitAlt: 'صورة ريم ومازن'
+                            },
+                            {
+                                quote: '"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة."',
+                                names: 'عائشة وخالد',
+                                city: 'جدة',
+                                year: '2022',
+                                authority: 'جمعية التنمية الأسرية بجدة',
+                                portrait: 'assets/story-aisha-khaled.svg',
+                                portraitAlt: 'صورة عائشة وخالد'
+                            },
+                            {
+                                quote: '"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة."',
+                                names: 'منى وطارق',
+                                city: 'الدمام',
+                                year: '2021',
+                                authority: 'لجنة الإصلاح الأسري بالمنطقة الشرقية',
+                                portrait: 'assets/story-muna-tareq.svg',
+                                portraitAlt: 'صورة منى وطارق'
+                            },
+                            {
+                                quote: '"خصوصية عالية وفريق متفهم يشرح كل خطوة."',
+                                names: 'آمنة ويوسف',
+                                city: 'المدينة المنورة',
+                                year: '2023',
+                                authority: 'مستشار أسري معتمد بهيئة الأزواج',
+                                portrait: 'assets/story-amina-youssef.svg',
+                                portraitAlt: 'صورة آمنة ويوسف'
+                            }
+                        ]
                     },
                     cta: {
                         heading: 'ابدأ رحلتك نحو حياة زوجية مطمئنة',
@@ -2509,10 +2660,56 @@
                     stories: {
                         heading: 'Inspiring success stories',
                         subheading: 'See how Sakinah helped partners begin married life with peace of mind.',
-                        story1: '"We quickly discovered shared values without sharing personal data until the supervised meeting." – Reem & Mazen',
-                        story2: '"The pre-introduction coaching gave us mature conversation tools and set clear expectations." – Aisha & Khaled',
-                        story3: '"The platform streamlined conversations with the bride’s family and provided reliable reports." – Muna & Tareq',
-                        story4: '"High privacy and an understanding team explained every step." – Amina & Youssef'
+                        slider: {
+                            navLabel: 'Verified couple testimonials',
+                            helper: 'Use the previous/next buttons or the pagination dots to browse stories without continuous motion.',
+                            prev: 'Previous story',
+                            next: 'Next story',
+                            play: 'Play carousel',
+                            pause: 'Pause carousel',
+                            pagination: 'Go to story {index}',
+                            paginationLabel: 'Story navigation',
+                            status: 'Story {index} of {total}: {names} from {city}. Married in {year} with oversight by {authority}.',
+                            metaTemplate: '{city} • Married in {year} • Verified by {authority}'
+                        },
+                        entries: [
+                            {
+                                quote: '"We quickly discovered shared values without sharing personal data until the supervised meeting."',
+                                names: 'Reem & Mazen',
+                                city: 'Riyadh',
+                                year: '2021',
+                                authority: 'Certified marriage registrar',
+                                portrait: 'assets/story-reem-mazen.svg',
+                                portraitAlt: 'Portrait of Reem and Mazen'
+                            },
+                            {
+                                quote: '"The pre-introduction coaching gave us mature conversation tools and set clear expectations."',
+                                names: 'Aisha & Khaled',
+                                city: 'Jeddah',
+                                year: '2022',
+                                authority: 'Family Development Association in Jeddah',
+                                portrait: 'assets/story-aisha-khaled.svg',
+                                portraitAlt: 'Portrait of Aisha and Khaled'
+                            },
+                            {
+                                quote: '"The platform streamlined conversations with the bride’s family and provided reliable reports."',
+                                names: 'Muna & Tareq',
+                                city: 'Dammam',
+                                year: '2021',
+                                authority: 'Eastern Province Family Mediation Council',
+                                portrait: 'assets/story-muna-tareq.svg',
+                                portraitAlt: 'Portrait of Muna and Tareq'
+                            },
+                            {
+                                quote: '"High privacy and an understanding team explained every step."',
+                                names: 'Amina & Youssef',
+                                city: 'Medina',
+                                year: '2023',
+                                authority: 'Licensed family counselor',
+                                portrait: 'assets/story-amina-youssef.svg',
+                                portraitAlt: 'Portrait of Amina and Youssef'
+                            }
+                        ]
                     },
                     cta: {
                         heading: 'Start your journey toward a tranquil marriage',
@@ -2554,7 +2751,21 @@
                 }
             };
 
+            const formatString = (template, replacements = {}) => {
+                if (typeof template !== 'string') {
+                    return '';
+                }
+
+                return template.replace(/\{(\w+)\}/g, (_, key) => {
+                    if (Object.prototype.hasOwnProperty.call(replacements, key)) {
+                        return replacements[key];
+                    }
+                    return '';
+                });
+            };
+
             let currentLang = document.documentElement.lang === 'en' ? 'en' : 'ar';
+            let testimonialsController = null;
 
             const getTranslation = (lang, key) => {
                 const segments = key.split('.');
@@ -2662,6 +2873,7 @@
                 });
 
                 updateYear();
+                testimonialsController?.update(lang);
                 animateCounters(lang);
             };
 
@@ -3020,39 +3232,332 @@
                 updateProgress();
             };
 
-            const initMarquee = () => {
-                const marquee = document.querySelector('[data-marquee]');
-                if (!marquee) return;
+            const createTestimonialsController = () => {
+                const root = document.querySelector('[data-testimonial-slider]');
+                if (!root) return null;
 
-                const track = marquee.querySelector('.marquee-track');
-                if (!track || track.dataset.marqueeInit === 'true') return;
+                const track = root.querySelector('[data-testimonial-track]');
+                const dotsRoot = root.querySelector('[data-testimonial-dots]');
+                const statusEl = root.querySelector('[data-testimonial-status]');
+                const helperEl = root.querySelector('[data-testimonial-helper]');
+                const prevButton = root.querySelector('[data-testimonial-prev]');
+                const nextButton = root.querySelector('[data-testimonial-next]');
+                const toggleButton = root.querySelector('[data-testimonial-toggle]');
 
-                track.dataset.marqueeInit = 'true';
-
-                if (prefersReducedMotion.matches) {
-                    marquee.classList.add('is-paused');
-                    return;
+                if (!track || !dotsRoot || !statusEl || !prevButton || !nextButton || !toggleButton) {
+                    return null;
                 }
 
-                const items = Array.from(track.children);
-                const clones = items.map((item) => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('is-visible');
-                    clone.removeAttribute('data-reveal');
-                    clone.setAttribute('aria-hidden', 'true');
-                    clone.tabIndex = -1;
-                    return clone;
+                let slides = [];
+                let dots = [];
+                let stories = [];
+                let activeIndex = 0;
+                let isPlaying = false;
+                let autoplayId = null;
+
+                const clampIndex = (index) => {
+                    const total = slides.length;
+                    if (total === 0) return 0;
+                    const mod = index % total;
+                    return mod < 0 ? mod + total : mod;
+                };
+
+                const getSliderStrings = (lang = currentLang) => {
+                    const sliderStrings = I18N[lang]?.stories?.slider;
+                    return sliderStrings || {};
+                };
+
+                const stopAutoplay = () => {
+                    if (autoplayId !== null) {
+                        window.clearInterval(autoplayId);
+                        autoplayId = null;
+                    }
+                };
+
+                const updateStatus = () => {
+                    if (!slides.length) {
+                        statusEl.textContent = '';
+                        return;
+                    }
+
+                    const strings = getSliderStrings();
+                    const story = stories[activeIndex] || {};
+                    const announcement = formatString(strings.status, {
+                        index: activeIndex + 1,
+                        total: stories.length,
+                        names: story.names || '',
+                        city: story.city || '',
+                        year: story.year || '',
+                        authority: story.authority || ''
+                    }).trim();
+
+                    statusEl.textContent = announcement;
+                };
+
+                const goTo = (index, { focus = true } = {}) => {
+                    if (!slides.length) return;
+
+                    const target = clampIndex(index);
+                    activeIndex = target;
+
+                    track.style.transform = `translateX(-${target * 100}%)`;
+
+                    slides.forEach((slide, idx) => {
+                        const isActiveSlide = idx === activeIndex;
+                        slide.classList.toggle('is-active', isActiveSlide);
+                        slide.setAttribute('aria-hidden', isActiveSlide ? 'false' : 'true');
+                        slide.tabIndex = isActiveSlide ? 0 : -1;
+                    });
+
+                    dots.forEach((dot, idx) => {
+                        dot.setAttribute('aria-current', idx === activeIndex ? 'true' : 'false');
+                    });
+
+                    updateStatus();
+
+                    if (focus && slides[activeIndex]) {
+                        slides[activeIndex].focus();
+                    }
+                };
+
+                const startAutoplay = () => {
+                    stopAutoplay();
+                    if (prefersReducedMotion.matches || slides.length <= 1) {
+                        return;
+                    }
+
+                    autoplayId = window.setInterval(() => {
+                        goTo(activeIndex + 1, { focus: false });
+                    }, 7000);
+                };
+
+                const updateToggleLabel = () => {
+                    const strings = getSliderStrings();
+                    const label = isPlaying ? strings.pause : strings.play;
+                    if (label) {
+                        toggleButton.textContent = label;
+                        toggleButton.setAttribute('aria-label', label);
+                    }
+                };
+
+                const setPlaying = (state) => {
+                    const allow = !prefersReducedMotion.matches && slides.length > 1;
+                    const nextState = Boolean(state) && allow;
+
+                    if (nextState !== isPlaying) {
+                        isPlaying = nextState;
+                        if (isPlaying) {
+                            startAutoplay();
+                        } else {
+                            stopAutoplay();
+                        }
+                    }
+
+                    toggleButton.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+                    updateToggleLabel();
+                };
+
+                const updateControls = () => {
+                    const hasMultiple = slides.length > 1;
+                    prevButton.disabled = !hasMultiple;
+                    nextButton.disabled = !hasMultiple;
+                    dotsRoot.hidden = !hasMultiple;
+                    dotsRoot.setAttribute('aria-hidden', hasMultiple ? 'false' : 'true');
+                    if (helperEl) {
+                        helperEl.hidden = !hasMultiple;
+                    }
+
+                    const shouldDisableToggle = !hasMultiple || prefersReducedMotion.matches;
+                    toggleButton.hidden = !hasMultiple;
+                    toggleButton.disabled = shouldDisableToggle;
+                    if (shouldDisableToggle) {
+                        stopAutoplay();
+                        isPlaying = false;
+                    }
+
+                    toggleButton.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+                    updateToggleLabel();
+                };
+
+                const buildSlides = (lang) => {
+                    const entries = I18N[lang]?.stories?.entries;
+                    stories = Array.isArray(entries) ? entries : [];
+
+                    track.innerHTML = '';
+                    dotsRoot.innerHTML = '';
+                    slides = [];
+                    dots = [];
+                    activeIndex = 0;
+
+                    const strings = getSliderStrings(lang);
+                    const trackFragment = document.createDocumentFragment();
+                    const dotsFragment = document.createDocumentFragment();
+
+                    stories.forEach((story, idx) => {
+                        const card = document.createElement('article');
+                        card.className = 'testimonial-card';
+                        card.setAttribute('data-testimonial-slide', 'true');
+                        card.setAttribute('role', 'group');
+                        card.setAttribute('aria-roledescription', 'testimonial');
+                        const ariaLabel = story.names || formatString(strings.pagination, { index: idx + 1 });
+                        if (ariaLabel) {
+                            card.setAttribute('aria-label', ariaLabel);
+                        }
+                        card.tabIndex = -1;
+                        card.setAttribute('aria-hidden', 'true');
+
+                        if (story.portrait) {
+                            const figure = document.createElement('figure');
+                            figure.className = 'testimonial-portrait';
+                            const img = document.createElement('img');
+                            img.loading = 'lazy';
+                            img.src = story.portrait;
+                            img.alt = story.portraitAlt || story.names || '';
+                            figure.appendChild(img);
+                            card.appendChild(figure);
+                        }
+
+                        if (story.quote) {
+                            const quote = document.createElement('blockquote');
+                            quote.className = 'testimonial-quote';
+                            quote.textContent = story.quote;
+                            card.appendChild(quote);
+                        }
+
+                        const body = document.createElement('div');
+                        body.className = 'testimonial-body';
+
+                        if (story.names) {
+                            const namesEl = document.createElement('div');
+                            namesEl.className = 'testimonial-names';
+                            namesEl.textContent = story.names;
+                            body.appendChild(namesEl);
+                        }
+
+                        const metaText = formatString(strings.metaTemplate, {
+                            city: story.city || '',
+                            year: story.year || '',
+                            authority: story.authority || ''
+                        }).replace(/\s+/g, ' ').trim();
+
+                        if (metaText) {
+                            const metaEl = document.createElement('div');
+                            metaEl.className = 'testimonial-meta';
+                            metaEl.textContent = metaText;
+                            body.appendChild(metaEl);
+                        }
+
+                        if (body.childElementCount > 0) {
+                            card.appendChild(body);
+                        }
+
+                        trackFragment.appendChild(card);
+
+                        const dot = document.createElement('button');
+                        dot.type = 'button';
+                        dot.className = 'testimonial-dot';
+                        const dotLabel = formatString(strings.pagination, {
+                            index: idx + 1,
+                            names: story.names || '',
+                            city: story.city || ''
+                        });
+                        dot.setAttribute('aria-label', dotLabel || `Story ${idx + 1}`);
+                        dotsFragment.appendChild(dot);
+
+                        dot.addEventListener('click', () => {
+                            setPlaying(false);
+                            goTo(idx);
+                        });
+
+                        dot.addEventListener('keydown', (event) => {
+                            if (!dots.length) return;
+
+                            if (event.key === 'ArrowRight') {
+                                event.preventDefault();
+                                const delta = document.documentElement.dir === 'rtl' ? -1 : 1;
+                                const target = clampIndex(idx + delta);
+                                setPlaying(false);
+                                goTo(target);
+                            } else if (event.key === 'ArrowLeft') {
+                                event.preventDefault();
+                                const delta = document.documentElement.dir === 'rtl' ? 1 : -1;
+                                const target = clampIndex(idx + delta);
+                                setPlaying(false);
+                                goTo(target);
+                            } else if (event.key === 'Home') {
+                                event.preventDefault();
+                                setPlaying(false);
+                                goTo(0);
+                            } else if (event.key === 'End') {
+                                event.preventDefault();
+                                const lastIndex = dots.length - 1;
+                                setPlaying(false);
+                                goTo(lastIndex);
+                            }
+                        });
+                    });
+
+                    track.appendChild(trackFragment);
+                    dotsRoot.appendChild(dotsFragment);
+
+                    slides = Array.from(track.children);
+                    dots = Array.from(dotsRoot.children);
+                };
+
+                prevButton.addEventListener('click', () => {
+                    if (!slides.length) return;
+                    setPlaying(false);
+                    goTo(activeIndex - 1);
                 });
 
-                clones.forEach((clone) => track.appendChild(clone));
+                nextButton.addEventListener('click', () => {
+                    if (!slides.length) return;
+                    setPlaying(false);
+                    goTo(activeIndex + 1);
+                });
 
-                const pause = () => marquee.classList.add('is-paused');
-                const resume = () => marquee.classList.remove('is-paused');
+                toggleButton.addEventListener('click', () => {
+                    setPlaying(!isPlaying);
+                });
 
-                marquee.addEventListener('mouseenter', pause);
-                marquee.addEventListener('mouseleave', resume);
-                marquee.addEventListener('focusin', pause);
-                marquee.addEventListener('focusout', resume);
+                prefersReducedMotion.addEventListener('change', () => {
+                    if (prefersReducedMotion.matches) {
+                        setPlaying(false);
+                    } else if (isPlaying) {
+                        startAutoplay();
+                    }
+                    updateControls();
+                });
+
+                root.addEventListener('focusin', () => {
+                    if (isPlaying) {
+                        setPlaying(false);
+                    }
+                });
+
+                return {
+                    update(lang) {
+                        const wasPlaying = isPlaying;
+                        stopAutoplay();
+                        buildSlides(lang);
+                        goTo(0, { focus: false });
+                        updateControls();
+                        updateStatus();
+                        if (wasPlaying) {
+                            setPlaying(true);
+                        } else {
+                            setPlaying(false);
+                        }
+
+                        dotsRoot.setAttribute('role', 'group');
+                        const strings = getSliderStrings(lang);
+                        if (strings.paginationLabel) {
+                            dotsRoot.setAttribute('aria-label', strings.paginationLabel);
+                        } else {
+                            dotsRoot.removeAttribute('aria-label');
+                        }
+                    }
+                };
             };
 
             const initFaq = () => {
@@ -3283,6 +3788,7 @@
                 });
             };
 
+            testimonialsController = createTestimonialsController();
             initPlaceholderLinks();
             initFeatureTabs();
             fetchMetrics();
@@ -3298,13 +3804,11 @@
                 button.addEventListener('click', () => {
                     const nextLang = currentLang === 'ar' ? 'en' : 'ar';
                     applyLang(nextLang);
-                    animateCounters(nextLang);
                 });
             });
 
             initRevealObserver();
             initTimeline();
-            initMarquee();
             initFaq();
             initPrecheckModal();
             initButtonGlow();
