@@ -360,6 +360,8 @@
         .hero-text {
             display: grid;
             gap: 1.25rem;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-text p {
@@ -471,97 +473,105 @@
             margin-block-start: 0.75rem;
         }
 
-        .hero-metrics-status {
-            font-size: var(--font-size-xs);
-            color: var(--color-muted);
-            margin: 0;
-        }
-
-        .hero-visual {
+        .hero-media {
             position: relative;
             display: grid;
             place-items: center;
-            border-radius: clamp(28px, 4vw, 44px);
+            min-height: clamp(280px, 40vw, 520px);
+            border-radius: clamp(28px, 4vw, 42px);
             overflow: hidden;
-            min-block-size: clamp(320px, 40vw, 520px);
-            isolation: isolate;
+            background: radial-gradient(circle at 20% 20%, rgba(244, 184, 161, 0.45), rgba(216, 106, 74, 0.2));
             box-shadow: var(--shadow-lg);
+            isolation: isolate;
         }
 
-        .hero-visual::before {
+        .hero-media::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12), transparent 55%),
-                radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.18), transparent 50%),
-                linear-gradient(145deg, rgba(216, 106, 74, 0.85), rgba(244, 184, 161, 0.45), rgba(216, 106, 74, 0.95));
-            animation: hero-gradient 18s ease-in-out infinite alternate;
+            background: linear-gradient(135deg, rgba(216, 106, 74, 0.65), rgba(244, 184, 161, 0.25), rgba(255, 255, 255, 0.1));
+            background-size: 200% 200%;
+            animation: hero-gradient 14s ease-in-out infinite;
             z-index: -2;
         }
 
-        .hero-visual::after {
+        .hero-media::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(32, 26, 25, 0.05), rgba(32, 26, 25, 0.35));
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            mix-blend-mode: screen;
+            opacity: 0.85;
             z-index: -1;
         }
 
-        .hero-visual-media {
-            position: absolute;
-            inset: clamp(1rem, 3vw, 2rem);
-            border-radius: clamp(22px, 4vw, 36px);
-            overflow: hidden;
-            inline-size: calc(100% - clamp(2rem, 6vw, 4rem));
-            block-size: calc(100% - clamp(2rem, 6vw, 4rem));
-            display: grid;
-            place-items: center;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.18), transparent 65%);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
-        }
-
-        .hero-visual-media::before {
-            content: "";
-            position: absolute;
-            inset: -40%;
-            background: conic-gradient(from 120deg, rgba(255, 255, 255, 0.25), rgba(216, 106, 74, 0.45), rgba(244, 184, 161, 0.15), rgba(255, 255, 255, 0.25));
-            animation: hero-gradient-orbit 22s linear infinite;
-            filter: blur(30px);
-        }
-
-        .hero-visual video {
+        .hero-media video {
             inline-size: 100%;
             block-size: 100%;
             object-fit: cover;
-            opacity: 0.45;
-            mix-blend-mode: screen;
+            filter: saturate(105%) contrast(108%);
         }
 
-        .hero-visual video[hidden] {
-            display: none;
+        .trust-pills {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            flex-wrap: wrap;
+            padding: 0.9rem 1.1rem;
+            border-radius: var(--radius-lg);
+            background: var(--color-surface-alt);
+            border: 1px solid rgba(216, 106, 74, 0.15);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(18px);
         }
 
-        .hero-visual-badge {
-            position: relative;
-            z-index: 1;
-            padding: clamp(1.1rem, 1rem + 0.6vw, 1.5rem);
-            border-radius: var(--radius);
-            background: rgba(255, 255, 255, 0.82);
-            box-shadow: var(--shadow-md);
-            display: grid;
-            gap: 0.45rem;
-            inline-size: min(320px, 88%);
-        }
-
-        .hero-visual-badge h3 {
-            margin: 0;
-            font-size: clamp(1.1rem, 1rem + 0.4vw, 1.4rem);
-        }
-
-        .hero-visual-badge p {
-            margin: 0;
+        .trust-label {
+            font-weight: 600;
             color: var(--color-muted);
+        }
+
+        .trust-list {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .trust-pill img {
+            inline-size: 42px;
+            block-size: 42px;
+        }
+
+        .hero-counters .metrics-status {
+            grid-column: 1 / -1;
+            margin: 0;
             font-size: var(--font-size-sm);
+            color: var(--color-muted);
+        }
+
+        .sr-only {
+            position: absolute;
+            inline-size: 1px;
+            block-size: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         .features-grid {
@@ -839,6 +849,20 @@
             color: rgba(247, 243, 255, 0.7);
         }
 
+        @keyframes hero-gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         @keyframes reveal-up {
             from {
                 opacity: 0;
@@ -922,15 +946,11 @@
                 justify-items: center;
             }
 
-            .hero-visual {
-                margin-inline: auto;
+            .hero-media::before {
+                animation-duration: 18s;
             }
 
             .trust-pills {
-                justify-items: center;
-            }
-
-            .trust-pills-list {
                 justify-content: center;
             }
         }
@@ -974,6 +994,16 @@
 
             .hero-counters {
                 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+
+            .trust-pills {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .trust-list {
+                justify-content: center;
             }
 
             .split {
@@ -1054,6 +1084,10 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
+
+            .hero-media::before {
+                animation: none !important;
+            }
         }
     </style>
 </head>
@@ -1092,22 +1126,22 @@
                 <p data-reveal data-skey="hero.subheading">سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.</p>
                 <div class="hero-ctas" data-reveal>
                     <a class="btn btn-primary btn-glow" href="#register" data-skey="hero.primaryCta">سجل اهتمامك</a>
-                    <a class="btn btn-outline" href="#contact" data-skey="hero.secondaryCta">احجز استشارة</a>
+                    <a class="btn btn-outline" href="#contact" data-skey="hero.consultCta">احجز استشارة</a>
                 </div>
                 <div class="trust-pills" data-reveal>
-                    <p class="trust-pills-title" data-skey="hero.trustHeading">معتمدون لدى جهات موثوقة</p>
-                    <ul class="trust-pills-list">
+                    <span class="trust-label" data-skey="hero.trustLabel">معتمد من جهات موثوقة</span>
+                    <ul class="trust-list">
                         <li class="trust-pill">
-                            <img src="assets/trust-license.svg" alt="" role="presentation" width="32" height="32" />
-                            <span data-skey="hero.trustPillOne">شهادة ترخيص الموارد البشرية</span>
+                            <img src="assets/trust-family-council.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" />
+                            <span class="sr-only" data-skey="hero.trustPillCouncil">شهادة هيئة تنمية الأسرة</span>
                         </li>
                         <li class="trust-pill">
-                            <img src="assets/trust-privacy.svg" alt="" role="presentation" width="32" height="32" />
-                            <span data-skey="hero.trustPillTwo">متوافقون مع معايير حماية البيانات</span>
+                            <img src="assets/trust-privacy-shield.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" />
+                            <span class="sr-only" data-skey="hero.trustPillPrivacy">اعتماد حماية البيانات</span>
                         </li>
                         <li class="trust-pill">
-                            <img src="assets/trust-council.svg" alt="" role="presentation" width="32" height="32" />
-                            <span data-skey="hero.trustPillThree">شراكات مع مستشارين معتمدين</span>
+                            <img src="assets/trust-counselors.svg" alt="" aria-hidden="true" width="48" height="48" loading="lazy" />
+                            <span class="sr-only" data-skey="hero.trustPillCounselors">شراكة مع شبكة المستشارين الأسريين</span>
                         </li>
                     </ul>
                 </div>
@@ -1124,18 +1158,13 @@
                         <div class="count" data-count data-metric="responseHours" data-to="48" data-skey="hero.counterHours">0</div>
                         <p data-skey="hero.counterHoursLabel">ساعة استجابة للمتابعة</p>
                     </div>
+                    <p class="metrics-status" data-metrics-status data-skey="hero.metricsFallback" hidden aria-live="polite" role="status">تعذّر تحميل أحدث الإحصائيات، نعرض قيماً تقديرية.</p>
                 </div>
                 <p class="hero-metrics-status" data-metrics-status data-skey="hero.metricsFallback" role="status" aria-live="polite" hidden>
                     تعذر تحميل الإحصائيات الآن. نعرض قيماً تقريبية.
                 </p>
             </div>
-            <div class="hero-visual" data-hero-visual>
-                <div class="hero-visual-media" aria-hidden="true"></div>
-                <div class="hero-visual-badge" data-reveal>
-                    <h3 data-skey="hero.visualBadgeTitle">رحلة آمنة وخاصة</h3>
-                    <p data-skey="hero.visualBadgeCopy">إشراف بشري مباشر، توثيق كامل، وخصوصية لا تتنازل عنها المنصة.</p>
-                </div>
-            </div>
+            <div class="hero-media" data-hero-visual aria-hidden="true"></div>
         </section>
 
         <section class="container" id="features">
@@ -1294,6 +1323,14 @@
             const localeMap = { ar: 'ar', en: 'en-US' };
             const counterAnimations = new Map();
             const langToggleButtons = Array.from(document.querySelectorAll('[data-lang-toggle]'));
+            const counterElements = Array.from(document.querySelectorAll('[data-count]'));
+            const metricsStatus = document.querySelector('[data-metrics-status]');
+            let metricsLoaded = false;
+            let metricsFetchFailed = false;
+            let metricsPromise = null;
+            if (metricsStatus) {
+                metricsStatus.setAttribute('aria-hidden', 'true');
+            }
             const I18N = {
                 ar: {
                     accessibility: {
@@ -1324,20 +1361,19 @@
                         heading: 'خصوصية حقيقية ومواءمة ذكية تصنع بداية مطمئنة',
                         subheading: 'سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.',
                         primaryCta: 'سجل اهتمامك',
-                        secondaryCta: 'احجز استشارة',
-                        trustHeading: 'معتمدون لدى جهات موثوقة',
-                        trustPillOne: 'شهادة ترخيص الموارد البشرية',
-                        trustPillTwo: 'متوافقون مع معايير حماية البيانات',
-                        trustPillThree: 'شراكات مع مستشارين معتمدين',
+                        secondaryCta: 'تعرّف على المزايا',
+                        consultCta: 'احجز استشارة',
                         counterMatches: '0',
                         counterMatchesLabel: 'مواءمة تمت بإشراف',
                         counterSuccess: '0',
                         counterSuccessLabel: 'معدّل رضا الأزواج',
                         counterHours: '0',
                         counterHoursLabel: 'ساعة استجابة للمتابعة',
-                        metricsFallback: 'تعذر تحميل الإحصائيات الآن. نعرض قيماً تقريبية.',
-                        visualBadgeTitle: 'رحلة آمنة وخاصة',
-                        visualBadgeCopy: 'إشراف بشري مباشر، توثيق كامل، وخصوصية لا تتنازل عنها المنصة.'
+                        trustLabel: 'معتمد من جهات موثوقة',
+                        trustPillCouncil: 'شهادة هيئة تنمية الأسرة',
+                        trustPillPrivacy: 'اعتماد حماية البيانات',
+                        trustPillCounselors: 'شراكة مع شبكة المستشارين الأسريين',
+                        metricsFallback: 'تعذّر تحميل أحدث الإحصائيات، نعرض قيماً تقديرية.'
                     },
                     features: {
                         heading: 'لماذا يثق بنا المقبلون على الزواج؟',
@@ -1467,20 +1503,19 @@
                         heading: 'True privacy and smart matching for a confident beginning',
                         subheading: 'Sakinah blends intelligent analysis with human review to align shared values while protecting your privacy every step of the way.',
                         primaryCta: 'Register your interest',
-                        secondaryCta: 'Book a consultation',
-                        trustHeading: 'Trusted by certified partners',
-                        trustPillOne: 'Licensed by the Ministry of Human Resources',
-                        trustPillTwo: 'Aligned with national data privacy standards',
-                        trustPillThree: 'Partnered with accredited family counselors',
+                        secondaryCta: 'Discover the benefits',
+                        consultCta: 'Book a consultation',
                         counterMatches: '0',
                         counterMatchesLabel: 'Matches overseen by our team',
                         counterSuccess: '0',
                         counterSuccessLabel: 'Couple satisfaction rate',
                         counterHours: '0',
                         counterHoursLabel: 'Hours to follow-up response',
-                        metricsFallback: 'We could not load live metrics. Showing approximate values.',
-                        visualBadgeTitle: 'Secure, human-led journey',
-                        visualBadgeCopy: 'Direct expert oversight, verified profiles, and uncompromising privacy safeguards.'
+                        trustLabel: 'Trusted by certification partners',
+                        trustPillCouncil: 'Certified by the Family Development Council',
+                        trustPillPrivacy: 'Accredited data protection partner',
+                        trustPillCounselors: 'Allied licensed family counselors',
+                        metricsFallback: 'We couldn’t load the latest metrics. Showing estimated values.'
                     },
                     features: {
                         heading: 'Why do couples trust us?',
@@ -1602,8 +1637,32 @@
                 });
             };
 
+            const updateCountersWithMetrics = (metrics) => {
+                if (!metrics || typeof metrics !== 'object') {
+                    return;
+                }
+
+                counterElements.forEach((el) => {
+                    const metricKey = el.dataset.metric;
+                    if (!metricKey || !(metricKey in metrics)) {
+                        return;
+                    }
+
+                    const value = Number(metrics[metricKey]);
+                    if (Number.isFinite(value)) {
+                        el.dataset.to = value;
+                    }
+                });
+            };
+
+            const showMetricsFallback = () => {
+                if (!metricsStatus) return;
+                metricsStatus.hidden = false;
+                metricsStatus.setAttribute('aria-hidden', 'false');
+            };
+
             const animateCounters = (lang) => {
-                const counters = document.querySelectorAll('[data-count]');
+                const counters = counterElements;
                 const locale = localeMap[lang] || 'en';
                 const formatter = new Intl.NumberFormat(locale);
 
@@ -1645,52 +1704,15 @@
                 });
             };
 
-            const heroMetricsStatus = document.querySelector('[data-metrics-status]');
-
-            const hydrateMetrics = async () => {
-                const counters = Array.from(document.querySelectorAll('[data-count][data-metric]'));
-                if (!counters.length) {
+            const runCounterAnimation = (lang) => {
+                if (metricsLoaded || metricsFetchFailed || !metricsPromise) {
+                    animateCounters(lang);
                     return;
                 }
 
-                try {
-                    const response = await fetch('/api/metrics.json', {
-                        headers: { Accept: 'application/json' },
-                        cache: 'no-store'
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`Request failed with status ${response.status}`);
-                    }
-
-                    const metrics = await response.json();
-
-                    counters.forEach((counter) => {
-                        const metricKey = counter.dataset.metric;
-                        const metric = metrics?.[metricKey];
-                        if (!metric || typeof metric.value === 'undefined') {
-                            return;
-                        }
-
-                        counter.dataset.to = metric.value;
-
-                        ['prefix', 'suffix', 'finalSuffix'].forEach((key) => {
-                            if (Object.prototype.hasOwnProperty.call(metric, key) && metric[key] !== undefined) {
-                                counter.dataset[key] = metric[key];
-                            }
-                        });
-                    });
-
-                    if (heroMetricsStatus) {
-                        heroMetricsStatus.hidden = true;
-                    }
-                } catch (error) {
-                    console.error('Failed to load live metrics', error);
-                    if (heroMetricsStatus) {
-                        heroMetricsStatus.hidden = false;
-                    }
-                    throw error;
-                }
+                metricsPromise.finally(() => {
+                    animateCounters(lang);
+                });
             };
 
             const applyLang = (lang) => {
@@ -1732,6 +1754,7 @@
                 });
 
                 updateYear();
+                runCounterAnimation(lang);
             };
 
             const initRevealObserver = () => {
@@ -1950,7 +1973,33 @@
                 });
             };
 
+            const fetchMetrics = () => {
+                metricsPromise = fetch('/api/metrics.json', { cache: 'no-cache' })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('Metrics request failed');
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        updateCountersWithMetrics(data || {});
+                        metricsFetchFailed = false;
+                        metricsLoaded = true;
+                        if (metricsStatus) {
+                            metricsStatus.hidden = true;
+                            metricsStatus.setAttribute('aria-hidden', 'true');
+                        }
+                    })
+                    .catch(() => {
+                        metricsFetchFailed = true;
+                        showMetricsFallback();
+                    });
+
+                return metricsPromise;
+            };
+
             initPlaceholderLinks();
+            fetchMetrics();
             applyLang(currentLang);
 
             hydrateMetrics()
