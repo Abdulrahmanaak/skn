@@ -66,6 +66,14 @@
             flex-direction: column;
         }
 
+        body.rtl {
+            direction: rtl;
+        }
+
+        body.ltr {
+            direction: ltr;
+        }
+
         img {
             max-width: 100%;
             display: block;
@@ -264,8 +272,12 @@
             background: radial-gradient(circle, rgba(255, 255, 255, 0.6), transparent 60%);
             opacity: 0;
             transform: rotate(25deg) translateY(40%);
-            animation: button-glow 3.2s infinite;
+            animation: none;
             pointer-events: none;
+        }
+
+        .btn-glow.is-glowing::after {
+            animation: button-glow 3.2s ease;
         }
 
         .lang-toggle {
@@ -283,6 +295,28 @@
 
         main {
             flex: 1;
+        }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        [data-hero-visual] {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        [data-hero-visual].is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
         section {
@@ -477,7 +511,18 @@
             inset-block: 0;
             inset-inline-end: 0.75rem;
             inline-size: 2px;
+            background: rgba(32, 26, 25, 0.12);
+        }
+
+        .timeline .progress {
+            position: absolute;
+            inset-inline-end: 0.75rem;
+            inset-block-start: 0;
+            inline-size: 2px;
+            height: 0;
+            border-radius: 999px;
             background: linear-gradient(180deg, var(--color-accent), transparent);
+            transition: height 0.4s ease;
         }
 
         .timeline-step {
@@ -489,8 +534,7 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .timeline-step::before {
-            content: "";
+        .timeline-step .dot {
             position: absolute;
             inset-block-start: 1.6rem;
             inset-inline-end: -0.85rem;
@@ -498,12 +542,35 @@
             block-size: 14px;
             border-radius: 50%;
             border: 3px solid var(--color-background);
+            background: rgba(216, 106, 74, 0.18);
+            box-shadow: 0 0 0 4px rgba(216, 106, 74, 0.08);
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-step .dot.is-active {
             background: var(--color-accent);
-            box-shadow: 0 0 0 4px rgba(216, 106, 74, 0.18);
+            box-shadow: 0 0 0 4px rgba(216, 106, 74, 0.24);
+            transform: scale(1.1);
         }
 
         .timeline-step:last-child {
             margin-block-end: 0;
+        }
+
+        html[dir="ltr"] .timeline {
+            padding-inline-start: clamp(1.5rem, 3vw, 2.5rem);
+            padding-inline-end: 0;
+        }
+
+        html[dir="ltr"] .timeline::before,
+        html[dir="ltr"] .timeline .progress {
+            inset-inline-start: 0.75rem;
+            inset-inline-end: auto;
+        }
+
+        html[dir="ltr"] .timeline-step .dot {
+            inset-inline-start: -0.85rem;
+            inset-inline-end: auto;
         }
 
         .marquee {
@@ -540,6 +607,10 @@
             gap: clamp(1.5rem, 4vw, 3rem);
             animation: marquee-scroll 28s linear infinite;
             will-change: transform;
+        }
+
+        .marquee.is-paused .marquee-track {
+            animation-play-state: paused;
         }
 
         .story-card {
@@ -813,6 +884,12 @@
             .marquee-track {
                 animation: none;
             }
+
+            [data-reveal],
+            [data-hero-visual] {
+                opacity: 1 !important;
+                transform: none !important;
+            }
         }
     </style>
 </head>
@@ -845,52 +922,52 @@
     <main>
         <section class="container hero" id="hero">
             <div class="hero-text">
-                <div class="pill" data-skey="hero.tagline">منصة التوفيق للزواج الموثوق</div>
-                <h1 data-skey="hero.heading">خصوصية حقيقية ومواءمة ذكية تصنع بداية مطمئنة</h1>
-                <p data-skey="hero.subheading">سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.</p>
-                <div class="hero-ctas">
+                <div class="pill" data-reveal data-skey="hero.tagline">منصة التوفيق للزواج الموثوق</div>
+                <h1 data-reveal data-skey="hero.heading">خصوصية حقيقية ومواءمة ذكية تصنع بداية مطمئنة</h1>
+                <p data-reveal data-skey="hero.subheading">سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.</p>
+                <div class="hero-ctas" data-reveal>
                     <a class="btn btn-primary btn-glow" href="#register" data-skey="hero.primaryCta">سجل اهتمامك</a>
                     <a class="btn btn-soft" href="#features" data-skey="hero.secondaryCta">تعرّف على المزايا</a>
                 </div>
-                <div class="hero-counters">
-                    <div class="counter-card">
+                <div class="hero-counters" data-reveal>
+                    <div class="counter-card" data-reveal>
                         <div class="count" data-count data-to="1200" data-final-suffix="+" data-skey="hero.counterMatches">0</div>
                         <p data-skey="hero.counterMatchesLabel">مواءمة تمت بإشراف</p>
                     </div>
-                    <div class="counter-card">
+                    <div class="counter-card" data-reveal>
                         <div class="count" data-count data-to="87" data-suffix="%" data-final-suffix="%" data-skey="hero.counterSuccess">0</div>
                         <p data-skey="hero.counterSuccessLabel">معدّل رضا الأزواج</p>
                     </div>
-                    <div class="counter-card">
+                    <div class="counter-card" data-reveal>
                         <div class="count" data-count data-to="48" data-skey="hero.counterHours">0</div>
                         <p data-skey="hero.counterHoursLabel">ساعة استجابة للمتابعة</p>
                     </div>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-visual" data-hero-visual>
                 <div class="rings-illustration" aria-hidden="true"></div>
             </div>
         </section>
 
         <section class="container" id="features">
-            <header>
+            <header data-reveal>
                 <h2 data-skey="features.heading">لماذا يثق بنا المقبلون على الزواج؟</h2>
                 <p data-skey="features.subheading">نمنحك رحلة زواج تنطلق من قيمك، وتبقى تحت رقابة فريق مختص يحفظ خصوصيتك.</p>
             </header>
             <div class="features-grid">
-                <article class="card">
+                <article class="card" data-reveal>
                     <h3 data-skey="features.curated.title">مواءمة بشرية مدعومة بالذكاء</h3>
                     <p data-skey="features.curated.copy">يستعرض فريق مختص ملفات المتقدمين ويستخدم خوارزميات التعلم الآلي للتأكد من توافق الاهتمامات والقيم العائلية.</p>
                 </article>
-                <article class="card">
+                <article class="card" data-reveal>
                     <h3 data-skey="features.guardians.title">محرّم ذكي</h3>
                     <p data-skey="features.guardians.copy">محادثاتك داخل المنصة تمر عبر إشراف حي يضمن التزام الحوار بالضوابط الشرعية ويمنع مشاركة معلومات حساسة قبل الوقت المناسب.</p>
                 </article>
-                <article class="card">
+                <article class="card" data-reveal>
                     <h3 data-skey="features.privacy.title">خصوصية مشددة</h3>
                     <p data-skey="features.privacy.copy">نخزّن البيانات الحساسة بتشفير متكامل ونخضع للوائح حماية البيانات المحلية والدولية.</p>
                 </article>
-                <article class="card">
+                <article class="card" data-reveal>
                     <h3 data-skey="features.coaching.title">تدريب ومتابعة</h3>
                     <p data-skey="features.coaching.copy">نوفّر جلسات استشارية قبل وبعد التوفيق لمساعدتك على تقييم الاختيار والتعامل مع الخطوات التالية بثقة.</p>
                 </article>
@@ -898,7 +975,7 @@
         </section>
 
         <section class="container split" id="register">
-            <div>
+            <div data-reveal>
                 <h2 data-skey="register.heading">سجّل اهتمامك خلال دقيقة</h2>
                 <p data-skey="register.copy">أجب عن أسئلة مصممة بعناية حول القيم، نمط الحياة، التوقعات، وحدّد تفضيلات التواصل. بعدها يتواصل معك فريقنا لتفعيل الملف.</p>
                 <ul>
@@ -908,7 +985,7 @@
                 </ul>
                 <a class="btn btn-primary" href="#cta" data-skey="register.cta">ابدأ التسجيل</a>
             </div>
-            <aside>
+            <aside data-reveal>
                 <h3 data-skey="register.about.title">عن سكينة</h3>
                 <p data-skey="register.about.copy">مبادرة مجتمعية متخصصة في التوفيق للزواج للمحافظين في المنطقة العربية. نعمل مع مستشارين شرعيين وأسريين لضمان معايير عالية للجدية والاحترام.</p>
                 <p data-skey="register.about.mission">مهمتنا خلق بيئة آمنة وعادلة تُمكّن الجميع من بناء أسرة على أسس راسخة.</p>
@@ -916,24 +993,29 @@
         </section>
 
         <section class="container" id="journey">
-            <header>
+            <header data-reveal>
                 <h2 data-skey="journey.heading">رحلة العميل مع سكينة</h2>
                 <p data-skey="journey.subheading">خطوات واضحة تحترم وقتك وتضمن جودة المطابقة من البداية حتى القرار.</p>
             </header>
-            <div class="timeline">
-                <div class="timeline-step">
+            <div class="timeline" data-timeline>
+                <div class="progress" aria-hidden="true"></div>
+                <div class="timeline-step" data-step data-reveal>
+                    <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step1.title">التسجيل والتحقق</h3>
                     <p data-skey="journey.step1.copy">املأ نموذج الاهتمامات، ثم قم بتوثيق الهوية والمستندات المطلوبة ليبدأ الفريق بمراجعتها.</p>
                 </div>
-                <div class="timeline-step">
+                <div class="timeline-step" data-step data-reveal>
+                    <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step2.title">جلسة المواءمة</h3>
                     <p data-skey="journey.step2.copy">استشارة مرئية أو صوتية مع أخصائي لمراجعة تفضيلاتك، ووضع حدود واضحة للتواصل.</p>
                 </div>
-                <div class="timeline-step">
+                <div class="timeline-step" data-step data-reveal>
+                    <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step3.title">التعارف المراقَب</h3>
                     <p data-skey="journey.step3.copy">محادثات آمنة داخل المنصة تشمل ملخصات يومية للمشرفين لضمان التزام السلوك.</p>
                 </div>
-                <div class="timeline-step">
+                <div class="timeline-step" data-step data-reveal>
+                    <div class="dot" aria-hidden="true"></div>
                     <h3 data-skey="journey.step4.title">القرار والمتابعة</h3>
                     <p data-skey="journey.step4.copy">عند التوافق، نساعدكما في تحديد الخطوات الشرعية والرسمية، ونقدّم متابعة بعدية عند الحاجة.</p>
                 </div>
@@ -941,22 +1023,22 @@
         </section>
 
         <section class="container" id="stories">
-            <header>
+            <header data-reveal>
                 <h2 data-skey="stories.heading">قصص نجاح ملهمة</h2>
                 <p data-skey="stories.subheading">اكتشف كيف ساعدت سكينة شركاءها على بدء حياة زوجية بطمأنينة.</p>
             </header>
-            <div class="marquee" aria-live="polite">
+            <div class="marquee" aria-live="polite" data-reveal data-marquee>
                 <div class="marquee-track">
-                    <article class="story-card" data-skey="stories.story1">"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم &amp; مازن</article>
-                    <article class="story-card" data-skey="stories.story2">"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة &amp; خالد</article>
-                    <article class="story-card" data-skey="stories.story3">"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى &amp; طارق</article>
-                    <article class="story-card" data-skey="stories.story4">"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة &amp; يوسف</article>
+                    <article class="story-card" data-reveal data-skey="stories.story1">"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم &amp; مازن</article>
+                    <article class="story-card" data-reveal data-skey="stories.story2">"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة &amp; خالد</article>
+                    <article class="story-card" data-reveal data-skey="stories.story3">"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى &amp; طارق</article>
+                    <article class="story-card" data-reveal data-skey="stories.story4">"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة &amp; يوسف</article>
                 </div>
             </div>
         </section>
 
         <section class="container" id="cta">
-            <div class="cta-band">
+            <div class="cta-band" data-reveal>
                 <h2 data-skey="cta.heading">ابدأ رحلتك نحو حياة زوجية مطمئنة</h2>
                 <p data-skey="cta.copy">انضم إلى مجتمع سكينة، وأنشئ ملفك خلال دقائق لتحصل على أول مواءمة خلال 48 ساعة.</p>
                 <a class="btn btn-soft" href="#register" data-skey="cta.ctaButton">سجّل اهتمامك</a>
@@ -964,22 +1046,22 @@
         </section>
 
         <section class="container" id="faq">
-            <header>
+            <header data-reveal>
                 <h2 data-skey="faq.heading">الأسئلة الشائعة</h2>
             </header>
-            <details open>
+            <details open data-reveal>
                 <summary data-skey="faq.q1">هل المنصة مخصصة للزواج الشرعي فقط؟</summary>
                 <p data-skey="faq.a1">نعم، سكينة تعمل حصراً وفق الأطر الشرعية والقيم المحلية، مع إشراف دائم لضمان الالتزام.</p>
             </details>
-            <details>
+            <details data-reveal>
                 <summary data-skey="faq.q2">كيف تتم المواءمة بين الطرفين؟</summary>
                 <p data-skey="faq.a2">نستخدم استبياناً شاملاً وخوارزميات مواءمة مدعومة بتقييم بشري لتقديم اقتراحات دقيقة.</p>
             </details>
-            <details>
+            <details data-reveal>
                 <summary data-skey="faq.q3">هل بياناتي الشخصية في أمان؟</summary>
                 <p data-skey="faq.a3">جميع البيانات الحساسة تُخزن بتشفير متقدم ولا تُشارك مع الطرف الآخر إلا بموافقتك.</p>
             </details>
-            <details>
+            <details data-reveal>
                 <summary data-skey="faq.q4">ماذا عن الرسوم؟</summary>
                 <p data-skey="faq.a4">التسجيل الأولي مجاني، مع خطط اشتراك مرنة للخدمات الاستشارية الإضافية.</p>
             </details>
@@ -1014,30 +1096,611 @@
                 <a class="btn btn-soft" href="https://t.me/sakinah" data-skey="footer.contactCta">تيليجرام</a>
             </div>
         </div>
-        <div class="footer-meta" data-skey="footer.meta">© <span data-year></span> سكينة. جميع الحقوق محفوظة.</div>
+        <div class="footer-meta" data-skey="footer.meta" data-allow-html="true">© <span data-year></span> سكينة. جميع الحقوق محفوظة.</div>
     </footer>
 
     <script>
-        document.querySelectorAll('[data-year]').forEach((el) => {
-            el.textContent = new Date().getFullYear();
-        });
-        document.querySelectorAll('[data-count]').forEach((el) => {
-            const target = Number(el.dataset.to || el.textContent.replace(/\D/g, ''));
-            const prefix = el.dataset.prefix || '';
-            const suffix = el.dataset.suffix || '';
-            const finalSuffix = el.dataset.finalSuffix || suffix;
-            const duration = 1600;
-            const start = performance.now();
+        document.addEventListener('DOMContentLoaded', () => {
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            const localeMap = { ar: 'ar', en: 'en-US' };
+            const counterAnimations = new Map();
+            const langToggleButtons = Array.from(document.querySelectorAll('[data-lang-toggle]'));
+            const I18N = {
+                ar: {
+                    meta: {
+                        title: 'سكينة | منصة الزواج الموثوقة',
+                        description: 'منصة سكينة للتوفيق للزواج بإشراف بشري وخصوصية عالية ومواءمة ذكية.'
+                    },
+                    brand: {
+                        initials: 'سك',
+                        name: 'سكينة'
+                    },
+                    nav: {
+                        features: 'المميزات',
+                        register: 'التسجيل',
+                        journey: 'الرحلة',
+                        faq: 'الأسئلة الشائعة',
+                        contact: 'تواصل',
+                        secondaryCta: 'تصفح المزايا',
+                        primaryCta: 'ابدأ الآن',
+                        lang: 'تغيير اللغة',
+                        langLabel: 'العربية'
+                    },
+                    hero: {
+                        tagline: 'منصة التوفيق للزواج الموثوق',
+                        heading: 'خصوصية حقيقية ومواءمة ذكية تصنع بداية مطمئنة',
+                        subheading: 'سكينة تجمع بين التحليل الذكي والمراجعة البشرية لتقريب القيم المتوافقة وحماية خصوصيتك في كل خطوة.',
+                        primaryCta: 'سجل اهتمامك',
+                        secondaryCta: 'تعرّف على المزايا',
+                        counterMatches: '0',
+                        counterMatchesLabel: 'مواءمة تمت بإشراف',
+                        counterSuccess: '0',
+                        counterSuccessLabel: 'معدّل رضا الأزواج',
+                        counterHours: '0',
+                        counterHoursLabel: 'ساعة استجابة للمتابعة'
+                    },
+                    features: {
+                        heading: 'لماذا يثق بنا المقبلون على الزواج؟',
+                        subheading: 'نمنحك رحلة زواج تنطلق من قيمك، وتبقى تحت رقابة فريق مختص يحفظ خصوصيتك.',
+                        curated: {
+                            title: 'مواءمة بشرية مدعومة بالذكاء',
+                            copy: 'يستعرض فريق مختص ملفات المتقدمين ويستخدم خوارزميات التعلم الآلي للتأكد من توافق الاهتمامات والقيم العائلية.'
+                        },
+                        guardians: {
+                            title: 'محرّم ذكي',
+                            copy: 'محادثاتك داخل المنصة تمر عبر إشراف حي يضمن التزام الحوار بالضوابط الشرعية ويمنع مشاركة معلومات حساسة قبل الوقت المناسب.'
+                        },
+                        privacy: {
+                            title: 'خصوصية مشددة',
+                            copy: 'نخزّن البيانات الحساسة بتشفير متكامل ونخضع للوائح حماية البيانات المحلية والدولية.'
+                        },
+                        coaching: {
+                            title: 'تدريب ومتابعة',
+                            copy: 'نوفّر جلسات استشارية قبل وبعد التوفيق لمساعدتك على تقييم الاختيار والتعامل مع الخطوات التالية بثقة.'
+                        }
+                    },
+                    register: {
+                        heading: 'سجّل اهتمامك خلال دقيقة',
+                        copy: 'أجب عن أسئلة مصممة بعناية حول القيم، نمط الحياة، التوقعات، وحدّد تفضيلات التواصل. بعدها يتواصل معك فريقنا لتفعيل الملف.',
+                        pointOne: 'نموذج شامل يغطي الجدية والالتزام',
+                        pointTwo: 'توثيق الهوية والتحقق الأمني',
+                        pointThree: 'تقييم شخصي من خبراء العلاقات الأسرية',
+                        cta: 'ابدأ التسجيل',
+                        about: {
+                            title: 'عن سكينة',
+                            copy: 'مبادرة مجتمعية متخصصة في التوفيق للزواج للمحافظين في المنطقة العربية. نعمل مع مستشارين شرعيين وأسريين لضمان معايير عالية للجدية والاحترام.',
+                            mission: 'مهمتنا خلق بيئة آمنة وعادلة تُمكّن الجميع من بناء أسرة على أسس راسخة.'
+                        }
+                    },
+                    journey: {
+                        heading: 'رحلة العميل مع سكينة',
+                        subheading: 'خطوات واضحة تحترم وقتك وتضمن جودة المطابقة من البداية حتى القرار.',
+                        step1: {
+                            title: 'التسجيل والتحقق',
+                            copy: 'املأ نموذج الاهتمامات، ثم قم بتوثيق الهوية والمستندات المطلوبة ليبدأ الفريق بمراجعتها.'
+                        },
+                        step2: {
+                            title: 'جلسة المواءمة',
+                            copy: 'استشارة مرئية أو صوتية مع أخصائي لمراجعة تفضيلاتك، ووضع حدود واضحة للتواصل.'
+                        },
+                        step3: {
+                            title: 'التعارف المراقَب',
+                            copy: 'محادثات آمنة داخل المنصة تشمل ملخصات يومية للمشرفين لضمان التزام السلوك.'
+                        },
+                        step4: {
+                            title: 'القرار والمتابعة',
+                            copy: 'عند التوافق، نساعدكما في تحديد الخطوات الشرعية والرسمية، ونقدّم متابعة بعدية عند الحاجة.'
+                        }
+                    },
+                    stories: {
+                        heading: 'قصص نجاح ملهمة',
+                        subheading: 'اكتشف كيف ساعدت سكينة شركاءها على بدء حياة زوجية بطمأنينة.',
+                        story1: '"تعرفنا على قيم مشتركة بسرعة دون مشاركة بيانات شخصية حتى جلسة الرؤية الشرعية." – ريم & مازن',
+                        story2: '"التدريب السابق للتعارف أعطانا أدوات حوار ناضج وحدّد توقعات واضحة." – عائشة & خالد',
+                        story3: '"المنصة سهّلت التواصل مع أهل العروس وقدمت تقارير موثوقة." – منى & طارق',
+                        story4: '"خصوصية عالية وفريق متفهم يشرح كل خطوة." – آمنة & يوسف'
+                    },
+                    cta: {
+                        heading: 'ابدأ رحلتك نحو حياة زوجية مطمئنة',
+                        copy: 'انضم إلى مجتمع سكينة، وأنشئ ملفك خلال دقائق لتحصل على أول مواءمة خلال 48 ساعة.',
+                        ctaButton: 'سجّل اهتمامك'
+                    },
+                    faq: {
+                        heading: 'الأسئلة الشائعة',
+                        q1: 'هل المنصة مخصصة للزواج الشرعي فقط؟',
+                        a1: 'نعم، سكينة تعمل حصراً وفق الأطر الشرعية والقيم المحلية، مع إشراف دائم لضمان الالتزام.',
+                        q2: 'كيف تتم المواءمة بين الطرفين؟',
+                        a2: 'نستخدم استبياناً شاملاً وخوارزميات مواءمة مدعومة بتقييم بشري لتقديم اقتراحات دقيقة.',
+                        q3: 'هل بياناتي الشخصية في أمان؟',
+                        a3: 'جميع البيانات الحساسة تُخزن بتشفير متقدم ولا تُشارك مع الطرف الآخر إلا بموافقتك.',
+                        q4: 'ماذا عن الرسوم؟',
+                        a4: 'التسجيل الأولي مجاني، مع خطط اشتراك مرنة للخدمات الاستشارية الإضافية.'
+                    },
+                    footer: {
+                        brandTitle: 'سكينة',
+                        brandCopy: 'منصة عربية للتوفيق للزواج تجمع بين التقنية والإشراف البشري، وتضمن رحلة تحترم قيم الأسرة.',
+                        linksTitle: 'روابط',
+                        links: {
+                            features: 'المميزات',
+                            register: 'التسجيل',
+                            journey: 'الرحلة',
+                            faq: 'الأسئلة الشائعة'
+                        },
+                        supportTitle: 'الدعم',
+                        support: {
+                            privacy: 'سياسة الخصوصية',
+                            terms: 'الشروط والأحكام',
+                            email: 'support@sakinah.sa'
+                        },
+                        contactTitle: 'تواصل معنا',
+                        contactCopy: 'يسعدنا الاستماع إليك عبر البريد أو تيليجرام للتعاون والاستفسارات.',
+                        contactCta: 'تيليجرام',
+                        meta: '© <span data-year></span> سكينة. جميع الحقوق محفوظة.'
+                    }
+                },
+                en: {
+                    meta: {
+                        title: 'Sakinah | Trusted Marriage Platform',
+                        description: 'Sakinah is a matchmaking platform with human oversight, strong privacy, and intelligent alignment.'
+                    },
+                    brand: {
+                        initials: 'SK',
+                        name: 'Sakinah'
+                    },
+                    nav: {
+                        features: 'Features',
+                        register: 'Register',
+                        journey: 'Journey',
+                        faq: 'FAQ',
+                        contact: 'Contact',
+                        secondaryCta: 'Explore benefits',
+                        primaryCta: 'Get started',
+                        lang: 'Change language',
+                        langLabel: 'English'
+                    },
+                    hero: {
+                        tagline: 'Trusted marriage matchmaking platform',
+                        heading: 'True privacy and smart matching for a confident beginning',
+                        subheading: 'Sakinah blends intelligent analysis with human review to align shared values while protecting your privacy every step of the way.',
+                        primaryCta: 'Register your interest',
+                        secondaryCta: 'Discover the benefits',
+                        counterMatches: '0',
+                        counterMatchesLabel: 'Matches overseen by our team',
+                        counterSuccess: '0',
+                        counterSuccessLabel: 'Couple satisfaction rate',
+                        counterHours: '0',
+                        counterHoursLabel: 'Hours to follow-up response'
+                    },
+                    features: {
+                        heading: 'Why do couples trust us?',
+                        subheading: 'We deliver a marriage journey grounded in your values with constant oversight that protects your privacy.',
+                        curated: {
+                            title: 'Human-guided matching enhanced by intelligence',
+                            copy: 'Our specialists review every profile and use machine learning insights to confirm aligned interests and family values.'
+                        },
+                        guardians: {
+                            title: 'Smart guardian',
+                            copy: 'In-platform conversations receive live moderation to keep dialogue within clear guidelines and prevent sharing sensitive details too early.'
+                        },
+                        privacy: {
+                            title: 'Heightened privacy',
+                            copy: 'We store sensitive data with end-to-end encryption and comply with local and international data protection regulations.'
+                        },
+                        coaching: {
+                            title: 'Coaching and follow-up',
+                            copy: 'We provide advisory sessions before and after introductions to help you evaluate the choice and navigate next steps with confidence.'
+                        }
+                    },
+                    register: {
+                        heading: 'Register your interest in a minute',
+                        copy: 'Answer carefully designed questions about values, lifestyle, and expectations, then set your communication preferences so our team can activate your profile.',
+                        pointOne: 'Comprehensive form covering seriousness and commitment',
+                        pointTwo: 'Identity verification and security screening',
+                        pointThree: 'Personal assessment from family relationship experts',
+                        cta: 'Begin registration',
+                        about: {
+                            title: 'About Sakinah',
+                            copy: 'A community initiative dedicated to marriage matchmaking for conservatives across the Arab region. We work with religious and family advisors to uphold high standards of seriousness and respect.',
+                            mission: 'Our mission is to create a safe, fair environment that empowers everyone to build a family on firm foundations.'
+                        }
+                    },
+                    journey: {
+                        heading: 'Your journey with Sakinah',
+                        subheading: 'Clear stages that respect your time and ensure quality matches from the start through the decision.',
+                        step1: {
+                            title: 'Registration and verification',
+                            copy: 'Fill out the interests form, then submit identity and required documents so our team can review them.'
+                        },
+                        step2: {
+                            title: 'Alignment session',
+                            copy: 'A video or voice consultation with a specialist to review your preferences and set clear communication boundaries.'
+                        },
+                        step3: {
+                            title: 'Monitored introductions',
+                            copy: 'Secure in-platform conversations with daily moderator summaries to keep every interaction on track.'
+                        },
+                        step4: {
+                            title: 'Decision and follow-up',
+                            copy: 'When you are ready to proceed, we guide you through formal and religious steps and offer post-match support when needed.'
+                        }
+                    },
+                    stories: {
+                        heading: 'Inspiring success stories',
+                        subheading: 'See how Sakinah helped partners begin married life with peace of mind.',
+                        story1: '"We quickly discovered shared values without sharing personal data until the supervised meeting." – Reem & Mazen',
+                        story2: '"The pre-introduction coaching gave us mature conversation tools and set clear expectations." – Aisha & Khaled',
+                        story3: '"The platform streamlined conversations with the bride’s family and provided reliable reports." – Muna & Tareq',
+                        story4: '"High privacy and an understanding team explained every step." – Amina & Youssef'
+                    },
+                    cta: {
+                        heading: 'Start your journey toward a tranquil marriage',
+                        copy: 'Join the Sakinah community and create your profile in minutes to receive your first match within 48 hours.',
+                        ctaButton: 'Register your interest'
+                    },
+                    faq: {
+                        heading: 'Frequently asked questions',
+                        q1: 'Is the platform exclusively for Sharia-compliant marriages?',
+                        a1: 'Yes, Sakinah operates strictly within local values and Sharia guidelines with continuous supervision to ensure adherence.',
+                        q2: 'How are matches created between both parties?',
+                        a2: 'We use a comprehensive questionnaire and alignment algorithms supported by human evaluation to deliver precise suggestions.',
+                        q3: 'Is my personal data safe?',
+                        a3: 'All sensitive data is stored with advanced encryption and is never shared with the other party without your consent.',
+                        q4: 'What about the fees?',
+                        a4: 'Initial registration is free, with flexible subscription plans for additional advisory services.'
+                    },
+                    footer: {
+                        brandTitle: 'Sakinah',
+                        brandCopy: 'An Arab matchmaking platform that combines technology with human oversight to ensure a journey that honors family values.',
+                        linksTitle: 'Links',
+                        links: {
+                            features: 'Features',
+                            register: 'Register',
+                            journey: 'Journey',
+                            faq: 'FAQ'
+                        },
+                        supportTitle: 'Support',
+                        support: {
+                            privacy: 'Privacy policy',
+                            terms: 'Terms & conditions',
+                            email: 'support@sakinah.sa'
+                        },
+                        contactTitle: 'Contact us',
+                        contactCopy: 'We would love to hear from you via email or Telegram for collaborations and inquiries.',
+                        contactCta: 'Telegram',
+                        meta: '© <span data-year></span> Sakinah. All rights reserved.'
+                    }
+                }
+            };
 
-            function step(timestamp) {
-                const progress = Math.min(1, (timestamp - start) / duration);
-                const value = Math.floor(target * progress);
-                const formatted = value.toLocaleString('ar-EG');
-                el.textContent = `${prefix}${formatted}${progress < 1 ? suffix : finalSuffix}`;
-                if (progress < 1) requestAnimationFrame(step);
-            }
+            let currentLang = document.documentElement.lang === 'en' ? 'en' : 'ar';
 
-            requestAnimationFrame(step);
+            const getTranslation = (lang, key) => {
+                const segments = key.split('.');
+                return segments.reduce((value, segment) => {
+                    if (value && Object.prototype.hasOwnProperty.call(value, segment)) {
+                        return value[segment];
+                    }
+                    return undefined;
+                }, I18N[lang]);
+            };
+
+            const updateYear = () => {
+                const year = new Date().getFullYear();
+                document.querySelectorAll('[data-year]').forEach((el) => {
+                    el.textContent = year;
+                });
+            };
+
+            const animateCounters = (lang) => {
+                const counters = document.querySelectorAll('[data-count]');
+                const locale = localeMap[lang] || 'en';
+                const formatter = new Intl.NumberFormat(locale);
+
+                counters.forEach((el) => {
+                    const target = Number(el.dataset.to || el.textContent.replace(/\D/g, '')) || 0;
+                    const prefix = el.dataset.prefix || '';
+                    const suffix = el.dataset.suffix || '';
+                    const finalSuffix = el.dataset.finalSuffix || suffix;
+
+                    if (counterAnimations.has(el)) {
+                        cancelAnimationFrame(counterAnimations.get(el));
+                        counterAnimations.delete(el);
+                    }
+
+                    if (prefersReducedMotion.matches) {
+                        el.textContent = `${prefix}${formatter.format(target)}${finalSuffix}`;
+                        return;
+                    }
+
+                    const start = performance.now();
+                    const duration = 1400;
+
+                    const step = (timestamp) => {
+                        const progress = Math.min(1, (timestamp - start) / duration);
+                        const value = Math.round(target * progress);
+                        const suffixToUse = progress < 1 ? suffix : finalSuffix;
+                        el.textContent = `${prefix}${formatter.format(value)}${suffixToUse}`;
+                        if (progress < 1) {
+                            const frameId = requestAnimationFrame(step);
+                            counterAnimations.set(el, frameId);
+                        } else {
+                            counterAnimations.delete(el);
+                        }
+                    };
+
+                    el.textContent = `${prefix}${formatter.format(0)}${suffix}`;
+                    const frameId = requestAnimationFrame(step);
+                    counterAnimations.set(el, frameId);
+                });
+            };
+
+            const applyLang = (lang) => {
+                if (!I18N[lang]) return;
+
+                currentLang = lang;
+                document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                document.body.classList.toggle('rtl', lang === 'ar');
+                document.body.classList.toggle('ltr', lang !== 'ar');
+
+                document.querySelectorAll('[data-skey]').forEach((el) => {
+                    const translation = getTranslation(lang, el.dataset.skey);
+                    if (translation === undefined) {
+                        return;
+                    }
+
+                    if (el.matches('[data-lang-toggle]')) {
+                        el.setAttribute('aria-label', translation);
+                        el.setAttribute('title', translation);
+                        return;
+                    }
+
+                    if (el.tagName === 'META') {
+                        el.setAttribute('content', translation);
+                        return;
+                    }
+
+                    if (el.dataset.allowHtml === 'true') {
+                        el.innerHTML = translation;
+                        return;
+                    }
+
+                    el.textContent = translation;
+                });
+
+                langToggleButtons.forEach((button) => {
+                    button.setAttribute('data-current-lang', lang);
+                });
+
+                updateYear();
+                animateCounters(lang);
+            };
+
+            const initRevealObserver = () => {
+                const heroVisual = document.querySelector('[data-hero-visual]');
+                const revealTargets = document.querySelectorAll('[data-reveal]');
+
+                if (prefersReducedMotion.matches) {
+                    revealTargets.forEach((el) => el.classList.add('is-visible'));
+                    if (heroVisual) {
+                        heroVisual.classList.add('is-visible');
+                    }
+                    return;
+                }
+
+                if (heroVisual) {
+                    const heroObserver = new IntersectionObserver((entries, observer) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.4, rootMargin: '0px 0px -40px 0px' });
+
+                    heroObserver.observe(heroVisual);
+                }
+
+                if (!revealTargets.length) return;
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+                revealTargets.forEach((el) => observer.observe(el));
+            };
+
+            const initTimeline = () => {
+                const timeline = document.querySelector('[data-timeline]');
+                if (!timeline) return;
+
+                const steps = Array.from(timeline.querySelectorAll('[data-step]'));
+                const progress = timeline.querySelector('.progress');
+                if (!steps.length || !progress) return;
+
+                const update = () => {
+                    const timelineRect = timeline.getBoundingClientRect();
+                    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+                    const viewportCenter = viewportHeight / 2;
+                    let filled = 0;
+
+                    if (viewportCenter <= timelineRect.top) {
+                        progress.style.height = '0px';
+                        steps.forEach((step) => {
+                            step.querySelector('.dot')?.classList.remove('is-active');
+                        });
+                        return;
+                    }
+
+                    steps.forEach((step) => {
+                        const rect = step.getBoundingClientRect();
+                        const stepCenter = rect.top + rect.height / 2;
+                        const dot = step.querySelector('.dot');
+                        if (viewportCenter >= stepCenter) {
+                            dot?.classList.add('is-active');
+                            filled = Math.max(filled, stepCenter - timelineRect.top);
+                        } else {
+                            dot?.classList.remove('is-active');
+                        }
+                    });
+
+                    if (viewportCenter >= timelineRect.bottom) {
+                        filled = timelineRect.height;
+                        steps.forEach((step) => step.querySelector('.dot')?.classList.add('is-active'));
+                    }
+
+                    const clamped = Math.max(0, Math.min(timelineRect.height, filled));
+                    progress.style.height = `${clamped}px`;
+                };
+
+                let ticking = false;
+                const requestUpdate = () => {
+                    if (!ticking) {
+                        ticking = true;
+                        requestAnimationFrame(() => {
+                            update();
+                            ticking = false;
+                        });
+                    }
+                };
+
+                window.addEventListener('scroll', requestUpdate, { passive: true });
+                window.addEventListener('resize', requestUpdate);
+                update();
+            };
+
+            const initMarquee = () => {
+                const marquee = document.querySelector('[data-marquee]');
+                if (!marquee) return;
+
+                const track = marquee.querySelector('.marquee-track');
+                if (!track || track.dataset.marqueeInit === 'true') return;
+
+                track.dataset.marqueeInit = 'true';
+
+                if (prefersReducedMotion.matches) {
+                    marquee.classList.add('is-paused');
+                    return;
+                }
+
+                const items = Array.from(track.children);
+                const clones = items.map((item) => {
+                    const clone = item.cloneNode(true);
+                    clone.classList.add('is-visible');
+                    clone.removeAttribute('data-reveal');
+                    clone.setAttribute('aria-hidden', 'true');
+                    return clone;
+                });
+
+                clones.forEach((clone) => track.appendChild(clone));
+
+                marquee.addEventListener('mouseenter', () => marquee.classList.add('is-paused'));
+                marquee.addEventListener('mouseleave', () => marquee.classList.remove('is-paused'));
+            };
+
+            const initFaq = () => {
+                const detailsList = Array.from(document.querySelectorAll('#faq details'));
+                if (!detailsList.length) return;
+
+                detailsList.forEach((detail, index) => {
+                    const summary = detail.querySelector('summary');
+                    const content = detail.querySelector('p');
+                    if (!summary || !content) return;
+
+                    const contentId = content.id || `faq-answer-${index + 1}`;
+                    content.id = contentId;
+                    summary.setAttribute('aria-controls', contentId);
+                    summary.setAttribute('aria-expanded', detail.open ? 'true' : 'false');
+
+                    detail.addEventListener('toggle', () => {
+                        summary.setAttribute('aria-expanded', detail.open ? 'true' : 'false');
+                        if (detail.open) {
+                            detailsList.forEach((other) => {
+                                if (other !== detail && other.open) {
+                                    other.open = false;
+                                    const otherSummary = other.querySelector('summary');
+                                    if (otherSummary) {
+                                        otherSummary.setAttribute('aria-expanded', 'false');
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            };
+
+            const initPlaceholderLinks = () => {
+                document.querySelectorAll('a[href="#"]').forEach((link) => {
+                    link.addEventListener('click', (event) => event.preventDefault());
+                });
+            };
+
+            const initButtonGlow = () => {
+                if (prefersReducedMotion.matches) return;
+
+                const glowButtons = document.querySelectorAll('.btn-glow');
+                glowButtons.forEach((button, index) => {
+                    if (button.dataset.glowInit === 'true') return;
+                    button.dataset.glowInit = 'true';
+
+                    const glowDuration = 3200;
+                    const cycleDuration = 3600;
+                    let showTimeout;
+                    let cycleTimeout;
+                    let startTimeout;
+
+                    const run = () => {
+                        button.classList.add('is-glowing');
+                        showTimeout = window.setTimeout(() => {
+                            button.classList.remove('is-glowing');
+                        }, glowDuration);
+                        cycleTimeout = window.setTimeout(run, cycleDuration);
+                    };
+
+                    startTimeout = window.setTimeout(run, index * 400);
+
+                    const resetTimers = () => {
+                        window.clearTimeout(showTimeout);
+                        window.clearTimeout(cycleTimeout);
+                        window.clearTimeout(startTimeout);
+                        startTimeout = undefined;
+                    };
+
+                    button.addEventListener('pointerenter', () => button.classList.add('is-glowing'));
+                    button.addEventListener('pointerleave', () => button.classList.remove('is-glowing'));
+
+                    document.addEventListener('visibilitychange', () => {
+                        if (document.hidden) {
+                            resetTimers();
+                            button.classList.remove('is-glowing');
+                        } else {
+                            resetTimers();
+                            startTimeout = window.setTimeout(run, 400);
+                        }
+                    });
+                });
+            };
+
+            initPlaceholderLinks();
+            applyLang(currentLang);
+
+            langToggleButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const nextLang = currentLang === 'ar' ? 'en' : 'ar';
+                    applyLang(nextLang);
+                });
+            });
+
+            initRevealObserver();
+            initTimeline();
+            initMarquee();
+            initFaq();
+            initButtonGlow();
         });
     </script>
 </body>
