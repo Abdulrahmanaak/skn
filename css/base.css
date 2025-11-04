@@ -1,0 +1,73 @@
+/* =========================
+   Sakinah – base.css
+   Purpose: CSS variables, color tokens, resets, typography.
+   Notes:
+   - Keep color tokens abstract; actual palette can be swapped later.
+   - Uses logical properties to support RTL/LTR.
+   - Respects prefers-reduced-motion.
+========================= */
+
+:root {
+  color-scheme: light;
+  /* Typography */
+  --font-base: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Rubik", system-ui, sans-serif;
+  --font-size-xs: clamp(0.8rem, 0.74rem + 0.2vw, 0.9rem);
+  --font-size-sm: clamp(0.9rem, 0.82rem + 0.3vw, 1rem);
+  --font-size-md: clamp(1rem, 0.96rem + 0.35vw, 1.12rem);
+  --font-size-lg: clamp(1.2rem, 1.08rem + 0.6vw, 1.6rem);
+  --font-size-xl: clamp(1.8rem, 1.4rem + 1.7vw, 2.8rem);
+
+  /* Palette tokens (can be re-mapped later from your color sheets) */
+  /* mapped via colors.css */
+  --bg: var(--canvas);
+  --surface: #ffffff;
+  --surface-alt: rgba(255,255,255,.75);
+  --ink: #201a19;
+  --ink-soft: #57443d;
+  --muted: #8d7a71;
+
+  /* Accent family (terracotta) */
+  --accent: var(--brand-500);
+  --accent-strong: var(--brand-600);
+  --accent-soft: var(--brand-200);
+
+  /* Semantic (placeholders; will remap when you confirm palette) */
+  --success-600: #1e9b52;
+  --warning-600: #f0a300;
+  --info-600: #0c8da0;
+  --danger-600: #bb2d2b;
+
+  --border: var(--gray-200);
+  --focus-ring: 0 0 0 3px rgba(216,106,74,.25);
+
+  /* Radii & shadows */
+  --r-sm: 10px;
+  --r: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+  --sh-sm: 0 6px 20px rgba(51, 33, 22, 0.12);
+  --sh-md: 0 14px 32px rgba(73, 44, 30, 0.16);
+  --sh-lg: 0 24px 60px rgba(73, 44, 30, 0.18);
+  --container-max: 1140px;
+  --transition: 220ms ease;
+}
+
+/* Reset + base */
+*,*::before,*::after{ box-sizing: border-box; }
+html { font-family: var(--font-base); background: var(--bg); color: var(--ink); scroll-behavior: smooth; }
+body { margin:0; min-height:100dvh; background:var(--bg); color:var(--ink); line-height:1.65; font-size:var(--font-size-md); display:flex; flex-direction:column; }
+img{ max-width:100%; display:block; }
+
+/* Accessibility helpers */
+.sr-only{ position:absolute; inline-size:1px; block-size:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+:focus-visible{ outline:none; box-shadow: var(--focus-ring); border-radius: var(--r-sm); }
+
+/* Typography scale */
+h1,h2,h3,h4{ font-family:var(--font-heading); color:var(--ink); margin-block:0 .75rem; }
+h1{ font-size: var(--font-size-xl); line-height:1.1; }
+h2{ font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem); }
+h3{ font-size: var(--font-size-lg); }
+h4{ font-size: clamp(1.05rem, .96rem + .2vw, 1.2rem); }
+p{ color: var(--ink-soft); margin-block:0 1rem; }
+a{ color: inherit; text-decoration: none; }

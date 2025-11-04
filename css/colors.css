@@ -1,0 +1,176 @@
+/* =====================================
+   Sakinah – colors.css
+   Tokens extracted/approximated from the provided palettes.
+   If you want exact sampling per swatch, we can wire a JSON map later.
+   Scales: 50 (lightest) → 900 (darkest)
+===================================== */
+
+/* Brand (Terracotta) */
+:root{
+  --brand-50:  #fff1ea;
+  --brand-100: #ffe4d7;
+  --brand-200: #f7c7b4;
+  --brand-300: #f0a487;
+  --brand-400: #e78669;
+  --brand-500: #d86a4a; /* primary */
+  --brand-600: #b75437;
+  --brand-700: #9a462f;
+  --brand-800: #7d3a28;
+  --brand-900: #442018;
+
+  /* Neutral Gray */
+  --gray-50:  #fafafa;
+  --gray-100: #f2f2f3;
+  --gray-200: #e6e6e8;
+  --gray-300: #d1d1d6;
+  --gray-400: #b0b0b6;
+  --gray-500: #8e8e95;
+  --gray-600: #6b6b74;
+  --gray-700: #4f4f59;
+  --gray-800: #31313a;
+  --gray-900: #1f1f26;
+
+  /* Success (Green) */
+  --success-50:  #ebfbf1;
+  --success-100: #d5f6e2;
+  --success-200: #a7eac4;
+  --success-300: #6fdc9f;
+  --success-400: #41c477;
+  --success-500: #25a85b;
+  --success-600: #1e8e4b;
+  --success-700: #186f3b;
+  --success-800: #12552d;
+
+  /* Warning (Golden) */
+  --warning-50:  #fff7da;
+  --warning-100: #ffefb6;
+  --warning-200: #ffdf6e;
+  --warning-300: #ffcc2f;
+  --warning-400: #f0b000;
+  --warning-500: #d09700;
+  --warning-600: #a87700;
+  --warning-700: #805a00;
+  --warning-800: #5f4300;
+
+  /* Info (Teal/Cyan) */
+  --info-50:  #e9fbff;
+  --info-100: #cff6fb;
+  --info-200: #9de9f2;
+  --info-300: #67d2e3;
+  --info-400: #29b4c8;
+  --info-500: #0c8da0;
+  --info-600: #0b7384;
+  --info-700: #0a5c69;
+  --info-800: #084650;
+
+  /* Danger (Red) */
+  --danger-50:  #ffecef;
+  --danger-100: #ffd6db;
+  --danger-200: #ffb0ba;
+  --danger-300: #ff7b8c;
+  --danger-400: #e45561;
+  --danger-500: #c93a3a;
+  --danger-600: #a43030;
+  --danger-700: #832727;
+  --danger-800: #621e1e;
+
+  /* Surfaces (from the palette background) */
+  --canvas: #fbf1ee;
+  --paper:  #ffffff;
+  --ink:    #201a19;
+  --ink-soft: #57443d;
+
+  /* Map to existing tokens */
+  --bg: var(--canvas);
+  --surface: var(--paper);
+  --surface-alt: rgba(255,255,255,.75);
+  --muted: var(--gray-600);
+  --accent: var(--brand-500);
+  --accent-strong: var(--brand-600);
+  --accent-soft: var(--brand-200);
+  --border: var(--gray-200);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--brand-500) 30%, transparent);
+}
+
+
+/* =====================
+   Dark theme (opt‑in)
+   Enable by adding: <html data-theme="dark">
+   Also auto-enable when user prefers dark (see utilities.css hook).
+===================== */
+:root[data-theme="dark"]{
+  /* Surfaces */
+  --canvas: #141116;
+  --paper:  #1b1720;
+  --ink:    #f7f3ff;
+  --ink-soft: #cbc3d6;
+
+  /* Brand in dark: slightly cooler/less orange for contrast */
+  --brand-50:  #2e1c1a;
+  --brand-100: #3b221f;
+  --brand-200: #5b2f27;
+  --brand-300: #7a3b2f;
+  --brand-400: #a24c3c;
+  --brand-500: #d86a4a;
+  --brand-600: #ea7c5b;
+  --brand-700: #f49b82;
+  --brand-800: #ffc6b6;
+  --brand-900: #ffe4d7;
+
+  /* Neutral */
+  --gray-50:  #1c1820;
+  --gray-100: #25212b;
+  --gray-200: #302c38;
+  --gray-300: #3b3744;
+  --gray-400: #4c4756;
+  --gray-500: #645f6f;
+  --gray-600: #857f91;
+  --gray-700: #aba5b9;
+  --gray-800: #d2cde0;
+  --gray-900: #f7f3ff;
+
+  /* Semantics tuned for dark contrast */
+  --success-50:  #0f2a1a;
+  --success-100: #144127;
+  --success-200: #145a34;
+  --success-300: #0b7a43;
+  --success-400: #15a058;
+  --success-500: #25a85b;
+  --success-600: #41c477;
+  --success-700: #6fdc9f;
+  --success-800: #a7eac4;
+
+  --warning-50:  #3a2a00;
+  --warning-100: #553a00;
+  --warning-200: #6f4b00;
+  --warning-300: #996800;
+  --warning-400: #c48700;
+  --warning-500: #f0b000;
+  --warning-600: #ffcc2f;
+  --warning-700: #ffdf6e;
+  --warning-800: #ffefb6;
+
+  --info-50:  #032a30;
+  --info-100: #073a42;
+  --info-200: #0b4a54;
+  --info-300: #0f5e6b;
+  --info-400: #14798a;
+  --info-500: #29b4c8;
+  --info-600: #67d2e3;
+  --info-700: #9de9f2;
+  --info-800: #cff6fb;
+
+  --danger-50:  #3a1216;
+  --danger-100: #4d161a;
+  --danger-200: #6a1d22;
+  --danger-300: #8d272e;
+  --danger-400: #b5333a;
+  --danger-500: #c93a3a;
+  --danger-600: #e45561;
+  --danger-700: #ff7b8c;
+  --danger-800: #ffb0ba;
+
+  --border: var(--gray-200);
+  --muted: var(--gray-600);
+  --surface-alt: rgba(255,255,255,.06);
+}
