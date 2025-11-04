@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title>Portrait illustration for Muna and Tareq</title>
+  <defs>
+    <linearGradient id="mtGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dff6ff" />
+      <stop offset="100%" stop-color="#1c78c0" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#mtGradient)" />
+  <g fill="#fff" font-family="'Rubik', Arial, sans-serif" font-size="34" font-weight="600" text-anchor="middle">
+    <text x="60" y="70">MT</text>
+  </g>
+</svg>

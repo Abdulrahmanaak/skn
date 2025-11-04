@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title>Portrait illustration for Amina and Youssef</title>
+  <defs>
+    <linearGradient id="ayGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e9f7d3" />
+      <stop offset="100%" stop-color="#5d9f3c" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#ayGradient)" />
+  <g fill="#fff" font-family="'Rubik', Arial, sans-serif" font-size="32" font-weight="600" text-anchor="middle">
+    <text x="60" y="70">AY</text>
+  </g>
+</svg>

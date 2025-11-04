@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-labelledby="title">
+  <title>Portrait illustration for Reem and Mazen</title>
+  <defs>
+    <linearGradient id="rmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fce0d6" />
+      <stop offset="100%" stop-color="#d86a4a" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#rmGradient)" />
+  <g fill="#fff" font-family="'Rubik', Arial, sans-serif" font-size="36" font-weight="600" text-anchor="middle">
+    <text x="60" y="70">RM</text>
+  </g>
+</svg>
