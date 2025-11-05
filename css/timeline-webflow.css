@@ -1,0 +1,283 @@
+/* =========================================================
+   Zigzag Timeline: cards vs independent visuals + motion
+   ========================================================= */
+
+/* 3 أعمدة: يسار | خط | يمين */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2px 1fr;
+  grid-auto-rows: auto;
+  column-gap: clamp(24px, 4vw, 56px);
+  row-gap: clamp(24px, 3.2vh, 44px);
+  padding-block: clamp(24px, 5vh, 56px);
+  overflow: visible;
+}
+
+/* السكة الخلفية الثابتة */
+.timeline::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1 / -1;
+  width: 2px;
+  background: var(--surface-200, #ece7e1);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* اجعل عناصر <li> تشارك في شبكة الـtimeline مباشرة */
+.timeline-tasks {
+  display: contents;
+}
+
+/* البطاقات */
+.timeline-task {
+  grid-row: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(16, 24, 40, .08);
+  padding: clamp(16px, 2.2vw, 24px);
+  position: relative;
+  z-index: 1;
+  align-self: center;
+}
+
+.timeline-task--right {
+  grid-column: 3;
+}
+
+/* البطاقة يمين */
+.timeline-task--left {
+  grid-column: 1;
+}
+
+/* البطاقة يسار */
+
+/* نصوص */
+.timeline-task__title {
+  margin: 0 0 .6rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.timeline-task__description {
+  margin: 0 0 .9rem;
+  line-height: 1.9;
+  color: var(--text-600, #4b4b4b);
+}
+
+.timeline-task__meta {
+  color: var(--text-500, #6b6b6b);
+  font-size: .95rem;
+  margin-top: .25rem;
+}
+
+.timeline-task__actions {
+  margin-top: 1rem;
+}
+
+.timeline-task__link {
+  display: inline-block;
+  padding: .7rem 1.3rem;
+  border-radius: 999px;
+  background: var(--brand-50, #fceee8);
+  color: #9a351b;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background .2s ease;
+}
+
+.timeline-task__link:hover {
+  background: var(--brand-100, #f8e2d8);
+}
+
+/* ألغي الديكورات القديمة إن وجدت */
+.timeline-task::before,
+.timeline-task__marker {
+  display: none !important;
+}
+
+/* عناصر الصور المستقلة */
+li.timeline-visual-item {
+  grid-row: auto;
+  position: relative;
+  z-index: 1;
+  align-self: center;
+}
+
+.timeline-visual {
+  display: block;
+  max-inline-size: 360px;
+  filter: drop-shadow(0 10px 28px rgba(16, 24, 40, .08));
+}
+
+.timeline-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+li.timeline-visual-item.visual-left {
+  grid-column: 1;
+  justify-self: end;
+}
+
+li.timeline-visual-item.visual-right {
+  grid-column: 3;
+  justify-self: start;
+}
+
+/* طبقة الحركة (خط التقدّم + النقطة) بطول القسم بالكامل */
+.timeline-scroller,
+.timeline-progress {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  width: 2px;
+  /* للحساب فقط؛ خط الخلفية يأتي من ::before */
+  z-index: 1;
+  /* تحت النقطة وفوق الخلفية */
+}
+
+/* مسار شفاف للحساب */
+.timeline-scroller__track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: transparent;
+}
+
+/* خط التقدّم الذي يُملأ رأسياً */
+.timeline-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 0;
+  background: var(--brand-300, #d68f73);
+  border-radius: 2px;
+  opacity: .95;
+  z-index: 2;
+  /* فوق السكة، تحت النقطة */
+}
+
+/* النقطة المتحركة — أعلى شيء بصرياً */
+.timeline-scroller__dot {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand-600, #006cd0);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+  z-index: 3;
+  /* فوق خط التقدم */
+  will-change: transform;
+}
+
+/* Responsive */
+@media (max-width:780px) {
+  .timeline {
+    display: block;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .timeline-tasks {
+    display: block;
+  }
+
+  .timeline-task,
+  li.timeline-visual-item {
+    margin-block: 16px;
+  }
+
+  .timeline-visual {
+    max-inline-size: 100%;
+  }
+}
+
+/* ---- Rail & dot perfect alignment (overrides) ---- */
+
+/* أخفِ الخط القديم لتفادي أي انزياح بصري */
+.timeline::before {
+  display: none !important;
+}
+
+/* اجعل المسار داخل scroller هو الخط المرئي نفسه */
+.timeline-scroller {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 0;
+  /* خلف كل شيء */
+  width: 2px;
+}
+
+.timeline-scroller__track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: var(--surface-200, #ece7e1);
+  /* الخط */
+  border-radius: 2px;
+  z-index: 0;
+}
+
+/* خطّ التقدّم فوق المسار */
+.timeline-progress {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  width: 2px;
+  z-index: 1;
+}
+
+.timeline-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 0;
+  /* يضبطه الـ JS */
+  background: var(--brand-300, #d68f73);
+  border-radius: 2px;
+  opacity: .95;
+  z-index: 1;
+}
+
+/* النقطة فوق الجميع ومتوسّطة تمامًا */
+.timeline-scroller__dot {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* فقط Y تتغير بالـ JS */
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand-600, #006cd0);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+  z-index: 2;
+  will-change: transform;
+}

@@ -7,25 +7,31 @@
   <title data-skey="meta.title">سكينة | منصة الزواج الموثوقة</title>
   <meta name="description" content="منصة سكينة للتوفيق للزواج بإشراف بشري وخصوصية عالية ومواءمة ذكية."
     data-skey="meta.description" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap">
+
+  <!-- ملفاتك الأصلية -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/colors.css">
   <link rel="preload" as="image" href="./assets/hero-rings.webp">
   <link rel="stylesheet" href="./css/layout.css">
   <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/timeline-webflow.css">
   <link rel="stylesheet" href="./css/utilities.css">
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">تخطي إلى المحتوى</a>
+
   <header class="site-header">
     <div class="container header-bar">
       <a class="brand" href="#hero" aria-label="Sakinah">
         <span class="brand-mark">سك</span>
         <span>سكينة</span>
       </a>
+
       <nav aria-label="التنقل الرئيسي" class="primary-nav">
         <ul>
           <li><a href="#features">المميزات</a></li>
@@ -36,6 +42,7 @@
           <li><a href="#contact">تواصل</a></li>
         </ul>
       </nav>
+
       <div class="nav-actions">
         <a class="btn btn-soft" href="#features">تصفح المزايا</a>
         <a class="btn btn-primary" href="#cta">ابدأ الآن</a>
@@ -74,7 +81,7 @@
           </div>
         </div>
       </div>
-      </div>
+
       <div class="hero-visual" data-hero-visual>
         <figure class="hero-figure">
           <img src="./assets/hero-rings.webp" alt="Engagement rings illustration" fetchpriority="high" decoding="async"
@@ -83,92 +90,93 @@
       </div>
     </section>
 
-    <!-- FEATURES (tabs) -->
+    <!-- FEATURES -->
     <section class="container" id="features">
-  <header class="section-header" data-reveal>
-    <span class="section-eyebrow">المزايا</span>
-    <h2>لماذا يثق بنا المقبلون على الزواج؟</h2>
-    <p>نعرض لك أهم ما يميز سكينة — ببساطة ووضوح.</p>
-  </header>
+      <header class="section-header" data-reveal>
+        <span class="section-eyebrow">المزايا</span>
+        <h2>لماذا يثق بنا المقبلون على الزواج؟</h2>
+        <p>نعرض لك أهم ما يميز سكينة — ببساطة ووضوح.</p>
+      </header>
 
-  <div id="features-grid" class="cards-grid" data-reveal>
-    <!-- card: privacy -->
-    <article class="card-elevated feature-card" aria-labelledby="feat-privacy-title">
-      <div class="feature-head">
-        <span class="icon-circle" aria-hidden="true">
-          <img src="./assets/feature-privacy.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
-        </span>
-        <h3 id="feat-privacy-title">الخصوصية أولًا</h3>
-      </div>
-      <p class="feature-desc" id="feat-privacy-desc">تشفير شامل وصلاحيات دقيقة ومراجعات التزام.</p>
-      <ul class="feature-points">
-        <li>تشفير محادثات ووثائق</li>
-        <li>صلاحيات عرض محسوبة</li>
-        <li>مراجعات امتثال دورية</li>
-      </ul>
-      <div class="feature-cta">
-        <button class="btn btn-soft" data-feature-cta="privacy" aria-describedby="feat-privacy-desc">تعرّف أكثر</button>
-      </div>
-    </article>
+      <div id="features-grid" class="cards-grid" data-reveal>
+        <!-- … بطاقات المزايا (بدون تغيير) … -->
+        <article class="card-elevated feature-card" aria-labelledby="feat-privacy-title">
+          <div class="feature-head">
+            <span class="icon-circle" aria-hidden="true">
+              <img src="./assets/feature-privacy.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
+            </span>
+            <h3 id="feat-privacy-title">الخصوصية أولًا</h3>
+          </div>
+          <p class="feature-desc" id="feat-privacy-desc">تشفير شامل وصلاحيات دقيقة ومراجعات التزام.</p>
+          <ul class="feature-points">
+            <li>تشفير محادثات ووثائق</li>
+            <li>صلاحيات عرض محسوبة</li>
+            <li>مراجعات امتثال دورية</li>
+          </ul>
+          <div class="feature-cta">
+            <button class="btn btn-soft" data-feature-cta="privacy" aria-describedby="feat-privacy-desc">تعرّف
+              أكثر</button>
+          </div>
+        </article>
 
-    <!-- card: guardians -->
-    <article class="card-elevated feature-card" aria-labelledby="feat-guardians-title">
-      <div class="feature-head">
-        <span class="icon-circle" aria-hidden="true">
-          <img src="./assets/feature-guardians.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
-        </span>
-        <h3 id="feat-guardians-title">إشراف بشري موثوق</h3>
-      </div>
-      <p class="feature-desc" id="feat-guardians-desc">حوار محترم بإشراف حيّ وتنبيهات تلقائية.</p>
-      <ul class="feature-points">
-        <li>تنبيهات عند المخالفات</li>
-        <li>قوالب رسائل محترمة</li>
-        <li>تقارير موجزة للأولياء</li>
-      </ul>
-      <div class="feature-cta">
-        <button class="btn btn-soft" data-feature-cta="guardians" aria-describedby="feat-guardians-desc">تعرّف أكثر</button>
-      </div>
-    </article>
+        <article class="card-elevated feature-card" aria-labelledby="feat-guardians-title">
+          <div class="feature-head">
+            <span class="icon-circle" aria-hidden="true">
+              <img src="./assets/feature-guardians.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
+            </span>
+            <h3 id="feat-guardians-title">إشراف بشري موثوق</h3>
+          </div>
+          <p class="feature-desc" id="feat-guardians-desc">حوار محترم بإشراف حيّ وتنبيهات تلقائية.</p>
+          <ul class="feature-points">
+            <li>تنبيهات عند المخالفات</li>
+            <li>قوالب رسائل محترمة</li>
+            <li>تقارير موجزة للأولياء</li>
+          </ul>
+          <div class="feature-cta">
+            <button class="btn btn-soft" data-feature-cta="guardians" aria-describedby="feat-guardians-desc">تعرّف
+              أكثر</button>
+          </div>
+        </article>
 
-    <!-- card: curated -->
-    <article class="card-elevated feature-card feature-card--prominent" aria-labelledby="feat-curated-title">
-      <div class="feature-head">
-        <span class="icon-circle" aria-hidden="true">
-          <img src="./assets/feature-curated.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
-        </span>
-        <h3 id="feat-curated-title">مواءمة دقيقة</h3>
-      </div>
-      <p class="feature-desc" id="feat-curated-desc">تحليل ذكي + خبرة بشرية لرفع دقة الترشيحات.</p>
-      <ul class="feature-points">
-        <li>قياس توافق القيم</li>
-        <li>اقتراحات مدروسة</li>
-        <li>متابعة بعد اللقاء</li>
-      </ul>
-      <div class="feature-cta">
-        <button class="btn btn-soft" data-feature-cta="curated" aria-describedby="feat-curated-desc">تعرّف أكثر</button>
-      </div>
-    </article>
+        <article class="card-elevated feature-card feature-card--prominent" aria-labelledby="feat-curated-title">
+          <div class="feature-head">
+            <span class="icon-circle" aria-hidden="true">
+              <img src="./assets/feature-curated.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
+            </span>
+            <h3 id="feat-curated-title">مواءمة دقيقة</h3>
+          </div>
+          <p class="feature-desc" id="feat-curated-desc">تحليل ذكي + خبرة بشرية لرفع دقة الترشيحات.</p>
+          <ul class="feature-points">
+            <li>قياس توافق القيم</li>
+            <li>اقتراحات مدروسة</li>
+            <li>متابعة بعد اللقاء</li>
+          </ul>
+          <div class="feature-cta">
+            <button class="btn btn-soft" data-feature-cta="curated" aria-describedby="feat-curated-desc">تعرّف
+              أكثر</button>
+          </div>
+        </article>
 
-    <!-- card: coaching -->
-    <article class="card-elevated feature-card" aria-labelledby="feat-coaching-title">
-      <div class="feature-head">
-        <span class="icon-circle" aria-hidden="true">
-          <img src="./assets/feature-coaching.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
-        </span>
-        <h3 id="feat-coaching-title">تثقيف وإعداد</h3>
+        <article class="card-elevated feature-card" aria-labelledby="feat-coaching-title">
+          <div class="feature-head">
+            <span class="icon-circle" aria-hidden="true">
+              <img src="./assets/feature-coaching.svg" width="24" height="24" alt="" loading="lazy" decoding="async">
+            </span>
+            <h3 id="feat-coaching-title">تثقيف وإعداد</h3>
+          </div>
+          <p class="feature-desc" id="feat-coaching-desc">إرشاد قبل المواءمة ومتابعة بعدها بأدوات عملية.</p>
+          <ul class="feature-points">
+            <li>جلسات ما قبل المواءمة</li>
+            <li>متابعة بعد اللقاء الأول</li>
+            <li>أدوات وأسئلة للحوار</li>
+          </ul>
+          <div class="feature-cta">
+            <button class="btn btn-soft" data-feature-cta="coaching" aria-describedby="feat-coaching-desc">تعرّف
+              أكثر</button>
+          </div>
+        </article>
       </div>
-      <p class="feature-desc" id="feat-coaching-desc">إرشاد قبل المواءمة ومتابعة بعدها بأدوات عملية.</p>
-      <ul class="feature-points">
-        <li>جلسات ما قبل المواءمة</li>
-        <li>متابعة بعد اللقاء الأول</li>
-        <li>أدوات وأسئلة للحوار</li>
-      </ul>
-      <div class="feature-cta">
-        <button class="btn btn-soft" data-feature-cta="coaching" aria-describedby="feat-coaching-desc">تعرّف أكثر</button>
-      </div>
-    </article>
-  </div>
-</section>
+    </section>
 
     <!-- REGISTER -->
     <section class="container" id="register">
@@ -204,7 +212,6 @@
           <a class="btn btn-outline" href="#faq">الأسئلة الشائعة</a>
         </div>
       </div>
-      </div>
     </section>
 
     <!-- JOURNEY (Timeline) -->
@@ -214,21 +221,26 @@
         <p>من تسجيل الاهتمام وحتى القرار، كل خطوة مصممة لتكون واضحة وآمنة.</p>
       </header>
 
-      <div class="timeline section-block" data-timeline data-reveal>
+      <div class="timeline" data-timeline>
+        <!-- السكة كاملة + النقطة -->
+        <div class="timeline-scroller" aria-hidden="true">
+          <div class="timeline-scroller__track"></div>
+          <div class="timeline-scroller__dot"></div>
+        </div>
+
+        <!-- خط التقدّم المملوء -->
         <div class="timeline-progress" aria-hidden="true">
           <div class="timeline-progress-fill"></div>
         </div>
 
         <ol class="timeline-tasks">
-          <li id="journey-1" class="timeline-task timeline-task--right is-active" data-step="٠١" tabindex="0" aria-current="step">
-            <span class="timeline-task__marker" aria-hidden="true">٠١</span>
-            <span class="timeline-task__badge">
-              <span class="timeline-task__badge-label">مهمة</span>
-              <span class="timeline-task__badge-count">١</span>
-            </span>
+          <!-- 01: البطاقة يمين -->
+          <li id="journey-1" class="timeline-task timeline-task--right is-active" data-step="٠١" tabindex="0"
+            aria-current="step">
             <div class="timeline-task__body">
               <h3 class="timeline-task__title">افتح حسابًا مجانيًا</h3>
-              <p class="timeline-task__description">نطلب أقل قدر من البيانات للبدء، ويمكنك العودة لإكمال التفاصيل وقتما شئت.</p>
+              <p class="timeline-task__description">نطلب أقل قدر من البيانات للبدء، ويمكنك العودة لإكمال التفاصيل وقتما
+                شئت.</p>
               <div class="timeline-task__meta">متوسط الوقت: ٣ دقائق</div>
               <div class="timeline-task__actions">
                 <a class="timeline-task__link" href="#register">
@@ -238,67 +250,88 @@
               </div>
             </div>
           </li>
+          <!-- صورة مستقلة مقابلة (يسار) -->
+          <li class="timeline-visual-item visual-left">
+            <figure class="timeline-visual">
+              <img src="./assets/journey/01-check.png" alt="إنشاء حساب وتأكيده" width="280" height="220" loading="lazy"
+                decoding="async">
+            </figure>
+          </li>
+
+          <!-- 02: البطاقة يسار -->
           <li id="journey-2" class="timeline-task timeline-task--left" data-step="٠٢" tabindex="0">
-            <span class="timeline-task__marker" aria-hidden="true">٠٢</span>
-            <span class="timeline-task__badge">
-              <span class="timeline-task__badge-label">مهمة</span>
-              <span class="timeline-task__badge-count">٢</span>
-            </span>
             <div class="timeline-task__body">
               <h3 class="timeline-task__title">أكمل ملفك الذكي</h3>
-              <p class="timeline-task__description">أجب عن أسئلة القيم والأهداف العائلية لرفع دقة المواءمة وتخصيص الترشيحات.</p>
+              <p class="timeline-task__description">أجب عن أسئلة القيم والأهداف العائلية لرفع دقة المواءمة وتخصيص
+                الترشيحات.</p>
               <div class="timeline-task__meta">٥ محاور رئيسية + ملخص بصري للتقدم</div>
             </div>
           </li>
+          <!-- صورة مستقلة مقابلة (يمين) -->
+          <li class="timeline-visual-item visual-right">
+            <figure class="timeline-visual">
+              <img src="./assets/journey/02-search.png" alt="تحليل ذكي لبيانات الملف" width="280" height="220"
+                loading="lazy" decoding="async">
+            </figure>
+          </li>
+
+          <!-- 03: البطاقة يمين -->
           <li id="journey-3" class="timeline-task timeline-task--right" data-step="٠٣" tabindex="0">
-            <span class="timeline-task__marker" aria-hidden="true">٠٣</span>
-            <span class="timeline-task__badge">
-              <span class="timeline-task__badge-label">مهمة</span>
-              <span class="timeline-task__badge-count">٣</span>
-            </span>
             <div class="timeline-task__body">
               <h3 class="timeline-task__title">تحقق موثوق</h3>
-              <p class="timeline-task__description">فريق التحقق يراجع المستندات والسجل الاجتماعي لضمان الجدية وتوافق المعايير.</p>
-              <div class="timeline-task__actions">
-                <span class="timeline-task__chip">١٢ نقطة تدقيق</span>
-              </div>
+              <p class="timeline-task__description">فريق التحقق يراجع المستندات والسجل الاجتماعي لضمان الجدية وتوافق
+                المعايير.</p>
+              <div class="timeline-task__meta">١٢ نقطة تدقيق</div>
             </div>
           </li>
+          <!-- صورة مستقلة مقابلة (يسار) -->
+          <li class="timeline-visual-item visual-left">
+            <figure class="timeline-visual">
+              <img src="./assets/journey/03-start.png" alt="بدء التحقق والمراجعة" width="280" height="220"
+                loading="lazy" decoding="async">
+            </figure>
+          </li>
+
+          <!-- 04: البطاقة يسار -->
           <li id="journey-4" class="timeline-task timeline-task--left" data-step="٠٤" tabindex="0">
-            <span class="timeline-task__marker" aria-hidden="true">٠٤</span>
-            <span class="timeline-task__badge">
-              <span class="timeline-task__badge-label">مهمة</span>
-              <span class="timeline-task__badge-count">٤</span>
-            </span>
             <div class="timeline-task__body">
               <h3 class="timeline-task__title">ترشيحات بشفافية</h3>
-              <p class="timeline-task__description">تستقبل ترشيحات عالية التوافق مع شرح نسبة التطابق والعوامل المؤثرة بشكل مبسط.</p>
+              <p class="timeline-task__description">تستقبل ترشيحات عالية التوافق مع شرح نسبة التطابق والعوامل المؤثرة
+                بشكل مبسط.</p>
               <div class="timeline-task__meta">تنبيهات فورية + تقارير قابلة للتنزيل</div>
             </div>
           </li>
+          <!-- صورة مستقلة مقابلة (يمين) -->
+          <li class="timeline-visual-item visual-right">
+            <figure class="timeline-visual">
+              <img src="./assets/journey/04-chat.png" alt="ترشيحات وشرح نسبة التطابق" width="280" height="220"
+                loading="lazy" decoding="async">
+            </figure>
+          </li>
+
+          <!-- 05: البطاقة يمين -->
           <li id="journey-5" class="timeline-task timeline-task--right" data-step="٠٥" tabindex="0">
-            <span class="timeline-task__marker" aria-hidden="true">٠٥</span>
-            <span class="timeline-task__badge">
-              <span class="timeline-task__badge-label">مهمة</span>
-              <span class="timeline-task__badge-count">٥</span>
-            </span>
             <div class="timeline-task__body">
               <h3 class="timeline-task__title">إشراف حوار مريح</h3>
-              <p class="timeline-task__description">يُدار الحوار بنبرة محترمة مع ضبط مشاركة البيانات الحساسة وإتاحة قوالب رسائل جاهزة.</p>
-              <div class="timeline-task__actions">
-                <span class="timeline-task__chip">مرشد أسري متواجد</span>
-              </div>
+              <p class="timeline-task__description">يُدار الحوار بنبرة محترمة مع ضبط مشاركة البيانات الحساسة وإتاحة
+                قوالب رسائل جاهزة.</p>
+              <div class="timeline-task__meta">مرشد أسري متواجد</div>
             </div>
           </li>
+          <!-- صورة مستقلة مقابلة (يسار) -->
+          <li class="timeline-visual-item visual-left">
+            <figure class="timeline-visual">
+              <img src="./assets/journey/04-chat.png" alt="حوار بإشراف وتنبيه للمخالفات" width="280" height="220"
+                loading="lazy" decoding="async">
+            </figure>
+          </li>
+
+          <!-- 06: البطاقة يسار -->
           <li id="journey-6" class="timeline-task timeline-task--left" data-step="٠٦" tabindex="0">
-            <span class="timeline-task__marker" aria-hidden="true">٠٦</span>
-            <span class="timeline-task__badge">
-              <span class="timeline-task__badge-label">مهمة</span>
-              <span class="timeline-task__badge-count">٦</span>
-            </span>
             <div class="timeline-task__body">
               <h3 class="timeline-task__title">قرار واضح ومدعوم</h3>
-              <p class="timeline-task__description">بعد اللقاء الأول، تحصل على جلسة متابعة ومذكرة أسئلة لتتخذ قرارًا واعيًا بثقة.</p>
+              <p class="timeline-task__description">بعد اللقاء الأول، تحصل على جلسة متابعة ومذكرة أسئلة لتتخذ قرارًا
+                واعيًا بثقة.</p>
               <div class="timeline-task__actions">
                 <button class="timeline-task__link" type="button" data-precheck-open>
                   <span>احجز جلسة متابعة</span>
@@ -307,14 +340,15 @@
               </div>
             </div>
           </li>
-        </ol>
+          <!-- صورة مستقلة مقابلة (يمين) -->
+          <li class="timeline-visual-item visual-right">
+            <figure class="timeline-visual">
+              <img src="./assets/journey/05-rings.png" alt="موافقة نهائية وإتمام التوفيق" width="280" height="220"
+                loading="lazy" decoding="async">
+            </figure>
+          </li>
 
-        <div class="timeline-footnote">
-          <div class="counter-card">
-            <div class="count" data-count data-to="14"></div>
-            <p>مدة المواءمة المتوسطة (يومًا)</p>
-          </div>
-        </div>
+        </ol>
       </div>
     </section>
 
@@ -344,7 +378,7 @@
       </div>
     </section>
 
-    <!-- TRUST (Badges) -->
+    <!-- TRUST -->
     <section class="container" id="trust">
       <header class="section-header" data-reveal>
         <h2>الثقة والامتثال</h2>
