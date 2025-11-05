@@ -141,6 +141,7 @@ li.timeline-visual-item.visual-right {
   /* للحساب فقط؛ خط الخلفية يأتي من ::before */
   z-index: 1;
   /* تحت النقطة وفوق الخلفية */
+  ;
 }
 
 /* مسار شفاف للحساب */
@@ -167,6 +168,7 @@ li.timeline-visual-item.visual-right {
   opacity: .95;
   z-index: 2;
   /* فوق السكة، تحت النقطة */
+  ;
 }
 
 /* النقطة المتحركة — أعلى شيء بصرياً */
@@ -206,6 +208,8 @@ li.timeline-visual-item.visual-right {
   .timeline-visual {
     max-inline-size: 100%;
   }
+
+  ;
 }
 
 /* ---- Rail & dot perfect alignment (overrides) ---- */

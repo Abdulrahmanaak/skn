@@ -6,20 +6,20 @@
 ===================================== */
 
 /* Brand (Terracotta) */
-:root{
-  --brand-50:  #fdf3ed;
+:root {
+  --brand-50: #fdf3ed;
   --brand-100: #f9e4d8;
   --brand-200: #f1cbb7;
   --brand-300: #e4a88f;
   --brand-400: #d58567;
-  --brand-500: #c16a4b; /* primary */
+  --brand-500: #c16a4b;
+  /* primary */
   --brand-600: #a9503a;
   --brand-700: #8c4131;
   --brand-800: #6f3327;
   --brand-900: #442018;
-
   /* Neutral Gray */
-  --gray-50:  #f7f6f2;
+  --gray-50: #f7f6f2;
   --gray-100: #efede7;
   --gray-200: #e3dfd7;
   --gray-300: #d4cec3;
@@ -29,9 +29,8 @@
   --gray-700: #686058;
   --gray-800: #4c453f;
   --gray-900: #302c27;
-
   /* Success (Green) */
-  --success-50:  #edf9f0;
+  --success-50: #edf9f0;
   --success-100: #d9f1e0;
   --success-200: #afdcbc;
   --success-300: #7ecb95;
@@ -40,9 +39,8 @@
   --success-600: #258047;
   --success-700: #1f6539;
   --success-800: #184d2c;
-
   /* Warning (Golden) */
-  --warning-50:  #fff6dc;
+  --warning-50: #fff6dc;
   --warning-100: #ffeab3;
   --warning-200: #ffd780;
   --warning-300: #f8bd45;
@@ -51,9 +49,8 @@
   --warning-600: #a06b16;
   --warning-700: #7a5113;
   --warning-800: #54380e;
-
   /* Info (Teal/Cyan) */
-  --info-50:  #e6f6fa;
+  --info-50: #e6f6fa;
   --info-100: #cceaf3;
   --info-200: #9ad4e3;
   --info-300: #66b8cf;
@@ -62,9 +59,8 @@
   --info-600: #1b6a82;
   --info-700: #165468;
   --info-800: #123f4f;
-
   /* Danger (Red) */
-  --danger-50:  #fcecee;
+  --danger-50: #fcecee;
   --danger-100: #f8d6db;
   --danger-200: #f1adb5;
   --danger-300: #e47988;
@@ -73,13 +69,11 @@
   --danger-600: #952f3e;
   --danger-700: #752430;
   --danger-800: #561b23;
-
   /* Surfaces (from the palette background) */
   --canvas: #f8f6f2;
-  --paper:  #ffffff;
-  --ink:    #2b2622;
+  --paper: #ffffff;
+  --ink: #2b2622;
   --ink-soft: #5f574f;
-
   /* Map to existing tokens */
   --bg: var(--gray-50);
   --surface: var(--paper);
@@ -98,15 +92,14 @@
    Enable by adding: <html data-theme="dark">
    Also auto-enable when user prefers dark (see utilities.css hook).
 ===================== */
-:root[data-theme="dark"]{
+:root[data-theme="dark"] {
   /* Surfaces */
   --canvas: #141116;
-  --paper:  #1b1720;
-  --ink:    #f7f3ff;
+  --paper: #1b1720;
+  --ink: #f7f3ff;
   --ink-soft: #cbc3d6;
-
   /* Brand in dark: slightly cooler/less orange for contrast */
-  --brand-50:  #2e1c1a;
+  --brand-50: #2e1c1a;
   --brand-100: #3b221f;
   --brand-200: #5b2f27;
   --brand-300: #7a3b2f;
@@ -116,13 +109,11 @@
   --brand-700: #f49b82;
   --brand-800: #ffc6b6;
   --brand-900: #ffe4d7;
-
   --accent: var(--brand-600);
   --accent-strong: var(--brand-700);
   --accent-soft: color-mix(in srgb, var(--brand-500) 35%, transparent);
-
   /* Neutral */
-  --gray-50:  #1c1820;
+  --gray-50: #1c1820;
   --gray-100: #25212b;
   --gray-200: #302c38;
   --gray-300: #3b3744;
@@ -132,9 +123,8 @@
   --gray-700: #aba5b9;
   --gray-800: #d2cde0;
   --gray-900: #f7f3ff;
-
   /* Semantics tuned for dark contrast */
-  --success-50:  #0f2a1a;
+  --success-50: #0f2a1a;
   --success-100: #144127;
   --success-200: #145a34;
   --success-300: #0b7a43;
@@ -143,8 +133,7 @@
   --success-600: #41c477;
   --success-700: #6fdc9f;
   --success-800: #a7eac4;
-
-  --warning-50:  #3a2a00;
+  --warning-50: #3a2a00;
   --warning-100: #553a00;
   --warning-200: #6f4b00;
   --warning-300: #996800;
@@ -153,8 +142,7 @@
   --warning-600: #ffcc2f;
   --warning-700: #ffdf6e;
   --warning-800: #ffefb6;
-
-  --info-50:  #032a30;
+  --info-50: #032a30;
   --info-100: #073a42;
   --info-200: #0b4a54;
   --info-300: #0f5e6b;
@@ -163,8 +151,7 @@
   --info-600: #67d2e3;
   --info-700: #9de9f2;
   --info-800: #cff6fb;
-
-  --danger-50:  #3a1216;
+  --danger-50: #3a1216;
   --danger-100: #4d161a;
   --danger-200: #6a1d22;
   --danger-300: #8d272e;
@@ -173,8 +160,7 @@
   --danger-600: #e45561;
   --danger-700: #ff7b8c;
   --danger-800: #ffb0ba;
-
   --border: var(--gray-200);
   --muted: var(--gray-600);
-  --surface-alt: rgba(255,255,255,.06);
+  --surface-alt: rgba(255, 255, 255, .06);
 }
