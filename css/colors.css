@@ -7,89 +7,89 @@
 
 /* Brand (Terracotta) */
 :root{
-  --brand-50:  #fff1ea;
-  --brand-100: #ffe4d7;
-  --brand-200: #f7c7b4;
-  --brand-300: #f0a487;
-  --brand-400: #e78669;
-  --brand-500: #d86a4a; /* primary */
-  --brand-600: #b75437;
-  --brand-700: #9a462f;
-  --brand-800: #7d3a28;
+  --brand-50:  #fdf3ed;
+  --brand-100: #f9e4d8;
+  --brand-200: #f1cbb7;
+  --brand-300: #e4a88f;
+  --brand-400: #d58567;
+  --brand-500: #c16a4b; /* primary */
+  --brand-600: #a9503a;
+  --brand-700: #8c4131;
+  --brand-800: #6f3327;
   --brand-900: #442018;
 
   /* Neutral Gray */
-  --gray-50:  #fafafa;
-  --gray-100: #f2f2f3;
-  --gray-200: #e6e6e8;
-  --gray-300: #d1d1d6;
-  --gray-400: #b0b0b6;
-  --gray-500: #8e8e95;
-  --gray-600: #6b6b74;
-  --gray-700: #4f4f59;
-  --gray-800: #31313a;
-  --gray-900: #1f1f26;
+  --gray-50:  #f7f6f2;
+  --gray-100: #efede7;
+  --gray-200: #e3dfd7;
+  --gray-300: #d4cec3;
+  --gray-400: #bfb7ab;
+  --gray-500: #a2998e;
+  --gray-600: #827a70;
+  --gray-700: #686058;
+  --gray-800: #4c453f;
+  --gray-900: #302c27;
 
   /* Success (Green) */
-  --success-50:  #ebfbf1;
-  --success-100: #d5f6e2;
-  --success-200: #a7eac4;
-  --success-300: #6fdc9f;
-  --success-400: #41c477;
-  --success-500: #25a85b;
-  --success-600: #1e8e4b;
-  --success-700: #186f3b;
-  --success-800: #12552d;
+  --success-50:  #edf9f0;
+  --success-100: #d9f1e0;
+  --success-200: #afdcbc;
+  --success-300: #7ecb95;
+  --success-400: #4fb975;
+  --success-500: #2f9e58;
+  --success-600: #258047;
+  --success-700: #1f6539;
+  --success-800: #184d2c;
 
   /* Warning (Golden) */
-  --warning-50:  #fff7da;
-  --warning-100: #ffefb6;
-  --warning-200: #ffdf6e;
-  --warning-300: #ffcc2f;
-  --warning-400: #f0b000;
-  --warning-500: #d09700;
-  --warning-600: #a87700;
-  --warning-700: #805a00;
-  --warning-800: #5f4300;
+  --warning-50:  #fff6dc;
+  --warning-100: #ffeab3;
+  --warning-200: #ffd780;
+  --warning-300: #f8bd45;
+  --warning-400: #e8a729;
+  --warning-500: #c8891d;
+  --warning-600: #a06b16;
+  --warning-700: #7a5113;
+  --warning-800: #54380e;
 
   /* Info (Teal/Cyan) */
-  --info-50:  #e9fbff;
-  --info-100: #cff6fb;
-  --info-200: #9de9f2;
-  --info-300: #67d2e3;
-  --info-400: #29b4c8;
-  --info-500: #0c8da0;
-  --info-600: #0b7384;
-  --info-700: #0a5c69;
-  --info-800: #084650;
+  --info-50:  #e6f6fa;
+  --info-100: #cceaf3;
+  --info-200: #9ad4e3;
+  --info-300: #66b8cf;
+  --info-400: #3c9db9;
+  --info-500: #23839f;
+  --info-600: #1b6a82;
+  --info-700: #165468;
+  --info-800: #123f4f;
 
   /* Danger (Red) */
-  --danger-50:  #ffecef;
-  --danger-100: #ffd6db;
-  --danger-200: #ffb0ba;
-  --danger-300: #ff7b8c;
-  --danger-400: #e45561;
-  --danger-500: #c93a3a;
-  --danger-600: #a43030;
-  --danger-700: #832727;
-  --danger-800: #621e1e;
+  --danger-50:  #fcecee;
+  --danger-100: #f8d6db;
+  --danger-200: #f1adb5;
+  --danger-300: #e47988;
+  --danger-400: #d25464;
+  --danger-500: #b73c4e;
+  --danger-600: #952f3e;
+  --danger-700: #752430;
+  --danger-800: #561b23;
 
   /* Surfaces (from the palette background) */
-  --canvas: #fbf1ee;
+  --canvas: #f8f6f2;
   --paper:  #ffffff;
-  --ink:    #201a19;
-  --ink-soft: #57443d;
+  --ink:    #2b2622;
+  --ink-soft: #5f574f;
 
   /* Map to existing tokens */
-  --bg: var(--canvas);
+  --bg: var(--gray-50);
   --surface: var(--paper);
-  --surface-alt: rgba(255,255,255,.75);
+  --surface-alt: color-mix(in srgb, var(--paper) 80%, transparent);
   --muted: var(--gray-600);
   --accent: var(--brand-500);
   --accent-strong: var(--brand-600);
-  --accent-soft: var(--brand-200);
+  --accent-soft: var(--brand-100);
   --border: var(--gray-200);
-  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--brand-500) 30%, transparent);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
 
@@ -116,6 +116,10 @@
   --brand-700: #f49b82;
   --brand-800: #ffc6b6;
   --brand-900: #ffe4d7;
+
+  --accent: var(--brand-600);
+  --accent-strong: var(--brand-700);
+  --accent-soft: color-mix(in srgb, var(--brand-500) 35%, transparent);
 
   /* Neutral */
   --gray-50:  #1c1820;
