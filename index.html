@@ -215,60 +215,105 @@
       </header>
 
       <div class="timeline section-block" data-timeline data-reveal>
-        <div class="timeline-progress">
-          <div class="timeline-progress-bar" style="inline-size:0%">
-            <div class="counter-card">
-              <div class="count" data-count data-to="14"></div>
-              <p>مدة المواءمة المتوسطة (يومًا)</p>
-            </div>
-          </div>
+        <div class="timeline-progress" aria-hidden="true">
+          <div class="timeline-progress-fill"></div>
         </div>
 
-        <div class="timeline-nav">
-          <div class="timeline-nav-buttons">
-            <button class="timeline-nav-button is-active">1. فتح حساب</button>
-            <button class="timeline-nav-button">2. إكمال الملف</button>
-            <button class="timeline-nav-button">3. التحقق</button>
-            <button class="timeline-nav-button">4. الترشيحات</button>
-            <button class="timeline-nav-button">5. إشراف الحوار</button>
-            <button class="timeline-nav-button">6. قرار واضح</button>
-          </div>
-          <div class="timeline-nav-controls">
-            <button class="btn btn-soft" data-direction="prev" aria-label="السابق">السابق</button>
-            <button class="btn btn-primary" data-direction="next" aria-label="التالي">التالي</button>
-            <div class="counter-card">
-              <div class="count" data-count data-to="14"></div>
-              <p>مدة المواءمة المتوسطة (يومًا)</p>
+        <ol class="timeline-tasks">
+          <li id="journey-1" class="timeline-task timeline-task--right is-active" data-step="٠١" tabindex="0" aria-current="step">
+            <span class="timeline-task__marker" aria-hidden="true">٠١</span>
+            <span class="timeline-task__badge">
+              <span class="timeline-task__badge-label">مهمة</span>
+              <span class="timeline-task__badge-count">١</span>
+            </span>
+            <div class="timeline-task__body">
+              <h3 class="timeline-task__title">افتح حسابًا مجانيًا</h3>
+              <p class="timeline-task__description">نطلب أقل قدر من البيانات للبدء، ويمكنك العودة لإكمال التفاصيل وقتما شئت.</p>
+              <div class="timeline-task__meta">متوسط الوقت: ٣ دقائق</div>
+              <div class="timeline-task__actions">
+                <a class="timeline-task__link" href="#register">
+                  <span>سجّل اهتمامك الآن</span>
+                  <span aria-hidden="true">&#8592;</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
+          </li>
+          <li id="journey-2" class="timeline-task timeline-task--left" data-step="٠٢" tabindex="0">
+            <span class="timeline-task__marker" aria-hidden="true">٠٢</span>
+            <span class="timeline-task__badge">
+              <span class="timeline-task__badge-label">مهمة</span>
+              <span class="timeline-task__badge-count">٢</span>
+            </span>
+            <div class="timeline-task__body">
+              <h3 class="timeline-task__title">أكمل ملفك الذكي</h3>
+              <p class="timeline-task__description">أجب عن أسئلة القيم والأهداف العائلية لرفع دقة المواءمة وتخصيص الترشيحات.</p>
+              <div class="timeline-task__meta">٥ محاور رئيسية + ملخص بصري للتقدم</div>
+            </div>
+          </li>
+          <li id="journey-3" class="timeline-task timeline-task--right" data-step="٠٣" tabindex="0">
+            <span class="timeline-task__marker" aria-hidden="true">٠٣</span>
+            <span class="timeline-task__badge">
+              <span class="timeline-task__badge-label">مهمة</span>
+              <span class="timeline-task__badge-count">٣</span>
+            </span>
+            <div class="timeline-task__body">
+              <h3 class="timeline-task__title">تحقق موثوق</h3>
+              <p class="timeline-task__description">فريق التحقق يراجع المستندات والسجل الاجتماعي لضمان الجدية وتوافق المعايير.</p>
+              <div class="timeline-task__actions">
+                <span class="timeline-task__chip">١٢ نقطة تدقيق</span>
+              </div>
+            </div>
+          </li>
+          <li id="journey-4" class="timeline-task timeline-task--left" data-step="٠٤" tabindex="0">
+            <span class="timeline-task__marker" aria-hidden="true">٠٤</span>
+            <span class="timeline-task__badge">
+              <span class="timeline-task__badge-label">مهمة</span>
+              <span class="timeline-task__badge-count">٤</span>
+            </span>
+            <div class="timeline-task__body">
+              <h3 class="timeline-task__title">ترشيحات بشفافية</h3>
+              <p class="timeline-task__description">تستقبل ترشيحات عالية التوافق مع شرح نسبة التطابق والعوامل المؤثرة بشكل مبسط.</p>
+              <div class="timeline-task__meta">تنبيهات فورية + تقارير قابلة للتنزيل</div>
+            </div>
+          </li>
+          <li id="journey-5" class="timeline-task timeline-task--right" data-step="٠٥" tabindex="0">
+            <span class="timeline-task__marker" aria-hidden="true">٠٥</span>
+            <span class="timeline-task__badge">
+              <span class="timeline-task__badge-label">مهمة</span>
+              <span class="timeline-task__badge-count">٥</span>
+            </span>
+            <div class="timeline-task__body">
+              <h3 class="timeline-task__title">إشراف حوار مريح</h3>
+              <p class="timeline-task__description">يُدار الحوار بنبرة محترمة مع ضبط مشاركة البيانات الحساسة وإتاحة قوالب رسائل جاهزة.</p>
+              <div class="timeline-task__actions">
+                <span class="timeline-task__chip">مرشد أسري متواجد</span>
+              </div>
+            </div>
+          </li>
+          <li id="journey-6" class="timeline-task timeline-task--left" data-step="٠٦" tabindex="0">
+            <span class="timeline-task__marker" aria-hidden="true">٠٦</span>
+            <span class="timeline-task__badge">
+              <span class="timeline-task__badge-label">مهمة</span>
+              <span class="timeline-task__badge-count">٦</span>
+            </span>
+            <div class="timeline-task__body">
+              <h3 class="timeline-task__title">قرار واضح ومدعوم</h3>
+              <p class="timeline-task__description">بعد اللقاء الأول، تحصل على جلسة متابعة ومذكرة أسئلة لتتخذ قرارًا واعيًا بثقة.</p>
+              <div class="timeline-task__actions">
+                <button class="timeline-task__link" type="button" data-precheck-open>
+                  <span>احجز جلسة متابعة</span>
+                  <span aria-hidden="true">&#8592;</span>
+                </button>
+              </div>
+            </div>
+          </li>
+        </ol>
 
-        <div class="timeline-track"
-          style="display:flex; gap:1rem; overflow:auto; scroll-snap-type:x mandatory; padding: .5rem;">
-          <article id="journey-1" class="timeline-slide card" style="scroll-snap-align:center; min-inline-size:320px;">
-            <h3>فتح حساب</h3>
-            <p>نطلب أقل قدر من البيانات في البداية، ويمكنك الإكمال لاحقًا.</p>
-          </article>
-          <article id="journey-2" class="timeline-slide card" style="scroll-snap-align:center; min-inline-size:320px;">
-            <h3>إكمال الملف</h3>
-            <p>اذكر أولوياتك وقيمك العائلية لرفع دقة المواءمة.</p>
-          </article>
-          <article id="journey-3" class="timeline-slide card" style="scroll-snap-align:center; min-inline-size:320px;">
-            <h3>التحقق</h3>
-            <p>فريقنا يراجع الملفات للتأكد من الجدية وصحة البيانات.</p>
-          </article>
-          <article id="journey-4" class="timeline-slide card" style="scroll-snap-align:center; min-inline-size:320px;">
-            <h3>الترشيحات</h3>
-            <p>تستقبل ترشيحات مناسبة وتوضح لك نسبة التطابق وأسبابه.</p>
-          </article>
-          <article id="journey-5" class="timeline-slide card" style="scroll-snap-align:center; min-inline-size:320px;">
-            <h3>إشراف الحوار</h3>
-            <p>ننظّم الحوار بنبرة رسمية ونمنع مشاركة بيانات حساسة مبكرًا.</p>
-          </article>
-          <article id="journey-6" class="timeline-slide card" style="scroll-snap-align:center; min-inline-size:320px;">
-            <h3>قرار واضح</h3>
-            <p>بعد اللقاء الأول، نوفر جلسة متابعة لمساعدتك على اتخاذ القرار.</p>
-          </article>
+        <div class="timeline-footnote">
+          <div class="counter-card">
+            <div class="count" data-count data-to="14"></div>
+            <p>مدة المواءمة المتوسطة (يومًا)</p>
+          </div>
         </div>
       </div>
     </section>
