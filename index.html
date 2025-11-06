@@ -477,11 +477,7 @@
         </ul>
       </nav>
 
-      <button class="nav-icon-btn js-nav-open" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
-        <span class="nav-icon-bar"></span>
-        <span class="nav-icon-bar"></span>
-        <span class="nav-icon-bar"></span>
-      </button>
+      
 
       <div>
         <h3>الامتثال</h3>
@@ -516,6 +512,35 @@
   </div>
 
   <script type="module" src="./js/main.js" defer></script>
-</body>
+  <!-- Mobile Nav Drawer (ensured) -->
+  <div class="nav-overlay js-nav-close" hidden></div>
+  <aside class="nav-drawer" id="nav-drawer" aria-hidden="true" role="dialog" aria-label="قائمة جانبية">
+    <div class="nav-drawer__head">
+      <a class="brand" href="#hero" aria-label="Sakinah">
+        <img src="./assets/logo.png" alt="Logo" class="nav-logo">
+      </a>
+      <button class="nav-close js-nav-close" aria-label="إغلاق">✕</button>
+    </div>
 
+    <nav class="nav-drawer__links" aria-label="روابط القائمة الجانبية">
+      <!-- سيتم حقن الروابط تلقائيًا من .primary-nav عبر main.js -->
+    </nav>
+
+    <div class="nav-drawer__actions">
+      <div class="lang-pill js-lang" data-open="false">
+        <button class="lang-pill__btn js-lang-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu-mobile">
+          <span class="lang-pill__icon">🌐</span>
+          <span class="lang-pill__label">AR</span>
+        </button>
+        <div class="lang-menu" id="lang-menu-mobile" role="menu" aria-label="Language">
+          <button class="lang-opt js-lang-option" data-lang="ar" role="menuitem" aria-pressed="true">العربية</button>
+          <button class="lang-opt js-lang-option" data-lang="en" role="menuitem" aria-pressed="false">English</button>
+        </div>
+      </div>
+      <button class="theme-toggle js-theme-toggle" aria-pressed="false">🌓</button>
+      <a href="/login" class="btn btn-primary">تسجيل الدخول</a>
+    </div>
+  </aside>
+
+</body>
 </html>

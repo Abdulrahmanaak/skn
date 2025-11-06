@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const open = () => {
     if (!drawer) return;
     drawer.classList.add('is-open');
+    document.body.classList.add('drawer-open');
     drawer.setAttribute('aria-hidden', 'false');
     if (overlay) overlay.hidden = false;
     body.style.overflow = 'hidden';
@@ -84,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const close = () => {
     if (!drawer) return;
     drawer.classList.remove('is-open');
+    document.body.classList.remove('drawer-open');
     drawer.setAttribute('aria-hidden', 'true');
     if (overlay) overlay.hidden = true;
     body.style.overflow = '';

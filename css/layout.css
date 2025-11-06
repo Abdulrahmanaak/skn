@@ -313,9 +313,7 @@ header.site-header {
 
 /* ========== Responsive tweaks ========== */
 @media (max-width: 880px) {
-  nav ul {
-    display: none;
-  }
+  .site-header .primary-nav ul { display: none; }
 
   .header-bar {
     justify-content: space-between;
