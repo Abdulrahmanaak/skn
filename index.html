@@ -25,10 +25,7 @@
 <body>
   <header class="site-header">
     <div class="container header-bar">
-      <a class="brand" href="#hero" aria-label="Sakinah">
-        <span class="brand-mark">سك</span>
-        <span>سكينة</span>
-      </a>
+      <a class="brand" href="#hero" aria-label="Sakinah"><img src="./assets/logo.png" alt="Logo" class="nav-logo" decoding="async" fetchpriority="high" /></a>
 
       <nav aria-label="التنقل الرئيسي" class="primary-nav">
         <ul>
@@ -41,11 +38,26 @@
         </ul>
       </nav>
 
-      <div class="nav-actions">
-        <a class="btn btn-soft" href="#features">تصفح المزايا</a>
-        <a class="btn btn-primary" href="#cta">ابدأ الآن</a>
-        <button class="lang-toggle" type="button" data-lang-toggle><span>العربية</span></button>
-      </div>
+      <button class="nav-icon-btn js-nav-open" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
+        <span class="nav-icon-bar"></span>
+        <span class="nav-icon-bar"></span>
+        <span class="nav-icon-bar"></span>
+      </button>
+
+
+      <div class="nav-actions"><div class="lang-pill js-lang" data-open="false">
+          <button class="lang-pill__btn js-lang-trigger" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu">
+            <span class="lang-pill__icon">🌐</span>
+            <span class="lang-pill__label">AR</span>
+          </button>
+          <div class="lang-menu" id="lang-menu" role="menu" aria-label="Language">
+            <button class="lang-opt js-lang-option" data-lang="ar" role="menuitem" aria-pressed="true">العربية</button>
+            <button class="lang-opt js-lang-option" data-lang="en" role="menuitem" aria-pressed="false">English</button>
+          </div>
+        </div>
+        <button class="theme-toggle js-theme-toggle" aria-pressed="false">🌓</button>
+        <a href="/login" class="btn btn-primary">تسجيل الدخول</a>
+</div>
     </div>
   </header>
 
@@ -464,6 +476,13 @@
           <li><a href="#terms">الشروط والأحكام</a></li>
         </ul>
       </nav>
+
+      <button class="nav-icon-btn js-nav-open" aria-label="Open menu" aria-controls="nav-drawer" aria-expanded="false">
+        <span class="nav-icon-bar"></span>
+        <span class="nav-icon-bar"></span>
+        <span class="nav-icon-bar"></span>
+      </button>
+
       <div>
         <h3>الامتثال</h3>
         <p>نحترم القيم المحلية ومعايير حماية البيانات.</p>
