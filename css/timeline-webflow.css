@@ -137,7 +137,7 @@ li.timeline-visual-item.visual-right {
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
-  width: 2px;
+  width: 10px;
   /* للحساب فقط؛ خط الخلفية يأتي من ::before */
   z-index: 1;
   /* تحت النقطة وفوق الخلفية */
@@ -151,7 +151,7 @@ li.timeline-visual-item.visual-right {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 10px;
   background: transparent;
 }
 
@@ -161,7 +161,7 @@ li.timeline-visual-item.visual-right {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 10px;
   height: 0;
   background: var(--brand-300, #d68f73);
   border-radius: 2px;
@@ -214,7 +214,7 @@ li.timeline-visual-item.visual-right {
   pointer-events: none;
   z-index: 0;
   /* خلف كل شيء */
-  width: 2px;
+  width: 10px;
 }
 
 .timeline-scroller__track {
@@ -223,7 +223,7 @@ li.timeline-visual-item.visual-right {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 10px;
   background: var(--surface-200, #ece7e1);
   /* الخط */
   border-radius: 2px;
@@ -238,7 +238,7 @@ li.timeline-visual-item.visual-right {
   left: 50%;
   transform: translateX(-50%);
   pointer-events: none;
-  width: 2px;
+  width: 10px;
   z-index: 1;
 }
 
@@ -247,7 +247,7 @@ li.timeline-visual-item.visual-right {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
+  width: 10px;
   height: 0;
   /* يضبطه الـ JS */
   background: var(--brand-300, #d68f73);
