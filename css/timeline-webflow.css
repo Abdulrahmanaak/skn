@@ -171,21 +171,6 @@ li.timeline-visual-item.visual-right {
   ;
 }
 
-/* النقطة المتحركة — أعلى شيء بصرياً */
-.timeline-scroller__dot {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--brand-600, #006cd0);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
-  z-index: 3;
-  /* فوق خط التقدم */
-  will-change: transform;
-}
-
 /* Responsive */
 @media (max-width:780px) {
   .timeline {
@@ -269,19 +254,4 @@ li.timeline-visual-item.visual-right {
   border-radius: 2px;
   opacity: .95;
   z-index: 1;
-}
-
-/* النقطة فوق الجميع ومتوسّطة تمامًا */
-.timeline-scroller__dot {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  /* فقط Y تتغير بالـ JS */
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--brand-600, #006cd0);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
-  z-index: 2;
-  will-change: transform;
 }

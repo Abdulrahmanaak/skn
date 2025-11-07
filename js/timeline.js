@@ -23,7 +23,6 @@ export function initTimeline() {
   // السكة (اختياري)
   const scroller      = root.querySelector('.timeline-scroller');
   const scrollerTrack = root.querySelector('.timeline-scroller__track');
-  const scrollerDot   = root.querySelector('.timeline-scroller__dot');
 
   // --- وزّع الصور واربِطها بصفوف البطاقات ---
   function assignVisualSidesAndRows() {
@@ -104,7 +103,7 @@ export function initTimeline() {
   }
 
   function updateScroller(index) {
-    if (!scroller || !scrollerTrack || !scrollerDot) return;
+    if (!scroller || !scrollerTrack) return;
     const task = tasks[index]; if (!task) return;
 
     const tr = scrollerTrack.getBoundingClientRect();
@@ -120,7 +119,6 @@ export function initTimeline() {
     }
 
     const max = Math.max(0, Math.min(anchor, tr.height));
-    scrollerDot.style.transform = `translateY(${max}px)`;
   }
 
   function syncHash(id) {
