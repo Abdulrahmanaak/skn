@@ -1183,3 +1183,98 @@ body.drawer-open .nav-overlay {
   color: var(--muted);
 }
 
+
+
+/* ===== Register – visual enhancements ===== */
+#register {
+  border-radius: 28px;
+  padding-block: clamp(2rem, 6vw, 4rem);
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle gradient tint */
+#register::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(1200px 420px at 50% 0%,
+    color-mix(in srgb, var(--accent-soft) 28%, transparent),
+    transparent 60%);
+  pointer-events: none;
+  opacity: .6;
+}
+
+/* timeline line between cards */
+#register .cards-grid {
+  position: relative;
+  gap: clamp(1rem, 2.2vw, 1.6rem);
+}
+
+#register .cards-grid::before {
+  content: "";
+  position: absolute;
+  inset-inline: clamp(8px, 1.5vw, 14px);
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-radius: var(--r-pill);
+  opacity: .5;
+  /* hidden on small stacks (1-col) */
+}
+
+@media (max-width: 640px) {
+  #register .cards-grid::before { display: none; }
+}
+
+/* card hover sequencing (lift + icon emphasis) */
+.register-card {
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), filter var(--transition);
+}
+
+.register-card:is(:hover, :focus-visible) {
+  transform: translateY(-6px);
+  box-shadow: var(--sh-md);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.register-card:is(:active) {
+  transform: translateY(-2px);
+  filter: saturate(1.04);
+}
+
+/* chip color on hover/focus */
+.register-card:is(:hover, :focus-visible) .step-chip {
+  color: #fff;
+  background: linear-gradient(140deg, var(--brand-500), var(--brand-300));
+  border-color: color-mix(in srgb, var(--brand-500) 55%, transparent);
+  box-shadow: 0 12px 24px color-mix(in srgb, var(--brand-400) 25%, transparent);
+}
+
+/* icon gentle zoom on reveal */
+@keyframes step-icon-in {
+  from { transform: scale(.85); opacity: .0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.has-js [data-reveal] .step-icon { opacity: 0; transform: scale(.9); }
+[data-reveal].is-visible .step-icon { opacity: 1; transform: scale(1); animation: step-icon-in 420ms ease both; }
+
+/* icon emphasis on hover */
+.register-card:is(:hover, :focus-visible) .step-icon {
+  background: color-mix(in srgb, var(--accent-soft) 65%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+/* step meta small text */
+.step-meta{
+  display: inline-block;
+  margin-top: .35rem;
+  color: color-mix(in srgb, var(--muted) 72%, transparent);
+  font-size: var(--font-size-xs);
+}
+
