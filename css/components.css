@@ -1141,3 +1141,45 @@ body.drawer-open .nav-overlay {
   opacity: 1;
   transform: translateX(0);
 }
+
+/* ===== Register cards (added) ===== */
+.register-card { gap: .75rem; }
+
+.step-head{
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: .65rem;
+  min-block-size: 36px;
+}
+
+.step-chip{
+  inline-size: 34px; block-size: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  font-weight: 700; font-size: .95rem;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent-soft) 55%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  box-shadow: var(--sh-xs, 0 2px 8px rgba(0,0,0,.06));
+}
+
+.step-icon{
+  inline-size: 36px; block-size: 36px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent-soft) 45%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.register-card h3{
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.register-card p{
+  margin: 0 .25rem 0 0;
+  color: var(--muted);
+}
+
