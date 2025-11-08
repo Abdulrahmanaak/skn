@@ -189,8 +189,11 @@
 
 /* Strong zigzag: left down 1 card height, right up 1 card height (desktop only) */
 @media (min-width: 960px) {
+
   /* full card height shift */
-  :root { --zigzag-stagger: clamp(120px, 22vh, 240px); }
+  :root {
+    --zigzag-stagger: clamp(120px, 22vh, 240px);
+  }
 
   /* Left column ↓ */
   .timeline-task--left {
@@ -220,4 +223,62 @@
       margin-block-end 0.45s ease,
       transform var(--transition);
   }
+}
+
+/* شارة الخطوة: عرض = عرض النص فقط + ارتفاع مضبوط */
+.timeline-task::before {
+  display: inline-flex;
+  /* ثبات الارتفاع */
+  align-items: center;
+  /* محاذاة عمودية دقيقة للنص */
+  justify-content: center;
+  height: calc(1em + 1.2rem);
+  /* نفس ارتفاع السطر تقريبًا */
+  padding: 0 .55rem;
+  /* أفقياً فقط */
+  line-height: 1;
+  /* يمنع تضخيم الارتفاع */
+  white-space: nowrap;
+  /* بلا التفاف */
+  box-sizing: border-box;
+
+  margin-bottom: .6rem;
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--brand-700);
+  background: color-mix(in srgb, var(--brand-100) 85%, white);
+  border: 1px solid color-mix(in srgb, var(--brand-300) 60%, transparent);
+  border-radius: 999px;
+  transition: background .25s ease, color .25s ease;
+  content: "";
+}
+
+.timeline-task:hover::before {
+  background: var(--brand-200);
+  color: var(--brand-800);
+}
+
+/* نص الشارة لكل خطوة */
+.timeline-task:nth-child(1)::before {
+  content: "الخطوة الأولى";
+}
+
+.timeline-task:nth-child(2)::before {
+  content: "الخطوة الثانية";
+}
+
+.timeline-task:nth-child(3)::before {
+  content: "الخطوة الثالثة";
+}
+
+.timeline-task:nth-child(4)::before {
+  content: "الخطوة الرابعة";
+}
+
+.timeline-task:nth-child(5)::before {
+  content: "الخطوة الخامسة";
+}
+
+.timeline-task:nth-child(6)::before {
+  content: "الخطوة السادسة";
 }
