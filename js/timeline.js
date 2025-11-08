@@ -38,35 +38,6 @@ export function initTimeline() {
 
         // ضع البطاقة في هذا الصف
         el.style.gridRow = String(row);
-
-        // ابحث عن أول عنصر صورة لاحق لها
-        let j = i + 1;
-        let visualLI = null;
-        while (j < children.length) {
-          const candidate = children[j];
-          if (!candidate.classList.contains('timeline-task') &&
-              candidate.querySelector?.('.timeline-visual')) {
-            visualLI = candidate;
-            break;
-          }
-          j++;
-        }
-
-        if (visualLI) {
-          // طبّق الفئات الأساسية
-          visualLI.classList.add('timeline-visual-item');
-          visualLI.classList.remove('visual-left', 'visual-right');
-
-          // جهة الصورة عكس جهة البطاقة
-          if (el.classList.contains('timeline-task--right')) {
-            visualLI.classList.add('visual-left');
-          } else {
-            visualLI.classList.add('visual-right');
-          }
-
-          // اجعل الصورة في نفس الصف
-          visualLI.style.gridRow = String(row);
-        }
       }
     }
   }

@@ -134,28 +134,6 @@ figure.card-elevated {
   --timeline-connector-length: clamp(1.35rem, 2.4vw, 2.25rem);
 }
 
-.timeline-tasks {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: clamp(1.15rem, 2vw, 1.75rem);
-  counter-reset: timeline-step;
-}
-
-.timeline-tasks::before {
-  content: "";
-  position: absolute;
-  inset-inline-start: var(--timeline-line-offset);
-  inset-block: 0;
-  inline-size: 2px;
-  block-size: 100%;
-  border-radius: var(--r-pill);
-  background: color-mix(in srgb, var(--ink) 12%, transparent);
-  opacity: .45;
-}
-
 .timeline-progress {
   position: absolute;
   inset-inline-start: var(--timeline-line-offset);
@@ -197,30 +175,6 @@ figure.card-elevated {
   animation-delay: calc(var(--timeline-index, 0) * 90ms);
 }
 
-.timeline-task:nth-child(1) {
-  --timeline-index: 0;
-}
-
-.timeline-task:nth-child(2) {
-  --timeline-index: 1;
-}
-
-.timeline-task:nth-child(3) {
-  --timeline-index: 2;
-}
-
-.timeline-task:nth-child(4) {
-  --timeline-index: 3;
-}
-
-.timeline-task:nth-child(5) {
-  --timeline-index: 4;
-}
-
-.timeline-task:nth-child(6) {
-  --timeline-index: 5;
-}
-
 @keyframes timeline-task-in {
   from {
     opacity: 0;
@@ -233,34 +187,6 @@ figure.card-elevated {
   }
 
   ;
-}
-
-.timeline-task::after {
-  content: "";
-  position: absolute;
-  inset-block-start: calc(var(--timeline-marker-offset) + (var(--timeline-marker-size) / 2) - 1px);
-  inline-size: var(--timeline-connector-length);
-  block-size: 2px;
-  border-radius: var(--r-pill);
-  background: color-mix(in srgb, var(--ink) 14%, transparent);
-  opacity: .45;
-  transition: opacity var(--transition), background var(--transition), inline-size var(--transition);
-  inset-inline-start: calc(var(--timeline-line-offset) + (var(--timeline-marker-size) / 2));
-}
-
-.timeline-task.timeline-task--left::after {
-  inset-inline-start: auto;
-  inset-inline-end: calc(var(--timeline-line-offset) + (var(--timeline-marker-size) / 2));
-}
-
-.timeline-task.is-active::after,
-.timeline-task.is-complete::after {
-  background: linear-gradient(90deg, var(--brand-400), var(--brand-200));
-  opacity: .9;
-}
-
-.timeline-task.timeline-task--left:is(.is-active, .is-complete)::after {
-  background: linear-gradient(270deg, var(--brand-400), var(--brand-200));
 }
 
 .timeline-task__body {
@@ -401,7 +327,7 @@ figure.card-elevated {
   box-shadow: 0 20px 36px color-mix(in srgb, var(--brand-500) 20%, transparent);
 }
 
-.timeline-task.is-active .timeline-task__marker {
+.timeline-task__marker {
   color: #fff;
   background: linear-gradient(140deg, var(--brand-500), var(--brand-300));
   border-color: color-mix(in srgb, var(--brand-500) 72%, transparent);
@@ -409,45 +335,40 @@ figure.card-elevated {
   --timeline-marker-lift: -3px;
 }
 
-.timeline-task.is-active .timeline-task__marker::after {
+.timeline-task__marker::after {
   background: #fff;
   opacity: 1;
   box-shadow: 0 0 0 10px color-mix(in srgb, var(--brand-400) 40%, transparent);
 }
 
-.timeline-task.is-active .timeline-task__badge {
+.timeline-task__badge {
   color: #fff;
   background: linear-gradient(120deg, var(--brand-500), var(--brand-400));
   border-color: color-mix(in srgb, var(--brand-500) 75%, transparent);
   box-shadow: 0 14px 28px color-mix(in srgb, var(--brand-500) 28%, transparent);
 }
 
-.timeline-task.is-active .timeline-task__title {
+.timeline-task__title {
   color: var(--brand-700);
 }
 
-.timeline-task.is-complete .timeline-task__marker {
+.timeline-task__marker {
   background: linear-gradient(140deg, color-mix(in srgb, var(--brand-100) 90%, transparent), color-mix(in srgb, var(--brand-50) 90%, transparent));
   border-color: color-mix(in srgb, var(--brand-300) 60%, transparent);
   color: var(--brand-600);
   box-shadow: 0 18px 32px rgba(32, 26, 25, .08);
 }
 
-.timeline-task.is-complete .timeline-task__marker::after {
+.timeline-task__marker::after {
   opacity: .9;
   background: color-mix(in srgb, var(--brand-400) 55%, transparent);
   box-shadow: 0 0 0 7px color-mix(in srgb, var(--brand-200) 50%, transparent);
 }
 
-.timeline-task.is-complete .timeline-task__badge {
+.timeline-task__badge {
   background: color-mix(in srgb, var(--brand-100) 82%, transparent);
   border-color: color-mix(in srgb, var(--brand-300) 60%, transparent);
   color: var(--brand-600);
-}
-
-.timeline-task:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--brand-500) 55%, transparent);
-  outline-offset: 3px;
 }
 
 .timeline-footnote {
@@ -460,10 +381,6 @@ figure.card-elevated {
 @media (prefers-reduced-motion: reduce) {
   .timeline-task {
     animation: none;
-  }
-
-  .timeline-task::after {
-    transition: none;
   }
 
   .timeline-task__marker,
@@ -484,15 +401,6 @@ figure.card-elevated {
     --timeline-connector-length: calc(var(--timeline-bridge) - (var(--timeline-marker-size) / 2));
   }
 
-  .timeline-tasks {
-    gap: clamp(2rem, 3vw, 2.75rem) clamp(1.5rem, 5vw, 4rem);
-    grid-template-columns: minmax(0, 1fr) var(--timeline-bridge) minmax(0, 1fr);
-  }
-
-  .timeline-tasks::before {
-    inset-inline-start: auto;
-  }
-
   .timeline-progress {
     inset-inline-start: auto;
     left: 50%;
@@ -504,35 +412,10 @@ figure.card-elevated {
     max-inline-size: min(420px, 100%);
   }
 
-  .timeline-task--right {
-    grid-column: 1 / 2;
-  }
-
-  .timeline-task--left {
-    grid-column: 3 / 4;
-    justify-self: start;
-  }
-
   .timeline-task__marker {
     inset-block-start: 50%;
     --timeline-marker-base-translate: -50%;
     box-shadow: 0 0 0 6px color-mix(in srgb, var(--surface) 88%, transparent);
-  }
-
-  .timeline-task::after {
-    inset-block-start: 50%;
-    inline-size: var(--timeline-connector-length);
-    transform: translateY(-50%);
-    opacity: .6;
-  }
-
-  .timeline-task.timeline-task--right::after {
-    inset-inline-start: calc(var(--timeline-line-offset) + (var(--timeline-marker-size) / 2));
-  }
-
-  .timeline-task.timeline-task--left::after {
-    inset-inline-start: auto;
-    inset-inline-end: calc(var(--timeline-line-offset) + (var(--timeline-marker-size) / 2));
   }
 
   .timeline-task__badge {
