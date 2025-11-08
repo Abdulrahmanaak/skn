@@ -477,9 +477,33 @@ figure.card-elevated {
 
 /* Footer */
 footer.site-footer {
-  background: #241e32;
-  color: #f7f3ff;
+  background: linear-gradient(180deg, var(--brand-600), var(--brand-800));
+  color: var(--gray-50);
   margin-block-start: clamp(4rem, 6vw, 6rem);
+}
+
+footer.site-footer h3 {
+  color: #fff;
+  font-weight: 700;
+}
+
+footer.site-footer p {
+  color: color-mix(in srgb, #fff 85%, transparent);
+}
+
+footer.site-footer a {
+  color: #fff;
+  transition: color 0.25s ease;
+}
+
+.site-footer a:hover {
+  color: var(--brand-300);
+}
+
+footer.site-footer img.nav-logo {
+  filter: brightness(0) invert(1);
+  height: 46px;
+  margin-bottom: 0.5rem;
 }
 
 .footer-grid {
@@ -494,7 +518,18 @@ footer.site-footer {
   text-align: center;
   padding-block: 1.5rem;
   font-size: .85rem;
-  color: rgba(247, 243, 255, .7);
+  color: color-mix(in srgb, #fff 70%, transparent);
+  border-color: color-mix(in srgb, #fff 15%, transparent);
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    text-align: center;
+  }
+
+  .footer-grid h3 {
+    margin-top: 1rem;
+  }
 }
 
 /* === Semantic Buttons === */
