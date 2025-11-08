@@ -192,7 +192,7 @@
 
   /* full card height shift */
   :root {
-    --zigzag-stagger: clamp(120px, 22vh, 240px);
+    --zigzag-stagger: clamp(32px, 6vh, 64px);
   }
 
   /* Left column ↓ */
