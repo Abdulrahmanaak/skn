@@ -720,14 +720,6 @@ footer.site-footer img.nav-logo {
   background: linear-gradient(160deg, color-mix(in srgb, var(--paper) 92%, transparent), color-mix(in srgb, var(--paper) 80%, transparent));
 }
 
-.cta-card {
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  border: 1px solid color-mix(in srgb, var(--border) 65%, transparent);
-  box-shadow: var(--sh-sm);
-  padding: clamp(2rem, 4vw, 2.8rem);
-}
-
 /* === Features — row layout with distinct background === */
 #features {
   background: var(--surface);

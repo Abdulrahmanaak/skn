@@ -209,10 +209,6 @@ header.site-header {
   justify-content: flex-start;
 }
 
-.hero-ctas--center {
-  justify-content: center;
-}
-
 .hero-trust {
   margin-block-start: .75rem;
   display: flex;
@@ -313,7 +309,9 @@ header.site-header {
 
 /* ========== Responsive tweaks ========== */
 @media (max-width: 880px) {
-  .site-header .primary-nav ul { display: none; }
+  .site-header .primary-nav ul {
+    display: none;
+  }
 
   .header-bar {
     justify-content: space-between;
