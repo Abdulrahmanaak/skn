@@ -8,6 +8,65 @@ import { initTimeline } from './timeline.js';
 import { initRevealAndCounters } from './reveal.js';
 import { initPrecheckModal } from './modal.js';
 
+// ===== Force Locks: Arabic + Light theme (temporary) =====
+(function lockLangAndTheme(){
+  const html = document.documentElement;
+  // وسم عام يفيد الـ CSS
+  html.setAttribute('data-locked', 'true');
+
+  // —— قفل اللغة على العربية ——
+  try{
+    // حفظ القيم المقفلة
+    localStorage.setItem('lang', 'ar');
+
+    // إجبار اتجاه الصفحة واللغة
+    html.lang = 'ar';
+    html.dir  = 'rtl';
+
+    // تطعيم setLocale بحيث تتجاهل أي محاولة تغيير للغة
+    import('./i18n.js').then(({ i18n })=>{
+      const originalSet = i18n.setLocale.bind(i18n);
+      i18n.setLocale = function(){ originalSet('ar'); };
+      // طبّق العربية الآن
+      i18n.setLocale('ar');
+    }).catch(()=>{});
+  }catch(e){}
+
+  // —— قفل الثيم على الفاتح ——
+  try{
+    const KEY = 'skn-theme';
+    localStorage.setItem(KEY, 'light');
+    html.setAttribute('data-theme', 'light');
+  }catch(e){}
+
+  // —— تعطيل أزرار التبديل واجهياً (مع بقاءها بالكود) ——
+  const disable = (el)=>{
+    if(!el) return;
+    el.setAttribute('aria-disabled','true');
+    el.setAttribute('tabindex','-1');
+    el.style.pointerEvents = 'none';
+    el.style.opacity = '0.45';
+  };
+
+  // لغة (كبسولة) + ثيم (زر القمر)
+  const langPills = document.querySelectorAll('.js-lang, [data-lang-toggle]');
+  const themeBtns = document.querySelectorAll('.js-theme-toggle, [data-theme-toggle]');
+  langPills.forEach(disable);
+  themeBtns.forEach(disable);
+
+  // منع أي استماع سابق بالنقر باستخدام طور الالتقاط
+  document.addEventListener('click', (e)=>{
+    if(e.target.closest('.js-theme-toggle') ||
+       e.target.closest('[data-theme-toggle]') ||
+       e.target.closest('.js-lang-option') ||
+       e.target.closest('[data-lang-toggle]')){
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      return false;
+    }
+  }, true);
+})();
+
 // Initialize after DOM ready
 
 // Optional: theme toggle (works if a [data-theme-toggle] element exists)

@@ -71,3 +71,11 @@
 
   ;
 }
+
+/* Lock switches when [data-locked] present */
+:root[data-locked="true"] .js-theme-toggle,
+:root[data-locked="true"] [data-theme-toggle],
+:root[data-locked="true"] .js-lang,
+:root[data-locked="true"] [data-lang-toggle] {
+  display: none !important;
+}
