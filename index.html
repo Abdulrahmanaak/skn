@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-
 <html dir="rtl" lang="ar">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title data-skey="meta.title">سكن | منصة الزواج الموثوقة</title>
-    <meta content="منصة سكن للتوفيق للزواج بإشراف بشري وخصوصية عالية ومواءمة ذكية." data-skey="meta.description"
-        name="description" />
-    <link rel="icon" type="image/x-icon" href="assets\hero-rings.webp">
+    <title>سكن | لتسكنوا إليها</title>
+    <meta name="description" content="سكن — منصة زواج شرعي تجمع بين السكينة والستر والمواءمة الذكية، وتعمل بإشراف بشري كامل وبرعاية جمعية الوفاء الأسرية." />
+    <link rel="icon" type="image/x-icon" href="assets/icons/icon.svg">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <!-- ملفاتك الأصلية -->
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <link href="./css/base.css" rel="stylesheet" />
     <link href="./css/colors.css" rel="stylesheet" />
-    <link as="image" href="./assets/hero-rings.webp" rel="preload" />
+    <link href="./assets/icons/icon.svg" rel="preload" as="image" />
     <link href="./css/layout.css" rel="stylesheet" />
     <link href="./css/components.css" rel="stylesheet" />
     <link href="./css/timeline-webflow.css" rel="stylesheet" />
@@ -24,466 +21,529 @@
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container header-bar">
-            <a aria-label="Sakinah" class="brand" href="#hero"><img alt="Logo" class="nav-logo" decoding="async"
-                    fetchpriority="high" src="./assets/logo.png" /></a>
-            <nav aria-label="التنقل الرئيسي" class="primary-nav">
-                <ul>
-                    <li><a href="#features">المميزات</a></li>
-                    <li><a href="#register">التسجيل</a></li>
-                    <li><a href="#journey">الرحلة</a></li>
-                    <!-- <li><a href="#stories">قصص نجاح</a></li> -->
-                    <li><a href="#faq">الأسئلة الشائعة</a></li>
-                    <li><a href="#contact">تواصل</a></li>
-                </ul>
-            </nav>
-            <button aria-controls="nav-drawer" aria-expanded="false" aria-label="Open menu"
-                class="nav-icon-btn js-nav-open">
-                <span class="nav-icon-bar"></span>
-                <span class="nav-icon-bar"></span>
-                <span class="nav-icon-bar"></span>
-            </button>
-            <div class="nav-actions">
-                <div class="lang-pill js-lang" data-open="false">
-                    <button aria-controls="lang-menu" aria-expanded="false" aria-haspopup="true"
-                        class="lang-pill__btn js-lang-trigger">
-                        <span class="lang-pill__icon">🌐</span>
-                        <span class="lang-pill__label">AR</span>
-                    </button>
-                    <div aria-label="Language" class="lang-menu" id="lang-menu" role="menu">
-                        <button aria-pressed="true" class="lang-opt js-lang-option" data-lang="ar"
-                            role="menuitem">العربية</button>
-                        <button aria-pressed="false" class="lang-opt js-lang-option" data-lang="en"
-                            role="menuitem">English</button>
-                    </div>
-                </div>
-                <button aria-pressed="false" class="theme-toggle js-theme-toggle">🌓</button>
-                <a class="btn btn-primary" href="https://app.sakenah.life/">تسجيل الدخول</a>
-            </div>
-        </div>
-    </header>
-    <main id="main-content">
-        <!-- HERO -->
-        <section class="container hero" id="hero">
-            <div class="hero-text section-block">
-                <div class="pill" data-reveal="">منصة التوفيق للزواج الموثوق</div>
-                <h1 data-reveal="">خصوصية حقيقية ومواءمة ذكية تصنع بداية مطمئنة</h1>
-                <p data-reveal="">سكن تجمع بين التحليل الذكي والمراجعة البشرية، لتطابق قيمك وتحفظ خصوصيتك في كل خطوة.
-                </p>
-                <div class="hero-ctas" data-reveal="">
-                    <a class="btn btn-primary" href="https://app.sakenah.life/">سجل الآن</a>
-                    <a class="btn btn-soft" href="#features">تعرّف على المزايا</a>
-                </div>
-                <!-- عبارات محفزة | statements
-                <div class="hero-trust" data-hero-trust="">
-                    <span class="badge badge-info">إشراف حيّ</span>
-                    <span class="badge badge-success">خصوصية مشددة</span>
-                </div> 
-                إحصائيات | statistics
-                <div class="hero-counters" data-reveal="">
-                    <div class="counter-card">
-                        <div class="count" data-count="" data-final-suffix="+" data-to="1200">0</div>
-                        <p>مواءمة تمت بإشراف</p>
-                    </div>
-                    <div class="counter-card">
-                        <div class="count" data-count="" data-final-suffix="%" data-suffix="%" data-to="87">0</div>
-                        <p>معدّل رضا الأزواج</p>
-                    </div>
-                    <div class="counter-card">
-                        <div class="count" data-count="" data-to="48">0</div>
-                        <p>ساعة استجابة للمتابعة</p>
-                    </div>
-                </div>  -->
-            </div>
-            <div class="hero-visual" data-hero-visual="">
-                <figure class="hero-figure">
-                    <img alt="Engagement rings illustration" class="hero-image" decoding="async" fetchpriority="high"
-                        loading="eager" src="./assets/hero-rings.webp" />
-                </figure>
-            </div>
-        </section>
-        <!-- FEATURES -->
-        <section class="container" id="features">
-            <header class="section-header" data-reveal="">
-                <span class="section-eyebrow">المزايا</span>
-                <h2>لماذا يثق بنا المقبلون على الزواج؟</h2>
-                <p>نعرض لك أهم ما يميز سكن.</p>
-            </header>
-            <div class="cards-grid" data-reveal="" id="features-grid">
-                <!-- … بطاقات المزايا (بدون تغيير) … -->
-                <article aria-labelledby="feat-privacy-title" class="card-elevated feature-card">
-                    <div class="feature-head">
-                        <span aria-hidden="true" class="icon-circle">
-                            <img alt="" decoding="async" height="24" loading="lazy" src="./assets/feature-privacy.svg"
-                                width="24" />
-                        </span>
-                        <h3 id="feat-privacy-title">مواءمة تحترم القيم والعادات</h3>
-                    </div>
-                    <p class="feature-desc" id="feat-privacy-desc">نظام مصمم بعناية ليتماشى مع الخصوصية والثقافة
-                        المحلية، ويضمن سرية البيانات وعدم القدرة على الاطلاع عليها الا من قبل المشرفين المعتمدين الذين
-                        يديرون عملية الترشيح.</p>
 
-                </article>
-                <article aria-labelledby="feat-guardians-title" class="card-elevated feature-card">
-                    <div class="feature-head">
-                        <span aria-hidden="true" class="icon-circle">
-                            <img alt="" decoding="async" height="24" loading="lazy" src="./assets/feature-guardians.svg"
-                                width="24" />
-                        </span>
-                        <h3 id="feat-guardians-title">ذكاء اصطناعي داعم للإشراف</h3>
-                    </div>
-                    <p class="feature-desc" id="feat-guardians-desc">خوارزميات تحليل متقدمة تساعد المشرفين على تقديم
-                        ترشيحات دقيقة بناءً على معايير واقعية وشاملة، مع تحسين مستمر من نتائج القبول والرفض.
-                    </p>
-                </article>
-                <article aria-labelledby="feat-curated-title"
-                    class="card-elevated feature-card feature-card--prominent">
-                    <div class="feature-head">
-                        <span aria-hidden="true" class="icon-circle">
-                            <img alt="" decoding="async" height="24" loading="lazy" src="./assets/feature-curated.svg"
-                                width="24" />
-                        </span>
-                        <h3 id="feat-curated-title">أمان ومتابعة منضبطة</h3>
-                    </div>
-                    <p class="feature-desc" id="feat-curated-desc">أنظمة مراقبة ذكية ترصد المحادثات وتمنع أي تجاوزات أو
-                        محاولات تواصل خارج الإطار المسموح، مع ذكاء اصطناعي يضبط الحوار ويحافظ على الاحترام.
-                    </p>
-                </article>
-                <article aria-labelledby="feat-coaching-title" class="card-elevated feature-card">
-                    <div class="feature-head">
-                        <span aria-hidden="true" class="icon-circle">
-                            <img alt="" decoding="async" height="24" loading="lazy" src="./assets/feature-coaching.svg"
-                                width="24" />
-                        </span>
-                        <h3 id="feat-coaching-title">رحلة واضحة بإشراف بشري مباشر</h3>
-                    </div>
-                    <p class="feature-desc" id="feat-coaching-desc">كل متقدّم يمرّ بمراحل مدروسة تبدأ بالتسجيل والتحليل
-                        الذكي، ثم مراجعة المشرف، ورأي الطرفين، ثم الموافقة النهائية، وصولًا لتبادل بيانات التواصل عبر
-                        الإدارة بأمان وخصوصية.
-                    </p>
-                </article>
-            </div>
-        </section>
-        <!-- REGISTER -->
-        <section class="container" id="register">
-            <header class="section-header" data-reveal=""><span class="pill">خطوات التسجيل</span>
-                <h2>التسجيل بخطوات بسيطة</h2>
-                <p>ابدأ بإدخال بيانات أساسية ثم نتابع معك خطوة بخطوة حتى المواءمة.</p>
-            </header>
-            <div class="cards-grid">
-                <article class="register-card card-elevated" data-reveal="" role="button" tabindex="0">
-                    <div class="step-head"><span class="step-chip">1</span><span aria-hidden="true"
-                            class="step-icon"><img alt="" decoding="async" height="24" loading="lazy"
-                                src="./assets/icons/register-1.svg" width="24" /></span>
-                        <h3>ابدأ حسابك</h3>
-                    </div>
-                    <p>بريد إلكتروني ورقم جوال موثّق.</p>
-                </article>
-                <article class="register-card card-elevated" data-reveal="" role="button" tabindex="0">
-                    <div class="step-head"><span class="step-chip">2</span><span aria-hidden="true"
-                            class="step-icon"><img alt="" decoding="async" height="24" loading="lazy"
-                                src="./assets/icons/register-2.svg" width="24" /></span>
-                        <h3>أكمل ملفك</h3>
-                    </div>
-                    <p>الاهتمامات والقيم العائلية والمدينة.</p>
-                </article>
-                <article class="register-card card-elevated" data-reveal="" role="button" tabindex="0">
-                    <div class="step-head"><span class="step-chip">3</span><span aria-hidden="true"
-                            class="step-icon"><img alt="" decoding="async" height="24" loading="lazy"
-                                src="./assets/icons/register-3.svg" width="24" /></span>
-                        <h3>تحقّق</h3>
-                    </div>
-                    <p>مراجعة بشرية سريعة للمعلومات.</p>
-                </article>
-                <article class="register-card card-elevated" data-reveal="" role="button" tabindex="0">
-                    <div class="step-head"><span class="step-chip">4</span><span aria-hidden="true"
-                            class="step-icon"><img alt="" decoding="async" height="24" loading="lazy"
-                                src="./assets/icons/register-4.svg" width="24" /></span>
-                        <h3>انطلق!</h3>
-                    </div>
-                    <p>ترشيحات مناسبة وحوار بإشراف.</p>
-                </article>
-            </div>
-        </section>
-        <!-- JOURNEY (Timeline) -->
-        <section class="container" id="journey">
-            <header class="section-header" data-reveal="">
-                <h2>رحلتك مع سكن</h2>
-                <p>من تسجيل الاهتمام وحتى القرار، كل خطوة مصممة لتكون واضحة وآمنة.</p>
-            </header>
-            <div class="timeline" data-timeline="">
-                <!-- السكة كاملة + النقطة -->
-                <div aria-hidden="true" class="timeline-scroller">
-                    <div class="timeline-scroller__track"></div>
-                </div>
-                <!-- خط التقدّم المملوء -->
-                <div aria-hidden="true" class="timeline-progress">
-                    <div class="timeline-progress-fill"></div>
-                    <div aria-hidden="true" class="timeline-dot"></div>
-                </div>
-                <ol class="timeline-tasks">
-                    <!-- 01: البطاقة يمين -->
-                    <li aria-current="step" class="timeline-task timeline-task--right is-active" data-step="٠١"
-                        id="journey-1" tabindex="0">
-                        <div class="timeline-task__body">
-                            <h3 class="timeline-task__title">افتح حسابًا مجانيًا</h3>
-                            <p class="timeline-task__description">نطلب أقل قدر من البيانات للبدء، ويمكنك العودة لإكمال
-                                التفاصيل وقتما
-                                شئت.</p>
-                            <div class="timeline-task__actions">
-                                <a class="timeline-task__link" href="https://app.sakenah.life/">
-                                    <span>سجّل اهتمامك الآن</span>
-                                    <span aria-hidden="true">←</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- 02: البطاقة يسار -->
-                    <li class="timeline-task timeline-task--left" data-step="٠٢" id="journey-2" tabindex="0">
-                        <div class="timeline-task__body">
-                            <h3 class="timeline-task__title">أكمل ملفك الذكي</h3>
-                            <p class="timeline-task__description">أجب عن أسئلة القيم والأهداف العائلية لرفع دقة المواءمة
-                                وتخصيص
-                                الترشيحات.</p>
-                        </div>
-                    </li>
-                    <!-- 03: البطاقة يمين -->
-                    <li class="timeline-task timeline-task--right" data-step="٠٣" id="journey-3" tabindex="0">
-                        <div class="timeline-task__body">
-                            <h3 class="timeline-task__title">تحقق موثوق</h3>
-                            <p class="timeline-task__description">فريق التحقق يراجع المعلومات المقدَّمة ويتواصل مع
-                                المتقدم للتأكد من دقتها وجديته قبل اعتماد الملف للترشيحات.
-                            </p>
-                        </div>
-                    </li>
-                    <!-- 04: البطاقة يسار -->
-                    <li class="timeline-task timeline-task--left" data-step="٠٤" id="journey-4" tabindex="0">
-                        <div class="timeline-task__body">
-                            <h3 class="timeline-task__title">ترشيحات بشفافية</h3>
-                            <p class="timeline-task__description">تستقبل ترشيحات عالية التوافق مع شرح نسبة التطابق
-                                والعوامل المؤثرة
-                                بشكل مبسط.</p>
-                        </div>
-                    </li>
-                    <!-- 05: البطاقة يمين -->
-                    <li class="timeline-task timeline-task--right" data-step="٠٥" id="journey-5" tabindex="0">
-                        <div class="timeline-task__body">
-                            <h3 class="timeline-task__title">حوار مراقب وآمن</h3>
-                            <p class="timeline-task__description">تُدار محادثة مؤقتة في بيئة آمنة، مع ضبط مشاركة
-                                المعلومات الحساسة داخل المحادثة.
-                            </p>
-                        </div>
-                    </li>
-                    <!-- 06: البطاقة يسار -->
-                    <li class="timeline-task timeline-task--left" data-step="٠٦" id="journey-6" tabindex="0">
-                        <div class="timeline-task__body">
-                            <h3 class="timeline-task__title"> قرار وتواصل آمن</h3>
-                            <p class="timeline-task__description">يتم التواصل مع الطرفين لتبادل معلومات التواصل الرسمية
-                                عبر القنوات المعتمدة، في إطار يحفظ السرية والاحترام.
-                            </p>
-                        </div>
-                </ol>
-            </div>
-        </section>
-        <!-- STORIES -->
-        <!-- <section class="container" id="stories">
-            <header class="section-header" data-reveal="">
-                <h2>قصص نجاح</h2>
-                <p>شهادات مختصرة من مستخدمين بدأوا حياتهم الزوجية عبر سكن.</p>
-            </header>
-            <div class="cards-grid" data-reveal="">
-                <figure class="card-elevated">
-                    <img alt="قصة عائشة وخالد" height="240" loading="lazy" src="./assets/story-aisha-khaled.svg"
-                        width="240" />
-                    <figcaption>عائشة وخالد: «أعجبنا وضوح الخطوات واحترام الخصوصية»</figcaption>
-                </figure>
-                <figure class="card-elevated">
-                    <img alt="قصة أمينة ويوسف" height="240" loading="lazy" src="./assets/story-amina-youssef.svg"
-                        width="240" />
-                    <figcaption>أمينة ويوسف: «المواءمة كانت دقيقة ووفرت علينا وقتًا طويلًا»</figcaption>
-                </figure>
-                <figure class="card-elevated">
-                    <img alt="قصة منى وطارق" height="240" loading="lazy" src="./assets/story-muna-tareq.svg"
-                        width="240" />
-                    <figcaption>منى وطارق: «الإشراف ساعدنا على إبقاء الحوار محترمًا وواضحًا»</figcaption>
-                </figure>
-                <figure class="card-elevated">
-                    <img alt="قصة ريم ومازن" height="240" loading="lazy" src="./assets/story-reem-mazen.svg"
-                        width="240" />
-                    <figcaption>ريم ومازن: «الدعم بعد المواءمة صنع فارقًا كبيرًا»</figcaption>
-                </figure>
-            </div>
-        </section> -->
-        <!-- TRUST -->
-        <section class="container" id="trust">
-            <header class="section-header" data-reveal="">
-                <h2>الثقة والامتثال</h2>
-                <p>نلتزم بأفضل معايير الخصوصية ومراجعات الامتثال.</p>
-            </header>
-            <div class="cards-grid">
-                <div class="card-elevated" data-reveal="">
-                    <img alt="" aria-hidden="true" height="96" src="./assets/trust-privacy.svg" width="96" />
-                    <h3>خصوصية البيانات</h3>
-                    <p>تشفير شامل + سياسات صلاحيات دقيقة.</p>
-                </div>
-                <div class="card-elevated" data-reveal="">
-                    <img alt="" aria-hidden="true" height="96" src="./assets/trust-license.svg" width="96" />
-                    <h3>التراخيص</h3>
-                    <p>متابعة اللوائح ذات الصلة في المملكة.</p>
-                </div>
-                <div class="card-elevated" data-reveal="">
-                    <img alt="" aria-hidden="true" height="96" src="./assets/trust-council.svg" width="96" />
-                    <h3>مجلس استشاري</h3>
-                    <p>خبراء شرعيون وأسريون يراجعون السياسات.</p>
-                </div>
-            </div>
-        </section>
-        <!-- FAQ -->
-        <section class="container" id="faq">
-            <header class="section-header" data-reveal>
-                <h2>الأسئلة الشائعة</h2>
-                <p>إجابات لأكثر الأسئلة شيوعًا حول منصة <strong>سكن</strong> للتوفيق للزواج.</p>
-            </header>
+<header class="site-header">
+    <div class="container header-bar">
+        <a class="brand" href="#hero">
+            <img alt="Logo" class="nav-logo" src="./assets/logo.png" />
+        </a>
+        <nav class="primary-nav" aria-label="التنقل الرئيسي">
+            <ul>
+                <li><a href="#features">المميزات</a></li>
+                <!-- <li><a href="#register">التسجيل</a></li> -->
+                <li><a href="#journey">رحلة المستخدم</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
 
-            <div class="card-elevated" data-reveal>
-                <details>
-                    <summary>لماذا سكن؟</summary>
-                    <p>سكن منصة سعودية موثوقة للتوفيق بين الراغبين في الزواج الشرعي، تجمع بين التحليل الذكي والمراجعة
-                        البشرية لتحقيق توافق جاد وآمن، بإشراف مباشر من فريق مختص.</p>
-                </details>
+        <button class="nav-icon-btn js-nav-open">
+            <span class="nav-icon-bar"></span>
+            <span class="nav-icon-bar"></span>
+            <span class="nav-icon-bar"></span>
+        </button>
 
-                <details>
-                    <summary>هل المنصة بفلوس؟</summary>
-                    <p>التسجيل مجاني، بينما تُفرض رسوم رمزية في المراحل المتقدمة لضمان الجدية وتغطية تكاليف الإشراف
-                        ومراجعة الملفات.</p>
-                </details>
-
-                <details>
-                    <summary>هل معلوماتي محفوظة؟</summary>
-                    <p>نعم، نحافظ على سرية بياناتك بشكل كامل، ونستخدم تشفيرًا متقدّمًا مع سياسات خصوصية صارمة تمنع
-                        مشاركة المعلومات دون إذن صريح.</p>
-                </details>
-
-                <details>
-                    <summary>كيف تتم عملية التوافق؟</summary>
-                    <p>تُحلّل خوارزمية الذكاء الاصطناعي البيانات والقيم الشخصية، ثم يراجعها المشرفون لضمان دقة النتائج،
-                        وبعدها تُرسل اقتراحات التوافق للطرفين بإشراف آمن.</p>
-                </details>
-
-                <details>
-                    <summary>كيف تضمن المنصة الجدية؟</summary>
-                    <p>نستخدم نظام تحقق من الهوية ومراجعة الملفات يدويًا، مع رسوم رمزية تمنع الحسابات الوهمية وإشراف
-                        بشري دائم يضمن التفاعل الجاد والمحترم.</p>
-                </details>
-
-                <details>
-                    <summary>من أنتم وكيف أضمنكم؟</summary>
-                    <p>سكن فريق تقني وإشرافي سعودي متخصص في بناء حلول رقمية اجتماعية متوافقة مع القيم الإسلامية، بإشراف
-                        قانوني وتقني كامل.</p>
-                </details>
-
-                <details>
-                    <summary>كم الوقت الذي أحتاجه للعثور على شريك مناسب؟</summary>
-                    <p>يختلف الوقت حسب اكتمال ملفك ومدى توافق المعايير، وعادةً تبدأ النتائج بالظهور خلال أيام بعد مراجعة
-                        المشرف وتحليل النظام.</p>
-                </details>
-            </div>
-        </section>
-        <!-- CONTACT -->
-        <section class="container" id="contact">
-            <header data-reveal="">
-                <h2>تواصل معنا</h2>
-            </header>
-            <div class="card-elevated" data-reveal="">
-                <p>راسلنا على البريد: <a href="mailto:hello@sakinah.sa">hello@sakinah.sa</a></p>
-            </div>
-        </section>
-    </main>
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <img src="./assets/logo.png" alt="Sakinah Logo" class="nav-logo" />
-                <h3>سكن</h3>
-                <p>منصة زواج موثوقة بخصوصية عالية.</p>
-            </div>
-            <nav>
-                <h3>روابط</h3>
-                <ul class="plain-list">
-                    <li><a href="#features">المميزات</a></li>
-                    <li><a href="#register">التسجيل</a></li>
-                    <li><a href="#journey">الرحلة</a></li>
-                    <!-- <li><a href="#stories">قصص نجاح</a></li> -->
-                    <li><a href="#faq">الأسئلة الشائعة</a></li>
-                </ul>
-            </nav>
-            <div>
-                <h3>تابعنا</h3>
-                <ul class="plain-list">
-                    <li><a href="#">تويتر</a></li>
-                    <li><a href="#">إنستغرام</a></li>
-                    <li><a href="#">لينكدإن</a></li>
-                </ul>
-            </div>
-
-        </div>
-        <div class="footer-meta">© سكن — جميع الحقوق محفوظة</div>
-    </footer>
-    <!-- Precheck Modal -->
-    <div aria-hidden="true" data-precheck-modal="">
-        <div aria-labelledby="precheck-title" aria-modal="true" class="precheck-dialog" role="dialog">
-            <button aria-label="إغلاق" class="modal-close">✕</button>
-            <h3 id="precheck-title">فحص مبدئي</h3>
-            <p>أجب بسرعة لنساعدك على تحديد جاهزيتك.</p>
-            <form>
-                <label>العمر
-                    <input max="80" min="18" required="" type="number" />
-                </label>
-                <label>المدينة
-                    <input required="" type="text" />
-                </label>
-                <label>أهم 3 قيم تبحث عنها
-                    <input placeholder="مثال: الالتزام، الوضوح، الاحترام" type="text" />
-                </label>
-                <div class="form-actions">
-                    <button class="btn btn-soft modal-close" type="button">إلغاء</button>
-                    <button class="btn btn-primary" type="submit">إرسال</button>
-                </div>
-            </form>
+        <div class="nav-actions">
+            <a class="btn btn-primary" href="https://app.sakenah.life/">تسجيل الدخول</a>
         </div>
     </div>
-    <script defer="" src="./js/main.js" type="module"></script>
-    <!-- Mobile Nav Drawer (ensured) -->
-    <div class="nav-overlay js-nav-close" hidden=""></div>
-    <aside aria-hidden="true" aria-label="قائمة جانبية" class="nav-drawer" id="nav-drawer" role="dialog">
-        <div class="nav-drawer__head">
-            <a aria-label="Sakinah" class="brand" href="#hero">
-                <img alt="Logo" class="nav-logo" src="./assets/logo.png" />
-            </a>
-            <button aria-label="إغلاق" class="nav-close js-nav-close">✕</button>
-        </div>
-        <nav aria-label="روابط القائمة الجانبية" class="nav-drawer__links">
-            <!-- سيتم حقن الروابط تلقائيًا من .primary-nav عبر main.js -->
-        </nav>
-        <div class="nav-drawer__actions">
-            <div class="lang-pill js-lang" data-open="false">
-                <button aria-controls="lang-menu-mobile" aria-expanded="false" aria-haspopup="true"
-                    class="lang-pill__btn js-lang-trigger">
-                    <span class="lang-pill__icon">🌐</span>
-                    <span class="lang-pill__label">AR</span>
-                </button>
-                <div aria-label="Language" class="lang-menu" id="lang-menu-mobile" role="menu">
-                    <button aria-pressed="true" class="lang-opt js-lang-option" data-lang="ar"
-                        role="menuitem">العربية</button>
-                    <button aria-pressed="false" class="lang-opt js-lang-option" data-lang="en"
-                        role="menuitem">English</button>
-                </div>
-            </div>
-            <button aria-pressed="false" class="theme-toggle js-theme-toggle">🌓</button>
-            <a class="btn btn-primary" href="/login">تسجيل الدخول</a>
-        </div>
-    </aside>
-</body>
+</header>
 
+<main id="main-content">
+
+<section class="container hero" id="hero">
+    <div class="hero-text section-block">
+
+        <h1>سكن</h1>
+
+         <p>
+            منصة موثوقة تُعين الباحثين عن العفاف على الوصول إلى شريك مناسب،
+            في بيئة تحفظ الستر والخصوصية، بما يوافق الضوابط الشرعية.
+        </p>
+
+        <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://app.sakenah.life/">ابدأ رحلتك بثقة</a>
+            <a class="btn btn-soft" href="#journey">كيف نعمل؟</a>
+        </div>
+
+                <div class="sponsor-pill">
+    <img src="./assets/icons/wafaa.svg" alt="جمعية الوفاء" class="sponsor-icon">
+    <span><strong>برعاية جمعية الوفاء الأسرية </strong> – مكة المكرمة</span>
+        <!-- <div>
+            <p></p>
+        <strong>برعاية جمعية الوفاء الأسرية </strong>
+        <p>مكة المكرمة</p>
+    </div> -->
+</div>
+
+    </div>
+
+    <div class="hero-visual">
+        <figure class="hero-figure">
+            <img alt="Engagement rings illustration" class="hero-image" src="./assets/hero-rings.webp" loading="eager">
+        </figure>
+    </div>
+</section>
+
+
+<!-- FEATURES -->
+<section class="container" id="features">
+    <header class="section-header" data-reveal>
+        <!-- <span class="section-eyebrow">المزايا</span> -->
+        <h2>لماذا يختار المقبلون على الزواج سكن؟</h2>
+        <!-- <p>قيم واضحة – خصوصية عالية – إشراف متخصص – مواءمة دقيقة</p> -->
+    </header>
+
+    <div class="cards-grid" data-reveal id="features-grid">
+
+        <!-- 01 — الضوابط الشرعية -->
+        <article class="card-elevated feature-card">
+            <div class="feature-head">
+                <h3>ضوابط شرعية تحفظ الخصوصية</h3>
+            </div>
+            <p class="feature-desc">
+                جميع خطوات المنصة تراعي خصوصية المستخدمين، ولا تُعرض أي معلومة إلا عند الحاجة وتحت إشراف معتمد، 
+                وبما يوافق القيم الإسلامية.
+            </p>
+        </article>
+
+        <!-- 02 — الذكاء الاصطناعي -->
+        <article class="card-elevated feature-card">
+            <div class="feature-head">
+                <h3>ذكاء اصطناعي يُعين المشرف</h3>
+            </div>
+            <p class="feature-desc">
+                 تحلل الخوارزميات القيم إجابات المتقدمين لترتيب الترشيحات، 
+                بينما يعتمد القرار النهائي على المراجعة من مشرف متخصص.
+            </p>
+        </article>
+
+        <!-- 03 — الإشراف المتخصص -->
+        <article class="card-elevated feature-card feature-card--prominent">
+            <div class="feature-head">
+                <h3>إشراف متخصص</h3>
+            </div>
+            <p class="feature-desc">
+                فريق ذو خبرة يراجع التسجيل والملفات والترشيحات والمحادثات، 
+                لضمان الجدية وجودة التجربة كاملة.
+            </p>
+        </article>
+
+        <!-- 04 — المحرم الذكي -->
+        <article class="card-elevated feature-card">
+            <div class="feature-head">
+                <h3>المحرم الذكي</h3>
+            </div>
+            <p class="feature-desc">
+                نظام متابعة يضبط الحوار ويمنع التجاوزات، ويحافظ على بيئة تواصل محترمة ومنضبطة، 
+                بما يضمن وضوح التفاعل وجودته.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- REGISTER -->
+<!-- <section class="container" id="register">
+    <header class="section-header">
+        <span class="pill">خطوات التسجيل</span>
+        <h2>خطوات بسيطة نحو زواج شرعي</h2>
+        <p>من تسجيل البيانات حتى الترشيحات الموثوقة بإشراف كامل.</p>
+    </header>
+
+    <div class="cards-grid">
+        <article class="register-card card-elevated">
+            <h3>1. إنشاء حساب</h3>
+            <p>بيانات أساسية في بيئة آمنة ومشفرة.</p>
+        </article>
+
+        <article class="register-card card-elevated">
+            <h3>2. إكمال الملف</h3>
+            <p>أسئلة قيَمية وأسَرية تُحسّن دقة المواءمة.</p>
+        </article>
+
+        <article class="register-card card-elevated">
+            <h3>3. التحقق والمراجعة</h3>
+            <p>مشرف متخصص يراجع البيانات ويتأكد من الجدية.</p>
+        </article>
+
+        <article class="register-card card-elevated">
+            <h3>4. الترشيحات المناسبة</h3>
+            <p>مواءمة دقيقة ونسب واضحة تُعينك على اتخاذ قرارك بثقة.</p>
+        </article>
+    </div>
+</section> -->
+
+<!-- JOURNEY -->
+<section class="container" id="journey">
+    <header class="section-header">
+        <h2>رحلتك مع سكن</h2>
+        <p>خطوات تُراعي الضوابط الشرعية وتحفظ الخصوصية.</p>
+    </header>
+
+    <div class="timeline">
+        <ol class="timeline-tasks">
+
+            <!-- 01 -->
+            <li class="timeline-task timeline-task--right is-active">
+                <div class="timeline-task__body">
+
+                    <span class="step-icon">
+                        <img src="./assets/icons/journey-account.svg" alt="">
+                    </span>
+
+                    <h3>فتح الحساب</h3>
+                    <p>تسجيل بسيط يضمن سرية بياناتك، ويتيح لك بدء رحلتك بثقة.</p>
+                </div>
+            </li>
+
+            <!-- 02 -->
+            <li class="timeline-task timeline-task--left">
+                <div class="timeline-task__body">
+
+                    <span class="step-icon">
+                        <img src="./assets/icons/journey-file.svg" alt="">
+                    </span>
+
+                    <h3>إكمال الملف</h3>
+                    <p>إجابة على أسئلة القيم والأهداف الأسرية ونمط الحياة لرفع جودة ودقة المواءمة.</p>
+                </div>
+            </li>
+
+            <!-- 03 -->
+            <li class="timeline-task timeline-task--right">
+                <div class="timeline-task__body">
+
+                    <span class="step-icon">
+                        <img src="./assets/icons/journey-review.svg" alt="">
+                    </span>
+
+                    <h3>مراجعة المشرف</h3>
+                    <p>مشرف متخصص يراجع بياناتك، ويتأكد من الجدية واكتمال المعلومات قبل بدء الترشيحات.</p>
+                </div>
+            </li>
+
+            <!-- 04 -->
+            <li class="timeline-task timeline-task--left">
+                <div class="timeline-task__body">
+
+                    <span class="step-icon">
+                        <img src="./assets/icons/journey-match.svg" alt="">
+                    </span>
+
+                    <h3>الترشيحات</h3>
+                    <p>
+                      اقتراحات مناسبة تُعرض بنسبة توافق واضحة،
+                      مع إتاحة الموافقة أو الاعتذار لكل ترشيح.
+                    </p>
+                </div>
+            </li>
+
+            <!-- 05 -->
+            <li class="timeline-task timeline-task--right">
+                <div class="timeline-task__body">
+
+                    <span class="step-icon">
+                        <img src="./assets/icons/journey-chat.svg" alt="">
+                    </span>
+
+                    <h3>الحوار المنضبط</h3>
+                    <p>
+                      محادثة محدودة المدة تُدار بمتابعة إشرافية،
+                      ويُضبط فيها الحوار لضمان الاحترام وجودة التواصل.
+                    </p>
+                </div>
+            </li>
+
+            <!-- 06 -->
+            <li class="timeline-task timeline-task--left">
+                <div class="timeline-task__body">
+
+                    <span class="step-icon">
+                        <img src="./assets/icons/journey-final.svg" alt="">
+                    </span>
+
+                    <h3>القرار والتواصل</h3>
+                    <p>
+                      عند التوافق، تُتبادل معلومات التواصل الرسمية للطرفين،
+                      بطريقة آمنة ومنظمة.
+                    </p>
+                </div>
+            </li>
+
+        </ol>
+    </div>
+</section>
+
+
+
+
+<section class="container" id="trust">
+    <header class="section-header">
+        <h2>بيئة منضبطة تراعي القيم وتضمن الموثوقية</h2>
+        <!-- <p>ضوابط شرعية – خصوصية عالية – إشراف اجتماعي موثوق</p> -->
+    </header>
+
+    <div class="cards-grid">
+
+        <!-- خصوصية البيانات -->
+        <div class="card-elevated">
+            <img src="./assets/icons/privacy.svg" alt="" width="56" height="56">
+            <h3>خصوصية البيانات</h3>
+            <p>
+                تشفير شامل للبيانات مع ضبط دقيق للصلاحيات؛
+                لضمان ألا يطّلع عليها إلا المصرّح لهم.
+            </p>
+        </div>
+
+        <!-- الالتزام بالأنظمة -->
+        <div class="card-elevated">
+            <img src="./assets/icons/compliance.svg" alt="" width="56" height="56">
+            <h3>الالتزام بالأنظمة</h3>
+            <p>
+                التزام كامل بالأنظمة واللوائح المعتمدة في المملكة،
+                وبما يوافق القيم الاجتماعية.
+            </p>
+        </div>
+
+        <!-- رعاية جمعية الوفاء -->
+        <div class="card-elevated">
+            <img src="./assets/icons/wafaa.svg" alt="" width="72" height="72">
+            <h3>برعاية جمعية الوفاء</h3>
+            <p>
+                جمعية الوفاء الأسرية بمكة المكرمة تشرف على جودة التجربة
+                وضبطها بما يوافق القيم الأسرية.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FAQ -->
+<section class="container" id="faq">
+    <header class="section-header">
+        <h2>الأسئلة الشائعة</h2>
+        <!-- <p>إجابات واضحة لما يحتاجه الباحث عن الزواج الشرعي بثقة وخصوصية.</p> -->
+    </header>
+
+    <div class="card-elevated">
+
+        <details>
+            <summary>هل تراعِي المنصّة الضوابط الشرعية؟</summary>
+            <p>
+                نعم. جميع خطوات المنصّة قائمة على ضوابط شرعية واضحة،
+                ولا تُعرض أي معلومة شخصية إلا عند الحاجة وبعد موافقة الطرفين،
+                وتُدار المحادثات بمتابعة إشرافية تمنع التجاوزات وتضمن الاحترام.
+            </p>
+        </details>
+
+        <details>
+            <summary>هل يوجد إشراف من مختصّين؟</summary>
+            <p>
+                نعم. يشرف فريق مختصّ على مراجعة التسجيل والملفات والترشيحات
+                وضبط المحادثات؛ لضمان الجدية وجودة التجربة بما يتوافق مع القيم الأسرية.
+            </p>
+        </details>
+
+        <details>
+            <summary>من الجهة المشرفة على المنصّة؟</summary>
+            <p>
+                تُشرف على المنصّة <strong>جمعية الوفاء الأسرية بمكة المكرمة</strong>،
+                وهي جهة اجتماعية موثوقة تُعنى بتعزيز القيم الأسرية
+                وضبط جودة التجربة وفق معايير واضحة.
+            </p>
+        </details>
+
+        <details>
+            <summary>هل المنصّة مجانية بالكامل؟</summary>
+            <p>
+                التسجيل مجاني، بينما تُفرض رسوم رمزية في بعض المراحل
+                لضمان الجدية وتغطية جهود الإشراف والتحقق.
+            </p>
+        </details>
+
+        <details>
+            <summary>كيف تتم المواءمة بين الطرفين؟</summary>
+            <p>
+                المواءمة تتم عبر عدة مراحل:
+                تحليل ذكي للقيم والأهداف، 
+                ثم مراجعة من فريق مختصّ للتحقق من ملاءمة الترشيحات،
+                ولا يُفتح الحوار إلا بعد موافقة الطرفين.
+            </p>
+        </details>
+
+        <details>
+            <summary>كيف تُدار المحادثة بين الطرفين؟</summary>
+            <p>
+                تُتاح محادثة محدودة المدة داخل المنصّة،
+                مع متابعة إشرافية دقيقة تمنع مشاركة البيانات الحساسة
+                وتحافظ على جودة الحوار واحترام الضوابط.
+            </p>
+        </details>
+
+        <details>
+            <summary>هل معلوماتي آمنة ومحفوظة؟</summary>
+            <p>
+                نعم. نستخدم تقنيات تشفير متقدّمة وضبطًا دقيقًا للصلاحيات،
+                ولا يمكن لأي طرف الاطلاع على بياناتك دون إذنك الصريح،
+                كما تتم حماية المعلومات الحساسة وفق سياسات صارمة.
+            </p>
+        </details>
+
+        <details>
+            <summary>كم يستغرق الحصول على الترشيحات؟</summary>
+            <p>
+                يعتمد ذلك على اكتمال ملفك ومدى وضوح معاييرك،
+                وغالبًا تظهر الترشيحات الأولى خلال أيام بعد إكمال التحقق والمراجعة.
+            </p>
+        </details>
+
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="container" id="contact">
+    <header class="section-header">
+        <h2>تواصل معنا</h2>
+        <p>يسعدنا استقبال استفساراتكم واقتراحاتكم.</p>
+    </header>
+
+    <div class="card-elevated contact-card">
+
+        <!-- بريد إلكتروني -->
+        <div class="contact-row">
+            <span class="contact-icon">
+                <img src="./assets/icons/email.svg" alt="email" width="28" height="28">
+            </span>
+            <p>
+                البريد الإلكتروني:
+                <a href="mailto:hello@sakenah.sa">hello@sakenah.sa</a>
+            </p>
+        </div>
+
+        <!-- رقم الهاتف -->
+        <div class="contact-row">
+            <span class="contact-icon">
+                <img src="./assets/icons/phone.svg" alt="phone" width="28" height="28">
+            </span>
+            <p>
+                رقم التواصل:
+                <a href="tel:+966500000000">+966 50 000 0000</a>
+            </p>
+        </div>
+
+        <!-- واتساب -->
+        <div class="contact-row">
+            <span class="contact-icon">
+                <img src="./assets/icons/whatsapp.svg" alt="whatsapp" width="28" height="28">
+            </span>
+            <p>
+                واتساب مباشر:
+                <a href="https://wa.me/966500000000" target="_blank">اضغط هنا للتواصل</a>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+</main>
+
+<!-- <footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <img src="./assets/logo.png" alt="Sakan Logo" class="nav-logo" />
+            <h3>سكن</h3>
+        </div>
+
+        <nav>
+            <h3>روابط</h3>
+            <ul class="plain-list">
+ 
+
+                                <li><a href="#features">المميزات</a></li>
+                <li><a href="#journey">رحلة المستخدم</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
+
+        <div>
+            <h3>برعاية</h3>
+            
+            <img src="./assets/icons/wafaa.svg" class="nav-logo" />
+            <p>جمعية الوفاء الأسرية – مكة المكرمة</p>
+        </div>
+    </div>
+
+    <div class="footer-meta">© سكن — جميع الحقوق محفوظة</div>
+</footer> -->
+
+
+<footer class="site-footer">
+
+    <div class="container footer-grid">
+
+        <!-- العمود 1 -->
+        <div class="footer-col">
+            <img src="./assets/logo.png" alt="Sakan Logo" class="nav-logo" />
+            <!-- <h3>سكن</h3> -->
+            <p>منصة موثوقة تُعين الباحثين عن العفاف على الوصول لشريك مناسب في بيئة تحفظ الستر والخصوصية.</p>
+        </div>
+
+        <!-- العمود 2 -->
+        <nav class="footer-col">
+            <h3>روابط</h3>
+            <ul class="plain-list">
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#journey">رحلة المستخدم</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
+
+        <!-- العمود 3 (الرعاية) -->
+        <div class="footer-col">
+            <h3>برعاية</h3>
+            <img src="./assets/icons/wafaa.svg" class="nav-logo" alt="جمعية الوفاء">
+            <strong>جمعية الوفاء الأسرية </strong>
+            <p>مكة المكرمة</p>
+        </div>
+
+        <!-- العمود 4: التواصل الاجتماعي -->
+        <div class="footer-col">
+            <h3>تابعنا</h3>
+            <div class="social-links">
+                <a href="https://twitter.com" aria-label="X">
+                    <img src="./assets/icons/x.svg" alt="" class="nav-logo">
+                </a>
+                <a href="https://www.instagram.com" aria-label="Instagram">
+                    <img src="./assets/icons/insta.svg" alt="" class="nav-logo">
+                </a>
+                <a href="https://wa.me/966XXXXXXXXX" aria-label="WhatsApp">
+                    <img src="./assets/icons/whatsapp.svg" alt="" class="nav-logo">
+                </a>
+            </div>
+
+            <ul class="plain-list footer-legal">
+                <li><a href="/terms">الشروط والأحكام</a></li>
+                <li><a href="/privacy">سياسة الخصوصية</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-meta">
+        © سكن — جميع الحقوق محفوظة
+    </div>
+
+</footer>
+
+
+<script defer src="./js/main.js" type="module"></script>
+
+</body>
 </html>

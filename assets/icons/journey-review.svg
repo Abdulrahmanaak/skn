@@ -1,0 +1,8 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية خفيفة -->
+  <circle cx="14" cy="14" r="12" fill="#FFF3EB"></circle>
+  <!-- الدرع -->
+  <path d="M14 6L19.2 7.7C19.7 7.87 20 8.32 20 8.83V14.2C20 16.73 18.52 19.07 16.22 20.23L14 21.37L11.78 20.23C9.48 19.07 8 16.73 8 14.2V8.83C8 8.32 8.3 7.87 8.8 7.7L14 6Z" stroke="#5B3A2E" stroke-width="1.5" fill="white"></path>
+  <!-- علامة الصح -->
+  <path d="M11.3 14.1L13.1 15.9L16.7 12.3" stroke="#F7A37E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>

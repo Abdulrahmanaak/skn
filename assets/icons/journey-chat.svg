@@ -1,0 +1,8 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية -->
+  <circle cx="14" cy="14" r="12" fill="#FFF4EF"></circle>
+  <!-- فقاعة -->
+  <path d="M8 12C8 10.34 9.34 9 11 9H17C18.66 9 20 10.34 20 12V14C20 15.66 18.66 17 17 17H13L10.5 19L10.8 17H11C9.34 17 8 15.66 8 14V12Z" stroke="#5B3A2E" stroke-width="1.4" fill="white"></path>
+  <!-- درع صغير داخل الفقاعة -->
+  <path d="M15 11.5L16.8 12.1V13.6C16.8 14.38 16.35 15.11 15.65 15.45L15 15.76L14.35 15.45C13.65 15.11 13.2 14.38 13.2 13.6V12.1L15 11.5Z" stroke="#F7A37E" stroke-width="1.1" fill="#FBE1D2"></path>
+</svg>

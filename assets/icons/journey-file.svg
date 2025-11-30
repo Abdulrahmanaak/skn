@@ -1,0 +1,12 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- خلفية -->
+  <rect x="5" y="3" width="18" height="22" rx="3" fill="#FFF6F1"></rect>
+  <!-- الورقة -->
+  <path d="M9 5.5H17L20.5 9V21C20.5 22.3807 19.3807 23.5 18 23.5H9C7.61929 23.5 6.5 22.3807 6.5 21V8C6.5 6.61929 7.61929 5.5 9 5.5Z" stroke="#5B3A2E" stroke-width="1.4" fill="white"></path>
+  <!-- الطيّة -->
+  <path d="M17 5.5V9H20.5" stroke="#5B3A2E" stroke-width="1.2" stroke-linejoin="round"></path>
+  <!-- أسطر -->
+  <line x1="9" y1="11" x2="18" y2="11" stroke="#F7B9A5" stroke-width="1.2" stroke-linecap="round"></line>
+  <line x1="9" y1="14" x2="17" y2="14" stroke="#5B3A2E" stroke-width="1.2" stroke-linecap="round"></line>
+  <line x1="9" y1="17" x2="16" y2="17" stroke="#5B3A2E" stroke-width="1.2" stroke-linecap="round"></line>
+</svg>

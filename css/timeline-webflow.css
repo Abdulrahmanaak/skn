@@ -282,3 +282,149 @@
 .timeline-task:nth-child(6)::before {
   content: "الخطوة السادسة";
 }
+
+
+
+/* تكبير مساحة الأيقونة ومنع خروجها */
+.timeline-task__body .step-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;       /* مساحة آمنة */
+    height: 48px;
+
+    margin-bottom: 10px; /* يمنع خروجها للأعلى */
+}
+
+.timeline-task__body .step-icon img {
+    width: 36px;      /* حجم الأيقونة الفعلي */
+    height: 36px;
+}
+
+
+.contact-card {
+    padding: 1.4rem 1.6rem;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.8rem;
+}
+
+.contact-row p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-sponsor {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: #E8F6EC;
+    color: #245A35;
+
+    padding: 6px 14px;
+    border-radius: 20px;
+
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    margin: 1rem 0;
+}
+
+.hero-sponsor-logo {
+    width: 32px !important;
+    height: auto !important;
+}
+
+.sponsor-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    background: #F8EDE8;      /* وردي هادئ مثل الهيرو */
+    border: 1px solid #E3D5CF; /* حدود خفيفة */
+    color: #5A3B31;           /* بني متناسق مع الهوية */
+    
+    padding: 6px 14px;
+    border-radius: 999px;
+
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0.8rem 0 1.2rem 0;
+}
+
+.sponsor-icon {
+    width: 56px;
+    height: auto;
+    opacity: 0.9;
+}
+
+.site-footer {
+    background: linear-gradient(to bottom, #a3573b, #6d3c2d);
+    color: #fff;
+    padding: 3rem 0 1rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.footer-col h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.footer-logo,
+.wafaa-logo {
+    width: 60px;
+    margin-bottom: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin: 0.8rem 0;
+}
+
+.social-links img {
+    width: 28px;
+    height: 28px;
+    opacity: 0.9;
+    transition: 0.2s;
+}
+.social-links img:hover {
+    opacity: 1;
+}
+
+.footer-legal li {
+    margin: 0.3rem 0;
+}
+
+.footer-legal a {
+    color: #ffe6d8;
+    text-decoration: underline;
+}
+
+.footer-meta {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 1rem;
+}
