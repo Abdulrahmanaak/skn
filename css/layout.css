@@ -231,7 +231,7 @@ header.site-header {
   position: relative;
   display: grid;
   place-items: center;
-  inline-size: min(560px, 86vw);
+  inline-size: min(800px, 86vw);
   margin: 0;
   background: none;
   border: none;
@@ -242,7 +242,7 @@ header.site-header {
 
 .hero-image {
   display: block;
-  width: clamp(240px, 40vw, 520px);
+  width: clamp(300px, 60vw, 800px);
   height: auto;
   object-fit: contain;
   background: transparent;
