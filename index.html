@@ -49,6 +49,37 @@
     </div>
 </header>
 
+
+<!-- Mobile nav overlay + drawer -->
+<div class="nav-overlay js-nav-close" hidden></div>
+
+<aside id="nav-drawer"
+       class="nav-drawer"
+       aria-hidden="true"
+       aria-label="القائمة الجانبية">
+
+  <div class="nav-drawer__head">
+    <a class="brand" href="#hero">
+      <img alt="Logo" class="nav-logo" src="./assets/logo.png" />
+    </a>
+
+    <button class="nav-close js-nav-close" aria-label="إغلاق القائمة">
+      ✕
+    </button>
+  </div>
+
+  <nav class="nav-drawer__links" aria-label="روابط القائمة">
+    <!-- سيتم تعبئتها تلقائياً من js (main.js) -->
+  </nav>
+
+  <div class="nav-drawer__actions">
+    <a class="btn btn-primary" href="https://app.sakenah.life/">تسجيل الدخول</a>
+  </div>
+
+</aside>
+
+
+
 <main id="main-content">
 
 <section class="container hero" id="hero">
@@ -56,11 +87,16 @@
             <div class="hero-visual-top">
                 <div class="hero-visual">
                     <figure class="hero-figure">
-                        <img alt="Engagement rings illustration" class="hero-image" src="./assets/hero-rings.webp"
-                            loading="eager">
+                        <img alt="Engagement rings illustration" class="hero-image" src="assets/aya.png" loading="eager">
                     </figure>
                 </div>
             </div>
+
+                <!-- <div class="hero-visual">
+        <figure class="hero-figure">
+            <img alt="Engagement rings illustration" class="hero-image" src="./assets/hero-rings.webp" loading="eager">
+        </figure>
+    </div> -->
 
             <!-- 2. Bottom: Content Grid -->
             <div class="hero-content-grid">

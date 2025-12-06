@@ -1212,3 +1212,42 @@ body.drawer-open .nav-overlay {
   color: color-mix(in srgb, var(--muted) 72%, transparent);
   font-size: var(--font-size-xs);
 }
+
+/* =========================================
+   FIX MOBILE DRAWER (OVERRIDES WEBFLOW CSS)
+========================================= */
+
+#nav-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  width: min(84vw, 360px) !important;
+  background: var(--surface) !important;
+  z-index: 999999 !important;
+
+  transform: translateX(100%) !important;
+  transition: transform .28s ease-in-out !important;
+  opacity: 1 !important;
+  display: flex !important;
+}
+
+#nav-drawer.is-open {
+  transform: translateX(0%) !important;
+}
+
+.nav-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(0,0,0,.4) !important;
+  z-index: 999998 !important;
+
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity .28s ease !important;
+}
+
+body.drawer-open .nav-overlay {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
