@@ -176,14 +176,14 @@ header.site-header {
   z-index: 1;
 } */
 
-#hero {
+/* #hero {
   background: linear-gradient(
     180deg,
     color-mix(in srgb, var(--brand-50) 80%, transparent) 0%,
     var(--surface) 100%
   );
   border-radius: 32px;
-}
+} */
 
 .hero {
   display: flex;
@@ -192,6 +192,30 @@ header.site-header {
   padding-block: 2rem;
   align-items: center;
 }
+
+/* .hero {
+  background: linear-gradient(
+      180deg,
+      #fdf7f2 0%,
+      #fbf2ea 35%,
+      #f5e6db 100%
+  );
+  border-radius: 32px;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+} */
+
+/* Optional subtle pattern overlay */
+/* .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../assets/pattern.svg');
+  background-size: cover;
+  opacity: 0.06;
+  pointer-events: none;
+} */
 
 .hero-ctas {
   display: flex;
@@ -225,7 +249,7 @@ header.site-header {
   position: relative;
   display: grid;
   place-items: center;
-  inline-size: min(700px, 80vw);
+  inline-size: min(500px, 80vw);
   margin: 0;
   background: none;
   border: none;
