@@ -9,41 +9,41 @@ import { initRevealAndCounters } from './reveal.js';
 import { initPrecheckModal } from './modal.js';
 
 // ===== Force Locks: Arabic + Light theme (temporary) =====
-(function lockLangAndTheme(){
+(function lockLangAndTheme() {
   const html = document.documentElement;
   // وسم عام يفيد الـ CSS
   html.setAttribute('data-locked', 'true');
 
   // —— قفل اللغة على العربية ——
-  try{
+  try {
     // حفظ القيم المقفلة
     localStorage.setItem('lang', 'ar');
 
     // إجبار اتجاه الصفحة واللغة
     html.lang = 'ar';
-    html.dir  = 'rtl';
+    html.dir = 'rtl';
 
     // تطعيم setLocale بحيث تتجاهل أي محاولة تغيير للغة
-    import('./i18n.js').then(({ i18n })=>{
+    import('./i18n.js').then(({ i18n }) => {
       const originalSet = i18n.setLocale.bind(i18n);
-      i18n.setLocale = function(){ originalSet('ar'); };
+      i18n.setLocale = function () { originalSet('ar'); };
       // طبّق العربية الآن
       i18n.setLocale('ar');
-    }).catch(()=>{});
-  }catch(e){}
+    }).catch(() => { });
+  } catch (e) { }
 
   // —— قفل الثيم على الفاتح ——
-  try{
+  try {
     const KEY = 'skn-theme';
     localStorage.setItem(KEY, 'light');
     html.setAttribute('data-theme', 'light');
-  }catch(e){}
+  } catch (e) { }
 
   // —— تعطيل أزرار التبديل واجهياً (مع بقاءها بالكود) ——
-  const disable = (el)=>{
-    if(!el) return;
-    el.setAttribute('aria-disabled','true');
-    el.setAttribute('tabindex','-1');
+  const disable = (el) => {
+    if (!el) return;
+    el.setAttribute('aria-disabled', 'true');
+    el.setAttribute('tabindex', '-1');
     el.style.pointerEvents = 'none';
     el.style.opacity = '0.45';
   };
@@ -55,11 +55,11 @@ import { initPrecheckModal } from './modal.js';
   themeBtns.forEach(disable);
 
   // منع أي استماع سابق بالنقر باستخدام طور الالتقاط
-  document.addEventListener('click', (e)=>{
-    if(e.target.closest('.js-theme-toggle') ||
-       e.target.closest('[data-theme-toggle]') ||
-       e.target.closest('.js-lang-option') ||
-       e.target.closest('[data-lang-toggle]')){
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.js-theme-toggle') ||
+      e.target.closest('[data-theme-toggle]') ||
+      e.target.closest('.js-lang-option') ||
+      e.target.closest('[data-lang-toggle]')) {
       e.stopImmediatePropagation();
       e.preventDefault();
       return false;
@@ -70,31 +70,31 @@ import { initPrecheckModal } from './modal.js';
 // Initialize after DOM ready
 
 // Optional: theme toggle (works if a [data-theme-toggle] element exists)
-function initThemeToggle(){
+function initThemeToggle() {
   const root = document.documentElement;
   const btn = document.querySelector('[data-theme-toggle]');
-  if(!btn) return;
+  if (!btn) return;
   // Load saved preference
   const saved = localStorage.getItem('skn-theme');
-  if(saved) root.setAttribute('data-theme', saved);
-  btn.addEventListener('click', ()=>{
+  if (saved) root.setAttribute('data-theme', saved);
+  btn.addEventListener('click', () => {
     const current = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     const next = current === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     localStorage.setItem('skn-theme', next);
-    btn.setAttribute('aria-pressed', String(next==='dark'));
+    btn.setAttribute('aria-pressed', String(next === 'dark'));
   });
 }
 
 
-window.track = (name, detail={}) => { try{ console.info('[track]', name, detail); }catch(e){} };
+window.track = (name, detail = {}) => { try { console.info('[track]', name, detail); } catch (e) { } };
 
 document.addEventListener('DOMContentLoaded', () => {
   // Track features card CTA clicks
   document.querySelectorAll('[data-feature-cta]').forEach(btn => {
     btn.addEventListener('click', () => {
       const key = btn.getAttribute('data-feature-cta');
-      if(window.track){ window.track('features_card_cta', { feature: key }); }
+      if (window.track) { window.track('features_card_cta', { feature: key }); }
     });
   });
 
@@ -105,15 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   // Components
   const hero = document.querySelector('#hero');
-  if(hero){
-    document.querySelectorAll('.feature-cta').forEach(btn=>{
-      btn.addEventListener('click', ()=> track('features_card_click', { feature: btn.dataset.featureCta }));
+  if (hero) {
+    document.querySelectorAll('.feature-cta').forEach(btn => {
+      btn.addEventListener('click', () => track('features_card_click', { feature: btn.dataset.featureCta }));
     });
 
     const primary = hero.querySelector('.btn.btn-primary');
     const secondary = hero.querySelector('.btn.btn-soft');
-    primary && primary.addEventListener('click', ()=> track('hero_cta_primary_click', {label:'register'}));
-    secondary && secondary.addEventListener('click', ()=> track('hero_cta_secondary_click', {label:'features'}));
+    primary && primary.addEventListener('click', () => track('hero_cta_primary_click', { label: 'register' }));
+    secondary && secondary.addEventListener('click', () => track('hero_cta_secondary_click', { label: 'features' }));
   }
   initFeaturesTabs();
   initTimeline();
@@ -154,6 +154,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (openBtn) openBtn.addEventListener('click', open);
   closeEls.forEach(el => el.addEventListener('click', close));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+  // Close drawer when a link inside it is clicked
+  if (drawer) {
+    drawer.addEventListener('click', (e) => {
+      if (e.target.matches('a, a *')) {
+        close();
+      }
+    });
+  }
 })();
 
 // === Theme toggle (js-theme-toggle support) ===
