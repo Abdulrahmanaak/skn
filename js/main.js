@@ -4,7 +4,7 @@
 // ==========================
 import { i18n, initLangToggle } from './i18n.js';
 import { initFeaturesTabs } from './features.js';
-import { initTimeline } from './timeline.js';
+
 import { initRevealAndCounters } from './reveal.js';
 import { initPrecheckModal } from './modal.js';
 
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     secondary && secondary.addEventListener('click', () => track('hero_cta_secondary_click', { label: 'features' }));
   }
   initFeaturesTabs();
-  initTimeline();
+
   initRevealAndCounters();
   initPrecheckModal();
 

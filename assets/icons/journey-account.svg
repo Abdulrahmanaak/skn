@@ -1,12 +1,5 @@
-<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- خلفية ناعمة -->
-  <rect x="2" y="4" width="24" height="20" rx="4" fill="#FBE4D8"></rect>
-  <!-- إطار البطاقة -->
-  <rect x="3.5" y="5.5" width="21" height="17" rx="3" stroke="#5B3A2E" stroke-width="1.4"></rect>
-  <!-- خط علوي -->
-  <line x1="5" y1="10" x2="23" y2="10" stroke="#5B3A2E" stroke-width="1.2" stroke-linecap="round"></line>
-  <!-- “حساب” مجرّد: مستطيل ودوائر -->
-  <rect x="6.5" y="12" width="6" height="5" rx="1.5" fill="#F7B9A5" stroke="#5B3A2E" stroke-width="1.2"></rect>
-  <rect x="15" y="12" width="7" height="1.4" rx="0.7" fill="#5B3A2E"></rect>
-  <rect x="15" y="15" width="5" height="1.4" rx="0.7" fill="#5B3A2E"></rect>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" fill="none"/>
+  <circle cx="128" cy="96" r="64" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="16"/>
+  <path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/>
 </svg>
